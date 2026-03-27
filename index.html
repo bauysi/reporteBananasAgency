@@ -17,7 +17,7 @@
 <style>
   :root {
     --black: #0A0A0A;
-    --white: #FEFAE5;
+    --white: #F5F2EC;
     --yellow: #F9CB42;
     --yellow-dark: #D4A728;
     --gray-1: #1A1A1A;
@@ -61,51 +61,77 @@
 
   #app { display: flex; flex-direction: column; min-height: 100dvh; max-width: 480px; margin: 0 auto; position: relative; }
 
+  /* TOP BAR CONFIGURATION */
   #topbar {
     position: sticky; top: 0; z-index: 100;
     background: var(--black); border-bottom: 1px solid var(--gray-2);
-    padding: 12px 16px; display: flex; align-items: center; justify-content: space-between; gap: 8px;
-    transition: background 0.2s;
+    padding: 12px 16px; transition: background 0.2s;
   }
-  #topbar .brand { 
+  
+  /* EDITOR MODE TOPBAR */
+  .editor-header { display: flex; align-items: center; justify-content: space-between; gap: 8px; width: 100%; }
+  .editor-header .brand { 
     font-family: var(--title-font); font-size: 16px; font-weight: 400; color: var(--yellow); 
-    letter-spacing: -0.02em; text-transform: uppercase; 
-    display: inline-flex; align-items: center; gap: 6px;
+    letter-spacing: -0.02em; text-transform: uppercase; display: inline-flex; align-items: center; gap: 6px;
   }
+  
+  /* VIEW MODE TOPBAR (For clients) */
+  .view-header { display: none; align-items: center; justify-content: space-between; width: 100%; }
+  .view-header-client { font-weight: 600; font-size: 14px; display: flex; align-items: center; }
+  .view-header-month { font-family: var(--num-font); font-weight: 700; font-size: 12px; letter-spacing: 0.1em; color: var(--gray-4); }
+  .view-header-brand { display: flex; align-items: center; gap: 12px; }
+
+  /* MODO LECTURA GLOBAL OVERRIDES */
+  body.view-mode .editor-header { display: none !important; }
+  body.view-mode .view-header { display: flex !important; }
+  body.view-mode #topbar { background: rgba(0,0,0,0.95); backdrop-filter: blur(12px); }
+  [data-theme="light"] body.view-mode #topbar { background: rgba(254, 250, 229, 0.95); }
+  
+  /* Ocultar tabs pero mantener la navegacion inferior */
+  body.view-mode #pagetabs { display: none !important; }
+  body.view-mode .page { padding-top: 40px !important; }
+  body.view-mode #logo-upload-group { display: none !important; }
+  
+  body.view-mode .field-input, body.view-mode .inline-name-input {
+    border: none !important; background: transparent !important; pointer-events: none !important;
+    padding-left: 0 !important; padding-right: 0 !important; color: var(--white) !important;
+  }
+  [data-theme="light"] body.view-mode .field-input, [data-theme="light"] body.view-mode .inline-name-input { color: var(--black) !important; }
+  body.view-mode textarea.field-input { resize: none; overflow: hidden; }
+  body.view-mode ::placeholder { color: transparent !important; }
+  body.view-mode .view-empty { display: none !important; }
+
+  /* FIN MODO LECTURA */
+
   #meta-row { display: flex; align-items: center; gap: 8px; }
   .meta-input {
     background: var(--gray-2); border: none; border-radius: 6px;
     color: var(--white); font-family: var(--font); font-weight: 500; font-size: 11px;
-    padding: 5px 8px; outline: none; width: 80px;
-    transition: background 0.2s, color 0.2s;
+    padding: 5px 8px; outline: none; width: 80px; transition: background 0.2s, color 0.2s;
   }
   .meta-input:focus { outline: 1px solid var(--yellow); }
-  #client-name-input { width: 100px; }
 
   .top-action-btn {
-    background: var(--gray-2); border: none; border-radius: 6px;
-    color: var(--white); font-family: var(--font); font-size: 14px; font-weight: 500;
-    padding: 4px 8px; cursor: pointer; transition: background 0.15s;
+    background: var(--gray-2); border: none; border-radius: 6px; color: var(--white); 
+    font-family: var(--font); font-size: 13px; font-weight: 500;
+    padding: 5px 10px; cursor: pointer; transition: background 0.15s;
     display: flex; align-items: center; justify-content: center; gap: 4px;
   }
   .top-action-btn:hover { background: var(--gray-3); }
   .top-action-btn:disabled { opacity: 0.5; cursor: wait; }
   
-  .export-btn { background: var(--yellow); color: #0A0A0A; font-weight: 600; padding: 4px 12px; }
+  .export-btn { background: var(--yellow); color: #0A0A0A; font-weight: 600; padding: 5px 12px; }
   .export-btn:hover { background: var(--yellow-dark); }
 
   #pagetabs {
-    display: flex; overflow-x: auto; gap: 2px;
-    padding: 8px 16px; background: var(--gray-1);
+    display: flex; overflow-x: auto; gap: 2px; padding: 8px 16px; background: var(--gray-1);
     scrollbar-width: none; transition: background 0.2s;
   }
   #pagetabs::-webkit-scrollbar { display: none; }
   .tab-btn {
-    flex-shrink: 0; padding: 6px 12px;
-    border: 1px solid var(--gray-3); border-radius: 20px;
-    background: none; color: var(--gray-4);
-    font-family: var(--font); font-weight: 500; font-size: 11px; letter-spacing: 0.02em;
-    cursor: pointer; transition: all 0.15s; white-space: nowrap;
+    flex-shrink: 0; padding: 6px 12px; border: 1px solid var(--gray-3); border-radius: 20px;
+    background: none; color: var(--gray-4); font-family: var(--font); font-weight: 500; font-size: 11px; 
+    letter-spacing: 0.02em; cursor: pointer; transition: all 0.15s; white-space: nowrap;
   }
   .tab-btn.active { background: var(--yellow); border-color: var(--yellow); color: #0A0A0A; font-weight: 600; }
   [data-theme="light"] .tab-btn.active { color: #0A0A0A; }
@@ -152,8 +178,6 @@
     padding: 0 0 2px 0; transition: border-color 0.2s, color 0.2s;
   }
   .inline-name-input:focus { border-color: var(--yellow); color: var(--white); }
-  [data-theme="light"] .inline-name-input { color: var(--gray-4); border-bottom-color: var(--gray-3); }
-  [data-theme="light"] .inline-name-input:focus { color: var(--black); border-bottom-color: var(--yellow); }
 
   .btn-logo-action { 
     margin-top: 6px; font-size: 12px; font-family: var(--font); font-weight: 500; 
@@ -165,7 +189,6 @@
   .btn-logo-action.contrast { color: var(--white); margin-left: 6px; }
 
   .banana-icon { color: var(--yellow); fill: currentColor; }
-  .brand .banana-icon { width: 28px; height: 28px; }
   .conclusion-icon { width: 48px; height: 48px; margin: 0 auto 12px; display: block; }
 
   .platform-badge {
@@ -190,25 +213,17 @@
 
   .content-card { background: var(--gray-2); border-radius: 10px; padding: 14px; margin-bottom: 10px; border-left: 3px solid var(--yellow); transition: background 0.2s; }
   .content-rank { font-family: var(--title-font); font-size: 16px; font-weight: 400; color: var(--yellow); margin-bottom: 6px; letter-spacing: 0.05em; }
-  .content-title { font-size: 14px; font-weight: 500; margin-bottom: 8px; }
-  .content-stats { display: flex; gap: 12px; flex-wrap: wrap; }
-  .content-stat { font-family: var(--num-font); font-weight: 500; font-size: 11px; color: var(--gray-4); }
-  .content-stat span { color: var(--white); }
-  .content-reason { font-size: 12px; color: var(--gray-4); margin-top: 8px; line-height: 1.5; }
 
   .plan-block { margin-bottom: 16px; }
   .plan-type { font-family: var(--num-font); font-weight: 600; font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; padding: 3px 8px; border-radius: 4px; display: inline-block; margin-bottom: 10px; }
   .plan-mantener { background: rgba(34,197,94,0.15); color: var(--pos); }
   .plan-mejorar { background: rgba(249,203,66,0.15); color: var(--yellow); }
   .plan-testear { background: rgba(var(--tt-accent-rgb), 0.15); color: var(--tt-accent); }
-  .plan-item { font-size: 14px; color: var(--gray-5); padding: 6px 0; border-bottom: 1px solid var(--gray-3); display: flex; align-items: flex-start; gap: 8px; }
+  .plan-item { font-size: 14px; color: var(--gray-5); padding: 6px 0; border-bottom: 1px solid var(--gray-2); display: flex; align-items: flex-start; gap: 8px; }
   .plan-item:last-child { border: none; }
   .plan-dot { width: 5px; height: 5px; border-radius: 50%; background: currentColor; margin-top: 7px; flex-shrink: 0; }
 
-  .cover-logo { 
-    display: none; width: fit-content; max-width: 100%; border-radius: 16px; 
-    margin-bottom: 24px; overflow: hidden; transition: all 0.2s;
-  }
+  .cover-logo { display: none; width: fit-content; max-width: 100%; border-radius: 16px; margin-bottom: 24px; overflow: hidden; transition: all 0.2s; }
   .cover-logo.has-image { display: block; }
   .cover-logo.with-bg { background: var(--white); padding: 16px 24px; }
   .cover-logo img { width: 100%; height: auto; max-height: 160px; object-fit: contain; display: block; }
@@ -229,48 +244,13 @@
   [data-theme="light"] #bottom-nav { background: rgba(254, 250, 229, 0.95); }
   .nav-arrow {
     background: var(--gray-2); border: none; border-radius: 8px;
-    color: var(--white); font-size: 16px; padding: 10px 18px;
-    cursor: pointer; transition: background 0.15s, color 0.2s;
+    color: var(--white); font-size: 16px; padding: 10px 18px; cursor: pointer; transition: background 0.15s, color 0.2s;
   }
   .nav-arrow:hover { background: var(--gray-3); }
   .nav-arrow:disabled { opacity: 0.3; cursor: default; }
   #page-indicator { font-family: var(--num-font); font-weight: 600; font-size: 13px; color: var(--gray-4); text-align: center; flex: 1; }
 
   .conclusion-box { background: rgba(249,203,66,0.08); border: 1px solid rgba(249,203,66,0.2); border-radius: 10px; padding: 14px; font-size: 14px; line-height: 1.6; color: var(--gray-5); margin: 12px 0; }
-  .conclusion-box strong { color: var(--yellow); font-weight: 500; }
-
-  /* ========================================================= */
-  /* CLASES DE MODO LECTURA PARA CLIENTES (VÍA URL)            */
-  /* ========================================================= */
-  body.view-mode #topbar { display: none !important; }
-  body.view-mode #bottom-nav { display: none !important; }
-  body.view-mode .page { padding-top: 40px !important; padding-bottom: 40px !important; }
-  body.view-mode #logo-upload-group { display: none !important; }
-  
-  .client-theme-btn {
-     position: fixed; top: 16px; right: 16px; z-index: 1000;
-     background: var(--gray-2); border: 1px solid var(--gray-3);
-     border-radius: 50%; width: 44px; height: 44px;
-     display: none; align-items: center; justify-content: center; cursor: pointer;
-     font-size: 20px; transition: background 0.2s;
-  }
-  body.view-mode .client-theme-btn { display: flex; }
-
-  body.view-mode .field-input,
-  body.view-mode .inline-name-input {
-    border: none !important;
-    background: transparent !important;
-    pointer-events: none !important;
-    padding-left: 0 !important;
-    padding-right: 0 !important;
-    color: var(--white) !important;
-  }
-  [data-theme="light"] body.view-mode .field-input,
-  [data-theme="light"] body.view-mode .inline-name-input { color: var(--black) !important; }
-  
-  body.view-mode textarea.field-input { resize: none; overflow: hidden; }
-  body.view-mode ::placeholder { color: transparent !important; }
-  body.view-mode .view-empty { display: none !important; }
 
   /* Modales */
   dialog {
@@ -282,34 +262,42 @@
   dialog p { font-size: 14px; line-height: 1.5; color: var(--gray-5); margin-bottom: 12px; }
   .modal-btn { background: var(--yellow); color: #0A0A0A; border: none; padding: 10px 16px; border-radius: 6px; font-weight: 600; cursor: pointer; margin-top: 16px; width: 100%; transition: 0.2s; }
   .modal-btn:hover { background: var(--yellow-dark); }
-  
-  .link-box {
-    background: var(--gray-2); padding: 12px; border-radius: 6px; 
-    border: 1px solid var(--gray-3); word-break: break-all; 
-    color: var(--yellow); font-family: monospace; font-size: 12px;
-  }
+  .link-box { background: var(--gray-2); padding: 12px; border-radius: 6px; border: 1px solid var(--gray-3); word-break: break-all; color: var(--yellow); font-family: monospace; font-size: 12px; }
 </style>
 </head>
 <body>
 <div id="app">
 
-  <!-- Botón flotante para el cliente -->
-  <button class="client-theme-btn" id="client-theme-btn" onclick="toggleTheme()" title="Cambiar tema">☀️</button>
-
   <!-- TOP BAR -->
   <div id="topbar">
-    <div class="brand">
-      <svg class="banana-icon" viewBox="0 0 128 197.2" xmlns="http://www.w3.org/2000/svg"><path d="M111.7,105.9c-1.7-5.3-4-9-8.1-13c-5.4-5.1-11.5-8.1-20.2-9.8c-2-0.4-3.6-0.8-3.5-0.9c0.1-0.1,1.7-1,3.6-2 c6.9-3.5,11.3-8.5,13.8-15.7c1.2-3.3,1.2-3.4,1.2-8.5c0-4.5-0.1-5.5-0.8-7.7c-2.3-7.3-7.3-12.8-14.2-15.7 c-8.7-3.6-24.9-6.4-37.5-6.4c-3.4,0-4.3,0.5-4.3,2.3c0,0.9,0.6,1.7,4.8,5.9c7.1,7.2,10.8,9.8,17.4,12.2c4.1,1.6,4.2,1.7,4.5,6.7 c0.2,5.7-1.2,9.7-5,14.3c-2,2.4-5.8,5.3-6.5,5c-0.6-0.2-2.9-3.2-5-6.5C50.8,64.6,49,61,47.6,58c-1.4-3-2.8-5.7-3.3-6.1 c-1.7-1.5-4.4-0.7-10.4,3c-11,6.8-16.8,13.6-14.2,16.7c0.3,0.4,2.2,1.4,4.3,2.3c10.5,4.6,14,8,15,14.3c0.8,5.5-0.6,11.3-5.9,23.6 c-5,11.5-6.8,20.3-6.4,31.2c0.4,12.8,4.2,22.6,11.9,30.5c1.6,1.6,3.7,3.6,4.8,4.4l0,0c2.1,1.6,3.5,1.8,4.5,0.9 c0.8-0.7,0.8-1.7-0.5-6.6c-3.8-14.6-2-21.8,8.8-36.3c7.5-10.1,9.7-15,10.1-22.5c0.1-2.3,0.3-3.7,0.6-3.7c0.2,0,1.4,0.7,2.6,1.5 c1.3,0.8,5.3,3,9,4.8c3.7,1.8,6.8,3.4,6.8,3.6c0,0.1-2.9,1.7-6.4,3.5c-3.6,1.8-7.4,3.9-8.6,4.6c-3.1,2.1-7,5.9-9.1,9.1 c-2.8,4.2-4.8,10.1-4.1,12.5c0.4,1.7,1.7,1.8,6.8,0.1c2.1-0.7,6.8-1.3,14.3-1.9c2.7-0.2,5.1-0.5,5.4-0.7c0.3-0.1,1.9-0.7,3.7-1.1 c6.3-1.7,13-5.6,17-10C112.2,127.2,114.9,116,111.7,105.9z M94.1,56.7c-0.1,1.2-0.3,2.4-0.5,3.3c-1,4.6-3.2,10-6.9,12.9 c-2.6,2-5.8,3.5-8.6,4.5c-3.7,1.3-11.9,0.7-11.9,0.7s9.2-3,14.9-14.1c2.8-6.5,2.6-14.3,2.6-14.3l5.8,0.9 C92.3,51.1,94.4,53.7,94.1,56.7z M48.7,30.5c0,0,17.4-0.9,34.6,7.2c3.5,1.7,8.2,5,10.4,10c0.2,0.4-0.2,0.8-0.7,0.7 c-1-0.3-5-1.6-7.1-1.8C53.1,43.7,48.7,30.5,48.7,30.5z M70.1,64c3.5-7.8,1.9-16,1.9-16l9.8,1.7c-0.5,6.8-0.9,16-9,22.3 c-5.2,4.1-12.7,2.9-12.7,2.9S67.2,70.3,70.1,64z M25.3,67.8L25.3,67.8c0-1.3,9.1-8.4,11.3-8.8l1.2-0.2l-1,1.5 c-0.6,0.9-1.9,2.2-2.9,3.2C31.5,65.6,25.3,68.7,25.3,67.8z M36.1,158.6c0.2,2.1,0.3,3.8,0.2,3.9c-0.4,0.4-2.4-4.6-3.2-7.7 c-1.4-5.3-1.7-7.6-1.7-14.2c0-10.8,1.1-15.3,7.5-30.7c3.6-8.7,4.7-12.9,4.8-18.3c0-4.5-0.3-6.5-1.8-9.6c-1.6-3.4-4.2-5.9-9.3-8.8 l-2.4-1.4l1.9-1.4c1-0.8,2.4-1.8,3.1-2.3c0.7-0.5,1.5-1,1.8-1c1.4,0,7.1,7.1,9.6,11.9c3.2,6.3,4.6,11.7,4.6,18.5 c0,9.4-2,16.4-8.8,30.9c-1.4,3-3,6.6-3.5,8C36.5,143.1,35.4,151.9,36.1,158.6z M89.6,136.5c-4,3.4-8.6,5.1-17.5,6.6 c-3.2,0.5-6.5,1.1-7.2,1.3l0,0c-2.5,0.6-2.5,0.6-1.8-1.4c1.6-4.1,5-8.3,9.1-11c2.2-1.5,17.1-9.1,17.8-9.1c0.7,0,2.7,2.6,3.1,4 C93.9,129.8,92.3,134.2,89.6,136.5z M105,124.4c-0.1,2.8-0.2,3.1-1.3,4.7c-1.3,1.9-3.6,4.5-4.1,4.5c-0.1,0-0.3-1-0.3-2.1 c-0.2-5.5-3.1-10.6-8.2-13.9c-1.2-0.8-5.7-3.2-10.1-5.3c-4.4-2.2-8.9-4.5-10-5.2c-2.9-1.9-6.4-5.3-8.7-8.2c-2.3-3.1-3.1-3.6-4.4-2.6 c-0.5,0.4-0.9,1-1,1.3c-0.1,0.3,0.5,1.8,1.2,3.3c0.9,1.8,7,11.3-9.6,35.8c-3.5,5.1-6.3,10.1-7.6,15.3l0,0c-0.4,1.6-0.8,4.2-0.9,7.4 l-0.2,4.9l-0.5-3.4c-1.6-9.7-0.1-18.3,5.1-29.6c5.2-11.1,7-16,8.3-22.2c0.7-3.3,0.6-5.7,0.8-9.5c0.1-3.9-1-8.3-1.8-11.4 c-0.6-2.5-1.5-4.6-1.5-5.8l2.2,2l2,1.8c6.3,5.5,12.4,8.8,26.6,14.2c3.8,1.5,8.4,3.4,10.1,4.3C100.7,109.1,105.4,115.8,105,124.4z M107.3,115l-0.1,2l-1.1-2.4c-3.3-7.5-9-11.6-22.8-16.8C70,92.9,59.7,87.1,58,86c-5.5-3.6-8.2-6.6-12.6-12.4 c-1.8-2.3-4.1-5.1-5.1-6.3c-1.8-1.9-1.9-2.1-1.5-2.7c0.2-0.3,1.1-1.5,1.8-2.6c0.9-1.2,1.6-2,2-2c0.4,0,1.1,1,2.5,3.7 c4.2,8.3,10,13.1,13.5,15.6c5.2,3.7,15.1,6.1,18.7,7.1c7.4,2.1,10.2,3.6,14.1,5.4c8.2,3.8,13.8,10.6,15.6,18.8l0,0 C107.2,111.9,107.4,113.9,107.3,115z"/></svg> 
-      BANANAS
+    
+    <!-- MODO EDITOR (CM) -->
+    <div class="editor-header">
+      <div class="brand">
+        <svg class="banana-icon" viewBox="0 0 128 197.2" xmlns="http://www.w3.org/2000/svg" style="width:28px;height:28px;"><path d="M111.7,105.9c-1.7-5.3-4-9-8.1-13c-5.4-5.1-11.5-8.1-20.2-9.8c-2-0.4-3.6-0.8-3.5-0.9c0.1-0.1,1.7-1,3.6-2 c6.9-3.5,11.3-8.5,13.8-15.7c1.2-3.3,1.2-3.4,1.2-8.5c0-4.5-0.1-5.5-0.8-7.7c-2.3-7.3-7.3-12.8-14.2-15.7 c-8.7-3.6-24.9-6.4-37.5-6.4c-3.4,0-4.3,0.5-4.3,2.3c0,0.9,0.6,1.7,4.8,5.9c7.1,7.2,10.8,9.8,17.4,12.2c4.1,1.6,4.2,1.7,4.5,6.7 c0.2,5.7-1.2,9.7-5,14.3c-2,2.4-5.8,5.3-6.5,5c-0.6-0.2-2.9-3.2-5-6.5C50.8,64.6,49,61,47.6,58c-1.4-3-2.8-5.7-3.3-6.1 c-1.7-1.5-4.4-0.7-10.4,3c-11,6.8-16.8,13.6-14.2,16.7c0.3,0.4,2.2,1.4,4.3,2.3c10.5,4.6,14,8,15,14.3c0.8,5.5-0.6,11.3-5.9,23.6 c-5,11.5-6.8,20.3-6.4,31.2c0.4,12.8,4.2,22.6,11.9,30.5c1.6,1.6,3.7,3.6,4.8,4.4l0,0c2.1,1.6,3.5,1.8,4.5,0.9 c0.8-0.7,0.8-1.7-0.5-6.6c-3.8-14.6-2-21.8,8.8-36.3c7.5-10.1,9.7-15,10.1-22.5c0.1-2.3,0.3-3.7,0.6-3.7c0.2,0,1.4,0.7,2.6,1.5 c1.3,0.8,5.3,3,9,4.8c3.7,1.8,6.8,3.4,6.8,3.6c0,0.1-2.9,1.7-6.4,3.5c-3.6,1.8-7.4,3.9-8.6,4.6c-3.1,2.1-7,5.9-9.1,9.1 c-2.8,4.2-4.8,10.1-4.1,12.5c0.4,1.7,1.7,1.8,6.8,0.1c2.1-0.7,6.8-1.3,14.3-1.9c2.7-0.2,5.1-0.5,5.4-0.7c0.3-0.1,1.9-0.7,3.7-1.1 c6.3-1.7,13-5.6,17-10C112.2,127.2,114.9,116,111.7,105.9z M94.1,56.7c-0.1,1.2-0.3,2.4-0.5,3.3c-1,4.6-3.2,10-6.9,12.9 c-2.6,2-5.8,3.5-8.6,4.5c-3.7,1.3-11.9,0.7-11.9,0.7s9.2-3,14.9-14.1c2.8-6.5,2.6-14.3,2.6-14.3l5.8,0.9 C92.3,51.1,94.4,53.7,94.1,56.7z M48.7,30.5c0,0,17.4-0.9,34.6,7.2c3.5,1.7,8.2,5,10.4,10c0.2,0.4-0.2,0.8-0.7,0.7 c-1-0.3-5-1.6-7.1-1.8C53.1,43.7,48.7,30.5,48.7,30.5z M70.1,64c3.5-7.8,1.9-16,1.9-16l9.8,1.7c-0.5,6.8-0.9,16-9,22.3 c-5.2,4.1-12.7,2.9-12.7,2.9S67.2,70.3,70.1,64z M25.3,67.8L25.3,67.8c0-1.3,9.1-8.4,11.3-8.8l1.2-0.2l-1,1.5 c-0.6,0.9-1.9,2.2-2.9,3.2C31.5,65.6,25.3,68.7,25.3,67.8z M36.1,158.6c0.2,2.1,0.3,3.8,0.2,3.9c-0.4,0.4-2.4-4.6-3.2-7.7 c-1.4-5.3-1.7-7.6-1.7-14.2c0-10.8,1.1-15.3,7.5-30.7c3.6-8.7,4.7-12.9,4.8-18.3c0-4.5-0.3-6.5-1.8-9.6c-1.6-3.4-4.2-5.9-9.3-8.8 l-2.4-1.4l1.9-1.4c1-0.8,2.4-1.8,3.1-2.3c0.7-0.5,1.5-1,1.8-1c1.4,0,7.1,7.1,9.6,11.9c3.2,6.3,4.6,11.7,4.6,18.5 c0,9.4-2,16.4-8.8,30.9c-1.4,3-3,6.6-3.5,8C36.5,143.1,35.4,151.9,36.1,158.6z M89.6,136.5c-4,3.4-8.6,5.1-17.5,6.6 c-3.2,0.5-6.5,1.1-7.2,1.3l0,0c-2.5,0.6-2.5,0.6-1.8-1.4c1.6-4.1,5-8.3,9.1-11c2.2-1.5,17.1-9.1,17.8-9.1c0.7,0,2.7,2.6,3.1,4 C93.9,129.8,92.3,134.2,89.6,136.5z M105,124.4c-0.1,2.8-0.2,3.1-1.3,4.7c-1.3,1.9-3.6,4.5-4.1,4.5c-0.1,0-0.3-1-0.3-2.1 c-0.2-5.5-3.1-10.6-8.2-13.9c-1.2-0.8-5.7-3.2-10.1-5.3c-4.4-2.2-8.9-4.5-10-5.2c-2.9-1.9-6.4-5.3-8.7-8.2c-2.3-3.1-3.1-3.6-4.4-2.6 c-0.5,0.4-0.9,1-1,1.3c-0.1,0.3,0.5,1.8,1.2,3.3c0.9,1.8,7,11.3-9.6,35.8c-3.5,5.1-6.3,10.1-7.6,15.3l0,0c-0.4,1.6-0.8,4.2-0.9,7.4 l-0.2,4.9l-0.5-3.4c-1.6-9.7-0.1-18.3,5.1-29.6c5.2-11.1,7-16,8.3-22.2c0.7-3.3,0.6-5.7,0.8-9.5c0.1-3.9-1-8.3-1.8-11.4 c-0.6-2.5-1.5-4.6-1.5-5.8l2.2,2l2,1.8c6.3,5.5,12.4,8.8,26.6,14.2c3.8,1.5,8.4,3.4,10.1,4.3C100.7,109.1,105.4,115.8,105,124.4z M107.3,115l-0.1,2l-1.1-2.4c-3.3-7.5-9-11.6-22.8-16.8C70,92.9,59.7,87.1,58,86c-5.5-3.6-8.2-6.6-12.6-12.4 c-1.8-2.3-4.1-5.1-5.1-6.3c-1.8-1.9-1.9-2.1-1.5-2.7c0.2-0.3,1.1-1.5,1.8-2.6c0.9-1.2,1.6-2,2-2c0.4,0,1.1,1,2.5,3.7 c4.2,8.3,10,13.1,13.5,15.6c5.2,3.7,15.1,6.1,18.7,7.1c7.4,2.1,10.2,3.6,14.1,5.4c8.2,3.8,13.8,10.6,15.6,18.8l0,0 C107.2,111.9,107.4,113.9,107.3,115z"/></svg> 
+        BANANAS
+      </div>
+      <div id="meta-row">
+        <input class="meta-input" id="client-name-input-top" type="text" placeholder="Cliente" value="Cliente" oninput="updateClientName(this.value)">
+        <input class="meta-input" id="month-input" type="month" value="">
+        <button class="top-action-btn" id="theme-btn" onclick="toggleTheme()" title="Cambiar tema">☀️</button>
+        <button class="top-action-btn" onclick="saveJSON()" title="Backup JSON local">💾</button>
+        <button class="top-action-btn" onclick="triggerLoadJSON()" title="Cargar JSON local">📂</button>
+        <input type="file" id="json-upload" accept=".json" style="display:none">
+        <button class="top-action-btn export-btn" id="btn-share-link" onclick="window.generateShareLink()">☁️ Crear Link (Cliente)</button>
+      </div>
     </div>
-    <div id="meta-row">
-      <input class="meta-input" id="client-name-input-top" type="text" placeholder="Cliente" value="Cliente" oninput="updateClientName(this.value)">
-      <input class="meta-input" id="month-input" type="month" value="">
-      
-      <button class="top-action-btn" id="theme-btn" onclick="toggleTheme()" title="Cambiar tema">☀️</button>
-      
-      <!-- BOTÓN MAESTRO: NUBE / COMPARTIR -->
-      <button class="top-action-btn export-btn" id="btn-share-link" onclick="window.generateShareLink()" title="Guardar en la nube y generar enlace para el cliente">☁️ Crear Link (Cliente)</button>
+
+    <!-- MODO LECTURA (CLIENTE) -->
+    <div class="view-header">
+      <div class="view-header-client" id="view-header-client">Cliente</div>
+      <div class="view-header-month" id="view-header-month">MES</div>
+      <div class="view-header-brand">
+        <button class="top-action-btn" onclick="toggleTheme()" title="Cambiar tema" style="padding:4px; font-size:16px;">☀️</button>
+        <div class="brand" style="margin:0; font-family:var(--title-font); font-size:16px; color:var(--yellow); display:flex; align-items:center; gap:6px;">
+          <svg class="banana-icon" viewBox="0 0 128 197.2" xmlns="http://www.w3.org/2000/svg" style="width:20px;height:20px;"><path d="M111.7,105.9c-1.7-5.3-4-9-8.1-13c-5.4-5.1-11.5-8.1-20.2-9.8c-2-0.4-3.6-0.8-3.5-0.9c0.1-0.1,1.7-1,3.6-2 c6.9-3.5,11.3-8.5,13.8-15.7c1.2-3.3,1.2-3.4,1.2-8.5c0-4.5-0.1-5.5-0.8-7.7c-2.3-7.3-7.3-12.8-14.2-15.7 c-8.7-3.6-24.9-6.4-37.5-6.4c-3.4,0-4.3,0.5-4.3,2.3c0,0.9,0.6,1.7,4.8,5.9c7.1,7.2,10.8,9.8,17.4,12.2c4.1,1.6,4.2,1.7,4.5,6.7 c0.2,5.7-1.2,9.7-5,14.3c-2,2.4-5.8,5.3-6.5,5c-0.6-0.2-2.9-3.2-5-6.5C50.8,64.6,49,61,47.6,58c-1.4-3-2.8-5.7-3.3-6.1 c-1.7-1.5-4.4-0.7-10.4,3c-11,6.8-16.8,13.6-14.2,16.7c0.3,0.4,2.2,1.4,4.3,2.3c10.5,4.6,14,8,15,14.3c0.8,5.5-0.6,11.3-5.9,23.6 c-5,11.5-6.8,20.3-6.4,31.2c0.4,12.8,4.2,22.6,11.9,30.5c1.6,1.6,3.7,3.6,4.8,4.4l0,0c2.1,1.6,3.5,1.8,4.5,0.9 c0.8-0.7,0.8-1.7-0.5-6.6c-3.8-14.6-2-21.8,8.8-36.3c7.5-10.1,9.7-15,10.1-22.5c0.1-2.3,0.3-3.7,0.6-3.7c0.2,0,1.4,0.7,2.6,1.5 c1.3,0.8,5.3,3,9,4.8c3.7,1.8,6.8,3.4,6.8,3.6c0,0.1-2.9,1.7-6.4,3.5c-3.6,1.8-7.4,3.9-8.6,4.6c-3.1,2.1-7,5.9-9.1,9.1 c-2.8,4.2-4.8,10.1-4.1,12.5c0.4,1.7,1.7,1.8,6.8,0.1c2.1-0.7,6.8-1.3,14.3-1.9c2.7-0.2,5.1-0.5,5.4-0.7c0.3-0.1,1.9-0.7,3.7-1.1 c6.3-1.7,13-5.6,17-10C112.2,127.2,114.9,116,111.7,105.9z M94.1,56.7c-0.1,1.2-0.3,2.4-0.5,3.3c-1,4.6-3.2,10-6.9,12.9 c-2.6,2-5.8,3.5-8.6,4.5c-3.7,1.3-11.9,0.7-11.9,0.7s9.2-3,14.9-14.1c2.8-6.5,2.6-14.3,2.6-14.3l5.8,0.9 C92.3,51.1,94.4,53.7,94.1,56.7z M48.7,30.5c0,0,17.4-0.9,34.6,7.2c3.5,1.7,8.2,5,10.4,10c0.2,0.4-0.2,0.8-0.7,0.7 c-1-0.3-5-1.6-7.1-1.8C53.1,43.7,48.7,30.5,48.7,30.5z M70.1,64c3.5-7.8,1.9-16,1.9-16l9.8,1.7c-0.5,6.8-0.9,16-9,22.3 c-5.2,4.1-12.7,2.9-12.7,2.9S67.2,70.3,70.1,64z M25.3,67.8L25.3,67.8c0-1.3,9.1-8.4,11.3-8.8l1.2-0.2l-1,1.5 c-0.6,0.9-1.9,2.2-2.9,3.2C31.5,65.6,25.3,68.7,25.3,67.8z M36.1,158.6c0.2,2.1,0.3,3.8,0.2,3.9c-0.4,0.4-2.4-4.6-3.2-7.7 c-1.4-5.3-1.7-7.6-1.7-14.2c0-10.8,1.1-15.3,7.5-30.7c3.6-8.7,4.7-12.9,4.8-18.3c0-4.5-0.3-6.5-1.8-9.6c-1.6-3.4-4.2-5.9-9.3-8.8 l-2.4-1.4l1.9-1.4c1-0.8,2.4-1.8,3.1-2.3c0.7-0.5,1.5-1,1.8-1c1.4,0,7.1,7.1,9.6,11.9c3.2,6.3,4.6,11.7,4.6,18.5 c0,9.4-2,16.4-8.8,30.9c-1.4,3-3,6.6-3.5,8C36.5,143.1,35.4,151.9,36.1,158.6z M89.6,136.5c-4,3.4-8.6,5.1-17.5,6.6 c-3.2,0.5-6.5,1.1-7.2,1.3l0,0c-2.5,0.6-2.5,0.6-1.8-1.4c1.6-4.1,5-8.3,9.1-11c2.2-1.5,17.1-9.1,17.8-9.1c0.7,0,2.7,2.6,3.1,4 C93.9,129.8,92.3,134.2,89.6,136.5z M105,124.4c-0.1,2.8-0.2,3.1-1.3,4.7c-1.3,1.9-3.6,4.5-4.1,4.5c-0.1,0-0.3-1-0.3-2.1 c-0.2-5.5-3.1-10.6-8.2-13.9c-1.2-0.8-5.7-3.2-10.1-5.3c-4.4-2.2-8.9-4.5-10-5.2c-2.9-1.9-6.4-5.3-8.7-8.2c-2.3-3.1-3.1-3.6-4.4-2.6 c-0.5,0.4-0.9,1-1,1.3c-0.1,0.3,0.5,1.8,1.2,3.3c0.9,1.8,7,11.3-9.6,35.8c-3.5,5.1-6.3,10.1-7.6,15.3l0,0c-0.4,1.6-0.8,4.2-0.9,7.4 l-0.2,4.9l-0.5-3.4c-1.6-9.7-0.1-18.3,5.1-29.6c5.2-11.1,7-16,8.3-22.2c0.7-3.3,0.6-5.7,0.8-9.5c0.1-3.9-1-8.3-1.8-11.4 c-0.6-2.5-1.5-4.6-1.5-5.8l2.2,2l2,1.8c6.3,5.5,12.4,8.8,26.6,14.2c3.8,1.5,8.4,3.4,10.1,4.3C100.7,109.1,105.4,115.8,105,124.4z M107.3,115l-0.1,2l-1.1-2.4c-3.3-7.5-9-11.6-22.8-16.8C70,92.9,59.7,87.1,58,86c-5.5-3.6-8.2-6.6-12.6-12.4 c-1.8-2.3-4.1-5.1-5.1-6.3c-1.8-1.9-1.9-2.1-1.5-2.7c0.2-0.3,1.1-1.5,1.8-2.6c0.9-1.2,1.6-2,2-2c0.4,0,1.1,1,2.5,3.7 c4.2,8.3,10,13.1,13.5,15.6c5.2,3.7,15.1,6.1,18.7,7.1c7.4,2.1,10.2,3.6,14.1,5.4c8.2,3.8,13.8,10.6,15.6,18.8l0,0 C107.2,111.9,107.4,113.9,107.3,115z"/></svg> BANANAS
+        </div>
+      </div>
     </div>
   </div>
 
@@ -327,7 +315,7 @@
   <dialog id="error-modal">
     <h3 style="color:var(--neg);">❌ Error de Conexión</h3>
     <p>No se pudo conectar a la base de datos de Firebase.</p>
-    <p style="font-size: 12px;"><i>Programador: Asegúrate de que las credenciales en <code>firebaseConfig</code> (al final del código HTML) sean las correctas de tu proyecto Firebase.</i></p>
+    <p style="font-size: 12px;"><i>Asegúrate de que las credenciales en <code>firebaseConfig</code> sean las correctas.</i></p>
     <button class="modal-btn" style="background:var(--gray-3); color:white;" onclick="document.getElementById('error-modal').close()">Cerrar</button>
   </dialog>
 
@@ -547,7 +535,6 @@
       </div>
     </div>
 
-    <!-- TABLA COMPARATIVA -->
     <div class="section-title">Variaciones calculadas</div>
     <div class="card">
       <table class="comp-table">
@@ -937,8 +924,8 @@
       <textarea class="field-input" id="conclusion-plan" placeholder="Plan de acción concreto para el mes siguiente." rows="4" style="margin-bottom:16px;"></textarea>
     </div>
 
-    <div class="card" style="text-align:center;padding:32px 20px;background:var(--yellow);margin-top:32px;">
-      <svg class="banana-icon conclusion-icon" viewBox="0 0 128 197.2" xmlns="http://www.w3.org/2000/svg" style="color:var(--black)"><path d="M111.7,105.9c-1.7-5.3-4-9-8.1-13c-5.4-5.1-11.5-8.1-20.2-9.8c-2-0.4-3.6-0.8-3.5-0.9c0.1-0.1,1.7-1,3.6-2 c6.9-3.5,11.3-8.5,13.8-15.7c1.2-3.3,1.2-3.4,1.2-8.5c0-4.5-0.1-5.5-0.8-7.7c-2.3-7.3-7.3-12.8-14.2-15.7 c-8.7-3.6-24.9-6.4-37.5-6.4c-3.4,0-4.3,0.5-4.3,2.3c0,0.9,0.6,1.7,4.8,5.9c7.1,7.2,10.8,9.8,17.4,12.2c4.1,1.6,4.2,1.7,4.5,6.7 c0.2,5.7-1.2,9.7-5,14.3c-2,2.4-5.8,5.3-6.5,5c-0.6-0.2-2.9-3.2-5-6.5C50.8,64.6,49,61,47.6,58c-1.4-3-2.8-5.7-3.3-6.1 c-1.7-1.5-4.4-0.7-10.4,3c-11,6.8-16.8,13.6-14.2,16.7c0.3,0.4,2.2,1.4,4.3,2.3c10.5,4.6,14,8,15,14.3c0.8,5.5-0.6,11.3-5.9,23.6 c-5,11.5-6.8,20.3-6.4,31.2c0.4,12.8,4.2,22.6,11.9,30.5c1.6,1.6,3.7,3.6,4.8,4.4l0,0c2.1,1.6,3.5,1.8,4.5,0.9 c0.8-0.7,0.8-1.7-0.5-6.6c-3.8-14.6-2-21.8,8.8-36.3c7.5-10.1,9.7-15,10.1-22.5c0.1-2.3,0.3-3.7,0.6-3.7c0.2,0,1.4,0.7,2.6,1.5 c1.3,0.8,5.3,3,9,4.8c3.7,1.8,6.8,3.4,6.8,3.6c0,0.1-2.9,1.7-6.4,3.5c-3.6,1.8-7.4,3.9-8.6,4.6c-3.1,2.1-7,5.9-9.1,9.1 c-2.8,4.2-4.8,10.1-4.1,12.5c0.4,1.7,1.7,1.8,6.8,0.1c2.1-0.7,6.8-1.3,14.3-1.9c2.7-0.2,5.1-0.5,5.4-0.7c0.3-0.1,1.9-0.7,3.7-1.1 c6.3-1.7,13-5.6,17-10C112.2,127.2,114.9,116,111.7,105.9z M94.1,56.7c-0.1,1.2-0.3,2.4-0.5,3.3c-1,4.6-3.2,10-6.9,12.9 c-2.6,2-5.8,3.5-8.6,4.5c-3.7,1.3-11.9,0.7-11.9,0.7s9.2-3,14.9-14.1c2.8-6.5,2.6-14.3,2.6-14.3l5.8,0.9 C92.3,51.1,94.4,53.7,94.1,56.7z M48.7,30.5c0,0,17.4-0.9,34.6,7.2c3.5,1.7,8.2,5,10.4,10c0.2,0.4-0.2,0.8-0.7,0.7 c-1-0.3-5-1.6-7.1-1.8C53.1,43.7,48.7,30.5,48.7,30.5z M70.1,64c3.5-7.8,1.9-16,1.9-16l9.8,1.7c-0.5,6.8-0.9,16-9,22.3 c-5.2,4.1-12.7,2.9-12.7,2.9S67.2,70.3,70.1,64z M25.3,67.8L25.3,67.8c0-1.3,9.1-8.4,11.3-8.8l1.2-0.2l-1,1.5 c-0.6,0.9-1.9,2.2-2.9,3.2C31.5,65.6,25.3,68.7,25.3,67.8z M36.1,158.6c0.2,2.1,0.3,3.8,0.2,3.9c-0.4,0.4-2.4-4.6-3.2-7.7 c-1.4-5.3-1.7-7.6-1.7-14.2c0-10.8,1.1-15.3,7.5-30.7c3.6-8.7,4.7-12.9,4.8-18.3c0-4.5-0.3-6.5-1.8-9.6c-1.6-3.4-4.2-5.9-9.3-8.8 l-2.4-1.4l1.9-1.4c1-0.8,2.4-1.8,3.1-2.3c0.7-0.5,1.5-1,1.8-1c1.4,0,7.1,7.1,9.6,11.9c3.2,6.3,4.6,11.7,4.6,18.5 c0,9.4-2,16.4-8.8,30.9c-1.4,3-3,6.6-3.5,8C36.5,143.1,35.4,151.9,36.1,158.6z M89.6,136.5c-4,3.4-8.6,5.1-17.5,6.6 c-3.2,0.5-6.5,1.1-7.2,1.3l0,0c-2.5,0.6-2.5,0.6-1.8-1.4c1.6-4.1,5-8.3,9.1-11c2.2-1.5,17.1-9.1,17.8-9.1c0.7,0,2.7,2.6,3.1,4 C93.9,129.8,92.3,134.2,89.6,136.5z M105,124.4c-0.1,2.8-0.2,3.1-1.3,4.7c-1.3,1.9-3.6,4.5-4.1,4.5c-0.1,0-0.3-1-0.3-2.1 c-0.2-5.5-3.1-10.6-8.2-13.9c-1.2-0.8-5.7-3.2-10.1-5.3c-4.4-2.2-8.9-4.5-10-5.2c-2.9-1.9-6.4-5.3-8.7-8.2c-2.3-3.1-3.1-3.6-4.4-2.6 c-0.5,0.4-0.9,1-1,1.3c-0.1,0.3,0.5,1.8,1.2,3.3c0.9,1.8,7,11.3-9.6,35.8c-3.5,5.1-6.3,10.1-7.6,15.3l0,0c-0.4,1.6-0.8,4.2-0.9,7.4 l-0.2,4.9l-0.5-3.4c-1.6-9.7-0.1-18.3,5.1-29.6c5.2-11.1,7-16,8.3-22.2c0.7-3.3,0.6-5.7,0.8-9.5c0.1-3.9-1-8.3-1.8-11.4 c-0.6-2.5-1.5-4.6-1.5-5.8l2.2,2l2,1.8c6.3,5.5,12.4,8.8,26.6,14.2c3.8,1.5,8.4,3.4,10.1,4.3C100.7,109.1,105.4,115.8,105,124.4z M107.3,115l-0.1,2l-1.1-2.4c-3.3-7.5-9-11.6-22.8-16.8C70,92.9,59.7,87.1,58,86c-5.5-3.6-8.2-6.6-12.6-12.4 c-1.8-2.3-4.1-5.1-5.1-6.3c-1.8-1.9-1.9-2.1-1.5-2.7c0.2-0.3,1.1-1.5,1.8-2.6c0.9-1.2,1.6-2,2-2c0.4,0,1.1,1,2.5,3.7 c4.2,8.3,10,13.1,13.5,15.6c5.2,3.7,15.1,6.1,18.7,7.1c7.4,2.1,10.2,3.6,14.1,5.4c8.2,3.8,13.8,10.6,15.6,18.8l0,0 C107.2,111.9,107.4,113.9,107.3,115z"></path></svg>
+    <div class="card" style="text-align:center;padding:32px 20px;border-color:var(--yellow);margin-top:32px;">
+      <svg class="banana-icon conclusion-icon" style="color:var(--black)" viewBox="0 0 128 197.2" xmlns="http://www.w3.org/2000/svg"><path d="M111.7,105.9c-1.7-5.3-4-9-8.1-13c-5.4-5.1-11.5-8.1-20.2-9.8c-2-0.4-3.6-0.8-3.5-0.9c0.1-0.1,1.7-1,3.6-2 c6.9-3.5,11.3-8.5,13.8-15.7c1.2-3.3,1.2-3.4,1.2-8.5c0-4.5-0.1-5.5-0.8-7.7c-2.3-7.3-7.3-12.8-14.2-15.7 c-8.7-3.6-24.9-6.4-37.5-6.4c-3.4,0-4.3,0.5-4.3,2.3c0,0.9,0.6,1.7,4.8,5.9c7.1,7.2,10.8,9.8,17.4,12.2c4.1,1.6,4.2,1.7,4.5,6.7 c0.2,5.7-1.2,9.7-5,14.3c-2,2.4-5.8,5.3-6.5,5c-0.6-0.2-2.9-3.2-5-6.5C50.8,64.6,49,61,47.6,58c-1.4-3-2.8-5.7-3.3-6.1 c-1.7-1.5-4.4-0.7-10.4,3c-11,6.8-16.8,13.6-14.2,16.7c0.3,0.4,2.2,1.4,4.3,2.3c10.5,4.6,14,8,15,14.3c0.8,5.5-0.6,11.3-5.9,23.6 c-5,11.5-6.8,20.3-6.4,31.2c0.4,12.8,4.2,22.6,11.9,30.5c1.6,1.6,3.7,3.6,4.8,4.4l0,0c2.1,1.6,3.5,1.8,4.5,0.9 c0.8-0.7,0.8-1.7-0.5-6.6c-3.8-14.6-2-21.8,8.8-36.3c7.5-10.1,9.7-15,10.1-22.5c0.1-2.3,0.3-3.7,0.6-3.7c0.2,0,1.4,0.7,2.6,1.5 c1.3,0.8,5.3,3,9,4.8c3.7,1.8,6.8,3.4,6.8,3.6c0,0.1-2.9,1.7-6.4,3.5c-3.6,1.8-7.4,3.9-8.6,4.6c-3.1,2.1-7,5.9-9.1,9.1 c-2.8,4.2-4.8,10.1-4.1,12.5c0.4,1.7,1.7,1.8,6.8,0.1c2.1-0.7,6.8-1.3,14.3-1.9c2.7-0.2,5.1-0.5,5.4-0.7c0.3-0.1,1.9-0.7,3.7-1.1 c6.3-1.7,13-5.6,17-10C112.2,127.2,114.9,116,111.7,105.9z M94.1,56.7c-0.1,1.2-0.3,2.4-0.5,3.3c-1,4.6-3.2,10-6.9,12.9 c-2.6,2-5.8,3.5-8.6,4.5c-3.7,1.3-11.9,0.7-11.9,0.7s9.2-3,14.9-14.1c2.8-6.5,2.6-14.3,2.6-14.3l5.8,0.9 C92.3,51.1,94.4,53.7,94.1,56.7z M48.7,30.5c0,0,17.4-0.9,34.6,7.2c3.5,1.7,8.2,5,10.4,10c0.2,0.4-0.2,0.8-0.7,0.7 c-1-0.3-5-1.6-7.1-1.8C53.1,43.7,48.7,30.5,48.7,30.5z M70.1,64c3.5-7.8,1.9-16,1.9-16l9.8,1.7c-0.5,6.8-0.9,16-9,22.3 c-5.2,4.1-12.7,2.9-12.7,2.9S67.2,70.3,70.1,64z M25.3,67.8L25.3,67.8c0-1.3,9.1-8.4,11.3-8.8l1.2-0.2l-1,1.5 c-0.6,0.9-1.9,2.2-2.9,3.2C31.5,65.6,25.3,68.7,25.3,67.8z M36.1,158.6c0.2,2.1,0.3,3.8,0.2,3.9c-0.4,0.4-2.4-4.6-3.2-7.7 c-1.4-5.3-1.7-7.6-1.7-14.2c0-10.8,1.1-15.3,7.5-30.7c3.6-8.7,4.7-12.9,4.8-18.3c0-4.5-0.3-6.5-1.8-9.6c-1.6-3.4-4.2-5.9-9.3-8.8 l-2.4-1.4l1.9-1.4c1-0.8,2.4-1.8,3.1-2.3c0.7-0.5,1.5-1,1.8-1c1.4,0,7.1,7.1,9.6,11.9c3.2,6.3,4.6,11.7,4.6,18.5 c0,9.4-2,16.4-8.8,30.9c-1.4,3-3,6.6-3.5,8C36.5,143.1,35.4,151.9,36.1,158.6z M89.6,136.5c-4,3.4-8.6,5.1-17.5,6.6 c-3.2,0.5-6.5,1.1-7.2,1.3l0,0c-2.5,0.6-2.5,0.6-1.8-1.4c1.6-4.1,5-8.3,9.1-11c2.2-1.5,17.1-9.1,17.8-9.1c0.7,0,2.7,2.6,3.1,4 C93.9,129.8,92.3,134.2,89.6,136.5z M105,124.4c-0.1,2.8-0.2,3.1-1.3,4.7c-1.3,1.9-3.6,4.5-4.1,4.5c-0.1,0-0.3-1-0.3-2.1 c-0.2-5.5-3.1-10.6-8.2-13.9c-1.2-0.8-5.7-3.2-10.1-5.3c-4.4-2.2-8.9-4.5-10-5.2c-2.9-1.9-6.4-5.3-8.7-8.2c-2.3-3.1-3.1-3.6-4.4-2.6 c-0.5,0.4-0.9,1-1,1.3c-0.1,0.3,0.5,1.8,1.2,3.3c0.9,1.8,7,11.3-9.6,35.8c-3.5,5.1-6.3,10.1-7.6,15.3l0,0c-0.4,1.6-0.8,4.2-0.9,7.4 l-0.2,4.9l-0.5-3.4c-1.6-9.7-0.1-18.3,5.1-29.6c5.2-11.1,7-16,8.3-22.2c0.7-3.3,0.6-5.7,0.8-9.5c0.1-3.9-1-8.3-1.8-11.4 c-0.6-2.5-1.5-4.6-1.5-5.8l2.2,2l2,1.8c6.3,5.5,12.4,8.8,26.6,14.2c3.8,1.5,8.4,3.4,10.1,4.3C100.7,109.1,105.4,115.8,105,124.4z M107.3,115l-0.1,2l-1.1-2.4c-3.3-7.5-9-11.6-22.8-16.8C70,92.9,59.7,87.1,58,86c-5.5-3.6-8.2-6.6-12.6-12.4 c-1.8-2.3-4.1-5.1-5.1-6.3c-1.8-1.9-1.9-2.1-1.5-2.7c0.2-0.3,1.1-1.5,1.8-2.6c0.9-1.2,1.6-2,2-2c0.4,0,1.1,1,2.5,3.7 c4.2,8.3,10,13.1,13.5,15.6c5.2,3.7,15.1,6.1,18.7,7.1c7.4,2.1,10.2,3.6,14.1,5.4c8.2,3.8,13.8,10.6,15.6,18.8l0,0 C107.2,111.9,107.4,113.9,107.3,115z"/></svg>
       <div style="font-size:16px;font-weight:700;color:var(--black);margin-bottom:6px;">Muchas gracias por confiar en nosotros.</div>
       <div style="font-size:24px;color:var(--black);font-family:var(--title-font);letter-spacing:-0.02em;text-transform:uppercase;">Bananas Agency</div>
     </div>
@@ -954,12 +941,12 @@
 
 <script type="module">
   // =========================================================================
-  // INTEGRACIÓN CLOUD (FIREBASE)
+  // INTEGRACIÓN CLOUD (FIREBASE) CON AUTENTICACIÓN ANÓNIMA
   // CONFIGURA ESTOS DATOS PARA QUE FUNCIONE EN TU GITHUB PAGES
   // 1. Ve a console.firebase.google.com -> Proyecto nuevo gratuito
   // 2. Registra una app web (</>)
-  // 3. Activa Firestore Database (Modo Prueba para empezar)
-  // 4. Activa Authentication (Modo Anónimo)
+  // 3. Activa Firestore Database (Reglas en Modo Prueba para empezar)
+  // 4. Activa Authentication y habilita "Anónimo" (Anonymous)
   // 5. Pega los datos de "firebaseConfig" aquí abajo:
   // =========================================================================
   import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
@@ -967,19 +954,18 @@
   import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
   const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {
-      apiKey: "AIzaSyCam84X9VRJdBMerN6J4_SslxK2gBldXZw",
-      authDomain: "reporte-bananas-agency.firebaseapp.com",
-      projectId: "reporte-bananas-agency",
-      storageBucket: "reporte-bananas-agency.firebasestorage.app",
-      messagingSenderId: "2039261227",
-      appId: "1:2039261227:web:60a94208b37aab0521226e",
-      measurementId: "G-8C5E4G9PFJ"
+        apiKey: "AIzaSyCam84X9VRJdBMerN6J4_SslxK2gBldXZw",
+        authDomain: "reporte-bananas-agency.firebaseapp.com",
+        projectId: "reporte-bananas-agency",
+        storageBucket: "reporte-bananas-agency.firebasestorage.app",
+        messagingSenderId: "2039261227",
+        appId: "1:2039261227:web:60a94208b37aab0521226e",
+        measurementId: "G-8C5E4G9PFJ"
   };
 
   const app = initializeApp(firebaseConfig);
   const auth = getAuth(app);
   const db = getFirestore(app);
-  const analytics = getAnalytics(app);
   const appId = typeof __app_id !== 'undefined' ? __app_id : 'bananas-agency-app';
 
   const initAuth = async () => {
@@ -989,7 +975,6 @@
       await signInAnonymously(auth);
     }
   };
-
   initAuth();
 
   // === MODO CLIENTE: Auto-carga desde la nube ===
@@ -1005,7 +990,6 @@
               const docSnap = await getDoc(docRef);
               if (docSnap.exists()) {
                   window.loadDataIntoUI(docSnap.data());
-                  // Darle 100ms extra para asegurar que las tarjetas y textareas se adapten
                   setTimeout(window.applyViewMode, 100);
               } else {
                   console.warn("No se encontró el reporte en la nube.");
@@ -1020,7 +1004,7 @@
   window.generateShareLink = async function() {
       const btn = document.getElementById('btn-share-link');
       const originalText = btn.textContent;
-      btn.textContent = "⏳ Guardando en nube...";
+      btn.textContent = "⏳ Guardando...";
       btn.disabled = true;
 
       try {
@@ -1029,12 +1013,9 @@
           const data = window.getReportDataJSON();
           const reportId = crypto.randomUUID();
           
-          // Guardado exacto como pide la arquitectura
           const docRef = doc(db, 'artifacts', appId, 'public', 'data', 'reports', reportId);
           await setDoc(docRef, data);
           
-          // Genera el enlace para compartir con el parámetro view en false para no pisarse, 
-          // el script lo convierte internamente a modo lectura por la existencia de reportId.
           const url = new URL(window.location.href);
           url.searchParams.delete('file');
           url.searchParams.delete('view');
@@ -1342,11 +1323,6 @@ function updateTLDRChart() {
   tldrCompChart.update('none');
 }
 
-document.getElementById('ig-guardados-act').addEventListener('input', updateIgDetails);
-document.getElementById('ig-inter-act').addEventListener('input', updateIgDetails);
-document.getElementById('ig-alcance-act').addEventListener('input', () => { calcAlcance(); updateIgDetails(); calcTTAvg(); });
-document.getElementById('tt-views-act').addEventListener('input', calcTTAvg);
-
 window.getReportDataJSON = function() {
   const data = {};
   document.querySelectorAll('input:not([type="file"]), textarea').forEach((el, index) => {
@@ -1386,8 +1362,24 @@ window.loadDataIntoUI = function(data) {
 window.applyViewMode = function() {
   document.body.classList.add('view-mode');
   
-  const hasLogo = document.getElementById('cover-logo-display').classList.contains('has-image');
-  if (hasLogo) document.getElementById('cover-client-section').classList.add('view-empty');
+  // Poblado del Header del Cliente (Top Bar Especial)
+  const logoDisplay = document.getElementById('cover-logo-display');
+  const viewClient = document.getElementById('view-header-client');
+  const clientName = document.getElementById('client-name-input-main').value || 'Cliente';
+  
+  if (logoDisplay.classList.contains('has-image')) {
+    const imgUrl = logoDisplay.querySelector('img').src;
+    viewClient.innerHTML = `<img src="${imgUrl}" style="height: 26px; width: auto; object-fit: contain; border-radius: 4px;">`;
+    if (logoDisplay.classList.contains('with-bg')) {
+      viewClient.querySelector('img').style.background = 'var(--white)';
+      viewClient.querySelector('img').style.padding = '2px 6px';
+    }
+  } else {
+    viewClient.textContent = clientName;
+  }
+
+  const rawDate = document.getElementById('cover-date-display').textContent; 
+  document.getElementById('view-header-month').textContent = rawDate.replace('— ', '').toUpperCase();
 
   document.querySelectorAll('input:not([type="file"]), textarea').forEach(el => {
     const val = el.value.trim();
@@ -1490,23 +1482,6 @@ function copyShareLink() {
         alert("¡Enlace copiado al portapapeles!");
     });
 }
-
-window.addEventListener('DOMContentLoaded', () => {
-    // Si la URL dice que es view=true pero no hay backend,
-    // este bloque no hace nada porque espera a Firebase. 
-    // Para modo local con JSON:
-    const params = new URLSearchParams(window.location.search);
-    const viewMode = params.get('view') === 'true';
-    if(viewMode) {
-        // En un entorno 100% puro local sin Firebase, tendrían que subir el json a github y cargarlo por URL:
-        // Pero como usarán Firebase, la lógica está arriba.
-    }
-});
-
-window.addEventListener('load', () => {
-  initCharts();
-  goTo(1);
-});
 </script>
 </body>
 </html>
