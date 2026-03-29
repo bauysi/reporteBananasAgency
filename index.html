@@ -109,12 +109,6 @@
   body.view-mode #logo-upload-group { display: none !important; }
   body.view-mode #client-name-group { display: none !important; }
   
-  /* Scroll continuo vertical */
-  body.view-mode #pagetabs { display: none !important; }
-  body.view-mode #bottom-nav { display: none !important; }
-  body.view-mode .page { display: block !important; border-bottom: 1px dashed var(--gray-2); padding-top: 40px !important; padding-bottom: 40px !important; }
-  body.view-mode .page:last-child { border-bottom: none; }
-  
   body.view-mode input[type="text"].field-input, 
   body.view-mode textarea.field-input, 
   body.view-mode .inline-name-input {
@@ -1015,6 +1009,15 @@
   const provider = new GoogleAuthProvider();
   const appId = typeof __app_id !== 'undefined' ? __app_id : 'bananas-agency-app';
 
+    const initAuth = async () => {
+    if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
+      await signInWithCustomToken(auth, __initial_auth_token);
+    } else {
+      await signInAnonymously(auth);
+    }
+  };
+  // Quitamos initAuth() directo de acá para que solo se use por Google Login
+  
   window.loginWithGoogle = async () => {
     try {
       await signInWithPopup(auth, provider);
@@ -1043,9 +1046,15 @@
                   const docRef = doc(db, 'artifacts', appId, 'public', 'data', 'reports', reportId);
                   const docSnap = await getDoc(docRef);
                   if (docSnap.exists()) {
+                      // 1. Mostrar la App primero
+                      document.getElementById('app').style.display = 'flex';
+                      
+                      // 2. Inicializar gráficos ahora que la caja es visible
+                      if (window.safeInitCharts) window.safeInitCharts();
+                      
+                      // 3. Llenar los datos
                       window.loadDataIntoUI(docSnap.data());
                       window.applyViewMode();
-                      document.getElementById('app').style.display = 'flex';
                   } else {
                       console.warn("No se encontró el reporte.");
                   }
@@ -1059,7 +1068,9 @@
           if (user) {
               document.getElementById('login-overlay').style.display = 'none';
               document.getElementById('app').style.display = 'flex';
-              
+              // Inicializar gráficos ahora que el editor es visible
+              if (window.safeInitCharts) window.safeInitCharts();
+
               document.getElementById('btn-login').style.display = 'none';
               document.getElementById('btn-share-link').style.display = 'flex';
               document.getElementById('btn-logout').style.display = 'flex';
@@ -1510,6 +1521,35 @@ function copyShareLink() {
         alert("¡Enlace copiado al portapapeles!");
     });
 }
+  
+// === TRUCO PARA RENDERIZADO PERFECTO DE GRÁFICOS ===
+let chartsInitialized = false;
+window.safeInitCharts = function() {
+  if (!chartsInitialized) {
+    // Truco: Desplegamos temporalmente (1ms) todas las hojas para que Canvas detecte el ancho real
+    const pages = document.querySelectorAll('.page');
+    pages.forEach(p => p.style.display = 'block');
+    
+    initCharts(); // Dibuja los gráficos con las dimensiones correctas
+    
+    // Devolvemos el CSS a la normalidad
+    pages.forEach(p => p.style.display = '');
+    chartsInitialized = true;
+  }
+};
+
+window.addEventListener('DOMContentLoaded', () => {
+    const params = new URLSearchParams(window.location.search);
+    const viewMode = params.get('view') === 'true';
+    if(viewMode) {
+        // Backend de Firebase maneja la carga.
+    }
+});
+
+window.addEventListener('load', () => {
+  // Se eliminó initCharts() de aquí para que solo se ejecute cuando la app se vuelva visible
+  goTo(1);
+});
 </script>
 </body>
 </html>
