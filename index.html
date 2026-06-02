@@ -1,31 +1,33 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#0b0b0b" />
+  <meta name="theme-color" content="#fffaf0" />
   <title>Reporte Mensual — Bananas Agency</title>
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128'%3E%3Crect width='128' height='128' rx='28' fill='%23f6c945'/%3E%3Ctext x='64' y='77' text-anchor='middle' font-family='Arial,sans-serif' font-weight='900' font-size='40' fill='%230b0b0b'%3EBA%3C/text%3E%3C/svg%3E">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAyOS42LjEsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA5LjAzIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4wIiBpZD0iQ2FwYV8xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4PSIwcHgiIHk9IjBweCINCgkgdmlld0JveD0iMCAwIDE5Ny4yIDE5Ny4yIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCAxOTcuMiAxOTcuMjsiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPHN0eWxlIHR5cGU9InRleHQvY3NzIj4NCgkuc3Qwe2ZpbGw6I0ZGRkZGRjt9DQoJLnN0MXtmaWxsOiNGRUZBRTU7fQ0KCS5zdDJ7ZmlsbDojRjlDQjQyO30NCgkuc3Qze2ZpbGw6I0ZGQjcwMDt9DQo8L3N0eWxlPg0KPHBhdGggY2xhc3M9InN0MCIgZD0iTTk4LjYsMTk3LjJMOTguNiwxOTcuMkM0NC4xLDE5Ny4yLDAsMTUzLDAsOTguNnYwQzAsNDQuMSw0NC4xLDAsOTguNiwwaDBjNTQuNCwwLDk4LjYsNDQuMSw5OC42LDk4LjZ2MA0KCUMxOTcuMiwxNTMsMTUzLDE5Ny4yLDk4LjYsMTk3LjJ6Ii8+DQo8Zz4NCgk8cGF0aCBkPSJNMTQ2LjMsMTA1LjljLTEuNy01LjMtNC05LTguMS0xM2MtNS40LTUuMS0xMS41LTguMS0yMC4yLTkuOGMtMi0wLjQtMy42LTAuOC0zLjUtMC45YzAuMS0wLjEsMS43LTEsMy42LTINCgkJYzYuOS0zLjUsMTEuMy04LjUsMTMuOC0xNS43YzEuMi0zLjMsMS4yLTMuNCwxLjItOC41YzAtNC41LTAuMS01LjUtMC44LTcuN0MxMjkuOSw0MSwxMjUsMzUuNSwxMTgsMzIuNg0KCQljLTguNy0zLjYtMjQuOS02LjQtMzcuNS02LjRjLTMuNCwwLTQuMywwLjUtNC4zLDIuM2MwLDAuOSwwLjYsMS43LDQuOCw1LjljNy4xLDcuMiwxMC44LDkuOCwxNy40LDEyLjJjNC4xLDEuNiw0LjIsMS43LDQuNSw2LjcNCgkJYzAuMiw1LjctMS4yLDkuNy01LDE0LjNjLTIsMi40LTUuOCw1LjMtNi41LDVjLTAuNi0wLjItMi45LTMuMi01LTYuNWMtMC45LTEuNS0yLjgtNS4xLTQuMi04LjFjLTEuNC0zLTIuOC01LjctMy4zLTYuMQ0KCQljLTEuNy0xLjUtNC40LTAuNy0xMC40LDNjLTExLDYuOC0xNi44LDEzLjYtMTQuMiwxNi43YzAuMywwLjQsMi4yLDEuNCw0LjMsMi4zYzEwLjUsNC42LDE0LDgsMTUsMTQuM2MwLjgsNS41LTAuNiwxMS4zLTUuOSwyMy42DQoJCWMtNSwxMS41LTYuOCwyMC4zLTYuNCwzMS4yYzAuNCwxMi44LDQuMiwyMi42LDExLjksMzAuNWMxLjYsMS42LDMuNywzLjYsNC44LDQuNGwwLDBjMi4xLDEuNiwzLjUsMS44LDQuNSwwLjkNCgkJYzAuOC0wLjcsMC44LTEuNy0wLjUtNi42Yy0zLjgtMTQuNi0yLTIxLjgsOC44LTM2LjNjNy41LTEwLjEsOS43LTE1LDEwLjEtMjIuNWMwLjEtMi4zLDAuMy0zLjcsMC42LTMuN2MwLjIsMCwxLjQsMC43LDIuNiwxLjUNCgkJYzEuMywwLjgsNS4zLDMsOSw0LjhjMy43LDEuOCw2LjgsMy40LDYuOCwzLjZjMCwwLjEtMi45LDEuNy02LjQsMy41Yy0zLjYsMS44LTcuNCwzLjktOC42LDQuNmMtMy4xLDIuMS03LDUuOS05LjEsOS4xDQoJCWMtMi44LDQuMi00LjgsMTAuMS00LjEsMTIuNWMwLjQsMS43LDEuNywxLjgsNi44LDAuMWMyLjEtMC43LDYuOC0xLjMsMTQuMy0xLjljMi43LTAuMiw1LjEtMC41LDUuNC0wLjdjMC4zLTAuMSwxLjktMC43LDMuNy0xLjENCgkJYzYuMy0xLjcsMTMtNS42LDE3LTEwQzE0Ni43LDEyNy4yLDE0OS41LDExNiwxNDYuMywxMDUuOXogTTEyOC42LDU2LjdjLTAuMSwxLjItMC4zLDIuNC0wLjUsMy4zYy0xLDQuNi0zLjIsMTAtNi45LDEyLjkNCgkJYy0yLjYsMi01LjgsMy41LTguNiw0LjVjLTMuNywxLjMtMTEuOSwwLjctMTEuOSwwLjdzOS4yLTMsMTQuOS0xNC4xYzIuOC02LjUsMi42LTE0LjMsMi42LTE0LjNsNS44LDAuOQ0KCQlDMTI2LjksNTEuMSwxMjksNTMuNywxMjguNiw1Ni43eiBNODMuMywzMC41YzAsMCwxNy40LTAuOSwzNC42LDcuMmMzLjUsMS43LDguMiw1LDEwLjQsMTBjMC4yLDAuNC0wLjIsMC44LTAuNywwLjcNCgkJYy0xLTAuMy01LTEuNi03LjEtMS44Qzg3LjYsNDMuNyw4My4zLDMwLjUsODMuMywzMC41eiBNMTA0LjcsNjRjMy41LTcuOCwxLjktMTYsMS45LTE2bDkuOCwxLjdjLTAuNSw2LjgtMC45LDE2LTksMjIuMw0KCQljLTUuMiw0LjEtMTIuNywyLjktMTIuNywyLjlTMTAxLjgsNzAuMywxMDQuNyw2NHogTTU5LjksNjcuOEw1OS45LDY3LjhjMC0xLjMsOS4xLTguNCwxMS4zLTguOGwxLjItMC4ybC0xLDEuNQ0KCQljLTAuNiwwLjktMS45LDIuMi0yLjksMy4yQzY2LjEsNjUuNiw1OS45LDY4LjcsNTkuOSw2Ny44eiBNNzAuNiwxNTguNmMwLjIsMi4xLDAuMywzLjgsMC4yLDMuOWMtMC40LDAuNC0yLjQtNC42LTMuMi03LjcNCgkJYy0xLjQtNS4zLTEuNy03LjYtMS43LTE0LjJjMC0xMC44LDEuMS0xNS4zLDcuNS0zMC43YzMuNi04LjcsNC43LTEyLjksNC44LTE4LjNjMC00LjUtMC4zLTYuNS0xLjgtOS42Yy0xLjYtMy40LTQuMi01LjktOS4zLTguOA0KCQlsLTIuNC0xLjRsMS45LTEuNGMxLTAuOCwyLjQtMS44LDMuMS0yLjNjMC43LTAuNSwxLjUtMSwxLjgtMWMxLjQsMCw3LjEsNy4xLDkuNiwxMS45YzMuMiw2LjMsNC42LDExLjcsNC42LDE4LjUNCgkJYzAsOS40LTIsMTYuNC04LjgsMzAuOWMtMS40LDMtMyw2LjYtMy41LDhDNzEsMTQzLjEsNjkuOSwxNTEuOSw3MC42LDE1OC42eiBNMTI0LjEsMTM2LjVjLTQsMy40LTguNiw1LjEtMTcuNSw2LjYNCgkJYy0zLjIsMC41LTYuNSwxLjEtNy4yLDEuM2wwLDBjLTIuNSwwLjYtMi41LDAuNi0xLjgtMS40YzEuNi00LjEsNS04LjMsOS4xLTExYzIuMi0xLjUsMTcuMS05LjEsMTcuOC05LjFjMC43LDAsMi43LDIuNiwzLjEsNA0KCQlDMTI4LjQsMTI5LjgsMTI2LjksMTM0LjIsMTI0LjEsMTM2LjV6IE0xMzkuNiwxMjQuNGMtMC4xLDIuOC0wLjIsMy4xLTEuMyw0LjdjLTEuMywxLjktMy42LDQuNS00LjEsNC41Yy0wLjEsMC0wLjMtMS0wLjMtMi4xDQoJCWMtMC4yLTUuNS0zLjEtMTAuNi04LjItMTMuOWMtMS4yLTAuOC01LjctMy4yLTEwLjEtNS4zYy00LjQtMi4yLTguOS00LjUtMTAtNS4yYy0yLjktMS45LTYuNC01LjMtOC43LTguMg0KCQljLTIuMy0zLjEtMy4xLTMuNi00LjQtMi42Yy0wLjUsMC40LTAuOSwxLTEsMS4zYy0wLjEsMC4zLDAuNSwxLjgsMS4yLDMuM2MwLjksMS44LDcsMTEuMy05LjYsMzUuOGMtMy41LDUuMS02LjMsMTAuMS03LjYsMTUuM2wwLDANCgkJYy0wLjQsMS42LTAuOCw0LjItMC45LDcuNGwtMC4yLDQuOWwtMC41LTMuNGMtMS42LTkuNy0wLjEtMTguMyw1LjEtMjkuNmM1LjItMTEuMSw3LTE2LDguMy0yMi4yYzAuNy0zLjMsMC42LTUuNywwLjgtOS41DQoJCWMwLjEtMy45LTEtOC4zLTEuOC0xMS40Yy0wLjYtMi41LTEuNS00LjYtMS41LTUuOGwyLjIsMmwyLDEuOGM2LjMsNS41LDEyLjQsOC44LDI2LjYsMTQuMmMzLjgsMS41LDguNCwzLjQsMTAuMSw0LjMNCgkJQzEzNS4yLDEwOS4xLDEzOS45LDExNS44LDEzOS42LDEyNC40eiIvPg0KCTxwYXRoIGNsYXNzPSJzdDEiIGQ9Ik0xMjcuNiw0OC4zYy0xLTAuMy01LTEuNi03LjEtMS44Yy0zMi44LTIuOS0zNy4yLTE2LjEtMzcuMi0xNi4xczE3LjQtMC45LDM0LjYsNy4yYzMuNSwxLjcsOC4yLDUsMTAuNCwxMA0KCQlDMTI4LjQsNDgsMTI4LDQ4LjUsMTI3LjYsNDguM3oiLz4NCgk8cGF0aCBjbGFzcz0ic3QyIiBkPSJNNzIuMyw1OC45bC0xLDEuNWMtMC42LDAuOS0xLjksMi4yLTIuOSwzLjJjLTIuMywyLjEtOC42LDUuMi04LjYsNC4zaDBjMC0xLjMsOS4xLTguNCwxMS4zLTguOEw3Mi4zLDU4Ljl6Ii8+DQoJPHBhdGggY2xhc3M9InN0MyIgZD0iTTExNi40LDQ5LjdjLTAuNSw2LjgtMC45LDE2LTksMjIuM2MtNS4yLDQuMS0xMi43LDIuOS0xMi43LDIuOXM3LjEtNC42LDEwLTExYzMuNS03LjgsMS45LTE2LDEuOS0xNg0KCQlMMTE2LjQsNDkuN3oiLz4NCgk8cGF0aCBjbGFzcz0ic3QzIiBkPSJNMTI4LjYsNTYuN2MtMC4xLDEuMi0wLjMsMi40LTAuNSwzLjNjLTEsNC42LTMuMiwxMC02LjksMTIuOWMtMi42LDItNS44LDMuNS04LjYsNC41DQoJCWMtMy43LDEuMy0xMS45LDAuNy0xMS45LDAuN3M5LjItMywxNC45LTE0LjFjMi44LTYuNSwyLjYtMTQuMywyLjYtMTQuM2w1LjgsMC45QzEyNi45LDUxLjEsMTI5LDUzLjcsMTI4LjYsNTYuN3oiLz4NCgk8cGF0aCBjbGFzcz0ic3QxIiBkPSJNMTI0LjEsMTM2LjVjLTQsMy40LTguNiw1LjEtMTcuNSw2LjZjLTMuMiwwLjUtNi41LDEuMS03LjIsMS4zbDAsMGMtMi41LDAuNi0yLjUsMC42LTEuOC0xLjQNCgkJYzEuNi00LjEsNS04LjMsOS4xLTExYzIuMi0xLjUsMTcuMS05LjEsMTcuOC05LjFjMC43LDAsMi43LDIuNiwzLjEsNEMxMjguNCwxMjkuOCwxMjYuOSwxMzQuMiwxMjQuMSwxMzYuNXoiLz4NCgk8cGF0aCBjbGFzcz0ic3QyIiBkPSJNMTM5LjYsMTI0LjRjLTAuMSwyLjgtMC4yLDMuMS0xLjMsNC43Yy0xLjMsMS45LTMuNiw0LjUtNC4xLDQuNWMtMC4xLDAtMC4zLTEtMC4zLTIuMQ0KCQljLTAuMi01LjUtMy4xLTEwLjYtOC4yLTEzLjljLTEuMi0wLjgtNS43LTMuMi0xMC4xLTUuM2MtNC40LTIuMi04LjktNC41LTEwLTUuMmMtMi45LTEuOS02LjQtNS4zLTguNy04LjINCgkJYy0yLjMtMy4xLTMuMS0zLjYtNC40LTIuNmMtMC41LDAuNC0wLjksMS0xLDEuM2MtMC4xLDAuMywwLjUsMS44LDEuMiwzLjNjMC45LDEuOCw3LDExLjMtOS42LDM1LjhjLTMuNSw1LjEtNi4zLDEwLjEtNy42LDE1LjNsMCwwDQoJCWMtMC40LDEuNi0wLjgsNC4yLTAuOSw3LjRsLTAuMiw0LjlsLTAuNS0zLjRjLTEuNi05LjctMC4xLTE4LjMsNS4xLTI5LjZjNS4yLTExLjEsNy0xNiw4LjMtMjIuMmMwLjctMy4zLDAuNi01LjcsMC44LTkuNQ0KCQljMC4xLTMuOS0xLTguMy0xLjgtMTEuNGMtMC42LTIuNS0xLjUtNC42LTEuNS01LjhsMi4yLDJsMiwxLjhjNi4zLDUuNSwxMi40LDguOCwyNi42LDE0LjJjMy44LDEuNSw4LjQsMy40LDEwLjEsNC4zDQoJCUMxMzUuMiwxMDkuMSwxMzkuOSwxMTUuOCwxMzkuNiwxMjQuNHoiLz4NCgk8cGF0aCBjbGFzcz0ic3QyIiBkPSJNODUuNyw5Ny42YzAsOS40LTIsMTYuNC04LjgsMzAuOWMtMS40LDMtMyw2LjYtMy41LDhjLTIuNCw2LjYtMy41LDE1LjMtMi44LDIyYzAuMiwyLjEsMC4zLDMuOCwwLjIsMy45DQoJCWMtMC40LDAuNC0yLjQtNC42LTMuMi03LjdjLTEuNC01LjMtMS43LTcuNi0xLjctMTQuMmMwLTEwLjgsMS4xLTE1LjMsNy41LTMwLjdjMy42LTguNyw0LjctMTIuOSw0LjgtMTguM2MwLTQuNS0wLjMtNi41LTEuOC05LjYNCgkJYy0xLjYtMy40LTQuMi01LjktOS4zLTguOGwtMi40LTEuNGwxLjktMS40YzEtMC44LDIuNC0xLjgsMy4xLTIuM2MwLjctMC41LDEuNS0xLDEuOC0xYzEuNCwwLDcuMSw3LjEsOS42LDExLjkNCgkJQzg0LjMsODUuNCw4NS43LDkwLjgsODUuNyw5Ny42eiIvPg0KCTxwYXRoIGNsYXNzPSJzdDIiIGQ9Ik0xNDEuOSwxMTVsLTAuMSwybC0xLjEtMi40Yy0zLjMtNy41LTktMTEuNi0yMi44LTE2LjhDMTA0LjUsOTIuOSw5NC4yLDg3LjEsOTIuNSw4Ng0KCQljLTUuNS0zLjYtOC4yLTYuNi0xMi42LTEyLjRjLTEuOC0yLjMtNC4xLTUuMS01LjEtNi4zYy0xLjgtMS45LTEuOS0yLjEtMS41LTIuN2MwLjItMC4zLDEuMS0xLjUsMS44LTIuNmMwLjktMS4yLDEuNi0yLDItMg0KCQljMC40LDAsMS4xLDEsMi41LDMuN2M0LjIsOC4zLDEwLDEzLjEsMTMuNSwxNS42YzUuMiwzLjcsMTUuMSw2LjEsMTguNyw3LjFjNy40LDIuMSwxMC4yLDMuNiwxNC4xLDUuNGM4LjIsMy44LDEzLjgsMTAuNiwxNS42LDE4LjgNCgkJbDAsMEMxNDEuOCwxMTEuOSwxNDEuOSwxMTMuOSwxNDEuOSwxMTV6Ii8+DQo8L2c+DQo8L3N2Zz4NCg==">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #0b0b0b;
-      --surface: #151515;
-      --surface-2: #202020;
-      --line: #313131;
-      --text: #f8f3e7;
-      --muted: #aaa39a;
-      --muted-2: #78716c;
+      --bg: #fffaf0;
+      --surface: #ffffff;
+      --surface-2: #f6f1e7;
+      --field-bg: #fffdf8;
+      --line: #ded7c9;
+      --text: #171511;
+      --muted: #6f685d;
+      --muted-2: #9b9387;
       --accent: #f6c945;
       --accent-2: #d5a821;
-      --danger: #f87171;
-      --ok: #4ade80;
-      --ig: #f15a8e;
-      --tt: #9d7cff;
-      --radius: 16px;
-      --shadow: 0 20px 60px rgba(0,0,0,.34);
+      --danger: #c2413b;
+      --ok: #16864b;
+      --ig: #d63b76;
+      --tt: #6d5bd0;
+      --radius: 12px;
+      --shadow: 0 18px 42px rgba(62,47,20,.10);
       --font: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       --title: 'Anton', Impact, sans-serif;
       --num: 'Space Grotesk', ui-monospace, monospace;
@@ -35,7 +37,9 @@
     html { scroll-behavior: smooth; }
     body {
       margin: 0;
-      background: var(--bg);
+      background:
+        linear-gradient(180deg, rgba(246,201,69,.14), transparent 300px),
+        var(--bg);
       color: var(--text);
       font-family: var(--font);
       font-size: 16px;
@@ -63,7 +67,7 @@
       width: min(100%, 380px);
       padding: 28px;
       border: 1px solid var(--line);
-      border-radius: 24px;
+      border-radius: 18px;
       background: var(--surface);
       box-shadow: var(--shadow);
     }
@@ -74,8 +78,21 @@
       height: 52px;
       border-radius: 18px;
       background: var(--accent);
-      color: #0b0b0b;
+      color: #171511;
       margin-bottom: 14px;
+      font-size: 0;
+      overflow: hidden;
+      box-shadow: inset 0 0 0 1px rgba(23,21,17,.08);
+    }
+    .brand-mark::before,
+    .mini-logo::before {
+      content: none;
+    }
+    .banana-symbol {
+      width: auto;
+      height: 76%;
+      display: block;
+      flex: 0 0 auto;
     }
     .brand-word {
       font-family: var(--title);
@@ -93,7 +110,7 @@
       position: sticky;
       top: 0;
       z-index: 200;
-      background: rgba(11,11,11,.94);
+      background: rgba(255,250,240,.94);
       backdrop-filter: blur(14px);
       border-bottom: 1px solid var(--line);
     }
@@ -108,6 +125,7 @@
       align-items: center;
       justify-content: space-between;
       gap: 10px;
+      flex-wrap: wrap;
     }
     .mini-brand {
       display: flex;
@@ -129,10 +147,11 @@
       height: 32px;
       border-radius: 10px;
       background: var(--accent);
-      color: #0b0b0b;
+      color: #171511;
       display: grid;
       place-items: center;
       flex: 0 0 auto;
+      font-size: 0;
     }
     .actions {
       display: flex;
@@ -140,10 +159,37 @@
       flex-wrap: wrap;
       justify-content: flex-end;
     }
+    .actions .btn { flex: 1 1 auto; }
     .global-platform-controls {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 8px;
+    }
+    .month-control {
+      display: none;
+      align-items: center;
+      gap: 8px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+      white-space: nowrap;
+    }
+    .month-control input {
+      min-height: 38px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: var(--field-bg);
+      color: var(--text);
+      padding: 7px 10px;
+      color-scheme: light;
+    }
+    .month-picker-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 8px;
+      align-items: center;
     }
     .toggle-chip,
     .visibility-toggle {
@@ -154,7 +200,7 @@
       gap: 8px;
       border: 1px solid var(--line);
       border-radius: 12px;
-      background: rgba(255,255,255,.035);
+      background: rgba(255,255,255,.72);
       color: var(--muted);
       padding: 9px 10px;
       font-size: 12px;
@@ -166,21 +212,32 @@
     .toggle-chip input,
     .visibility-toggle input { accent-color: var(--accent); }
     .visibility-toggle {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      z-index: 5;
       justify-content: flex-start;
-      width: 100%;
-      margin: 0 0 12px;
-      background: rgba(246,201,69,.07);
-      color: var(--text);
+      width: auto;
+      min-height: 28px;
+      margin: 0;
+      border-radius: 999px;
+      background: rgba(255,255,255,.92);
+      color: var(--muted);
+      padding: 4px 8px 4px 6px;
+      font-size: 10px;
+      box-shadow: 0 8px 18px rgba(62,47,20,.08);
     }
     .visibility-toggle.small {
-      min-height: 34px;
-      margin: 0 0 8px;
-      padding: 7px 9px;
-      font-size: 11px;
+      position: static;
+      min-height: 26px;
+      padding: 3px 7px 3px 5px;
+      font-size: 9px;
+      margin: 0 0 4px;
     }
+    .visibility-toggle input { width: 14px; height: 14px; }
     .hidden-in-report {
-      opacity: .45;
-      outline: 1px dashed rgba(248,113,113,.55);
+      opacity: .58;
+      outline: 1px dashed rgba(194,65,59,.35);
       outline-offset: 3px;
     }
     .hidden-note {
@@ -205,7 +262,7 @@
       font-weight: 700;
       font-size: 13px;
     }
-    .btn.primary { background: var(--accent); color: #0b0b0b; border-color: var(--accent); }
+    .btn.primary { background: var(--accent); color: #171511; border-color: var(--accent); }
     .btn.ghost { background: transparent; }
     .btn.danger { border-color: rgba(248,113,113,.35); color: var(--danger); background: rgba(248,113,113,.08); }
     .btn:disabled { opacity: .55; cursor: wait; }
@@ -232,7 +289,7 @@
     }
     .tab-btn.active {
       background: var(--accent);
-      color: #0b0b0b;
+      color: #171511;
       border-color: var(--accent);
     }
 
@@ -249,6 +306,7 @@
     .page {
       display: none;
       animation: fade .16s ease;
+      position: relative;
     }
     .page.active { display: block; }
     @keyframes fade { from { opacity: .6; transform: translateY(4px); } to { opacity: 1; transform: none; } }
@@ -256,7 +314,7 @@
     .sheet {
       background: var(--surface);
       border: 1px solid var(--line);
-      border-radius: 22px;
+      border-radius: 18px;
       padding: clamp(18px, 5vw, 52px);
       box-shadow: var(--shadow);
       min-height: calc(100dvh - 184px);
@@ -297,6 +355,7 @@
       border: 1px solid var(--line);
       border-radius: var(--radius);
       padding: 16px;
+      position: relative;
     }
     .card.ig { border-top: 4px solid var(--ig); }
     .card.tt { border-top: 4px solid var(--tt); }
@@ -332,7 +391,10 @@
     .badge.ig { color: var(--ig); border-color: rgba(241,90,142,.4); background: rgba(241,90,142,.08); }
     .badge.tt { color: var(--tt); border-color: rgba(157,124,255,.4); background: rgba(157,124,255,.08); }
 
-    .field { display: grid; gap: 6px; margin-bottom: 12px; }
+    .field { display: grid; gap: 6px; margin-bottom: 12px; position: relative; }
+    .field[data-visible-key],
+    .card[data-visible-key],
+    .content-card[data-visible-key] { padding-top: 34px; }
     .field:last-child { margin-bottom: 0; }
     .label {
       color: var(--muted);
@@ -346,7 +408,7 @@
       width: 100%;
       border: 1px solid var(--line);
       border-radius: 12px;
-      background: #0f0f0f;
+      background: var(--field-bg);
       color: var(--text);
       padding: 11px 12px;
       outline: none;
@@ -384,10 +446,11 @@
     .summary-item {
       display: grid;
       gap: 5px;
-      padding: 12px;
-      border-radius: 14px;
-      background: rgba(255,255,255,.035);
-      border: 1px solid rgba(255,255,255,.055);
+      padding: 34px 12px 12px;
+      border-radius: 12px;
+      background: rgba(246,241,231,.72);
+      border: 1px solid rgba(222,215,201,.88);
+      position: relative;
     }
     .summary-label {
       color: var(--muted);
@@ -406,11 +469,11 @@
       font-weight: 800;
       letter-spacing: .06em;
       text-transform: uppercase;
-      background: rgba(255,255,255,.03);
+      background: rgba(255,255,255,.5);
     }
     tr:last-child td { border-bottom: none; }
     td.platform-row {
-      background: rgba(255,255,255,.045);
+      background: rgba(246,241,231,.8);
       color: var(--accent);
       font-weight: 900;
       text-transform: uppercase;
@@ -422,7 +485,7 @@
       min-width: 110px;
       border: 1px solid var(--line);
       border-radius: 10px;
-      background: #0f0f0f;
+      background: var(--field-bg);
       color: var(--text);
       padding: 9px 10px;
       font-family: var(--num);
@@ -435,7 +498,7 @@
       min-height: 38px;
       padding: 8px 10px;
       border-radius: 10px;
-      background: rgba(255,255,255,.04);
+      background: rgba(246,241,231,.9);
       font-family: var(--num);
       font-weight: 900;
       white-space: nowrap;
@@ -447,7 +510,7 @@
     .bar-chart { display: grid; gap: 14px; }
     .bar-row { display: grid; gap: 6px; }
     .bar-top { display: flex; justify-content: space-between; gap: 12px; font-size: 13px; color: var(--muted); font-weight: 800; }
-    .bar-track { height: 16px; border-radius: 999px; background: #0f0f0f; overflow: hidden; border: 1px solid var(--line); }
+    .bar-track { height: 16px; border-radius: 999px; background: var(--field-bg); overflow: hidden; border: 1px solid var(--line); }
     .bar-fill { height: 100%; width: 0%; border-radius: inherit; background: var(--accent); transition: width .25s ease; }
 
     .reach-visual {
@@ -475,7 +538,7 @@
       gap: 4px;
       border: 1px solid var(--line);
       border-radius: 16px;
-      background: rgba(255,255,255,.035);
+      background: rgba(246,241,231,.72);
       padding: 14px;
     }
     .reach-mini-card strong {
@@ -499,7 +562,8 @@
       padding: 18px;
       border: 1px solid var(--line);
       border-radius: var(--radius);
-      background: rgba(255,255,255,.035);
+      background: rgba(246,241,231,.72);
+      position: relative;
     }
     .rank {
       font-family: var(--title);
@@ -514,7 +578,7 @@
       overflow: hidden;
       border-radius: 14px;
       border: 1px solid var(--line);
-      background: #0f0f0f;
+      background: var(--field-bg);
       min-height: 160px;
     }
     .image-preview.has-image { display: block; }
@@ -539,7 +603,7 @@
       display: grid;
       place-items: center;
       padding: 18px;
-      background: rgba(255,255,255,.03);
+      background: rgba(246,241,231,.64);
       color: var(--muted);
       text-align: center;
       overflow: hidden;
@@ -548,7 +612,7 @@
       background: var(--bananas-logo-bg, rgba(246,201,69,.10));
     }
     .client-logo-box {
-      background: var(--client-logo-bg, rgba(255,255,255,.03));
+      background: var(--client-logo-bg, rgba(246,241,231,.65));
       border-style: dashed;
     }
     .bananas-logo-lockup {
@@ -587,7 +651,7 @@
       border: 1px solid var(--line);
       border-radius: 16px;
       padding: 14px;
-      background: rgba(255,255,255,.035);
+      background: rgba(246,241,231,.72);
     }
     .plan-card h4 { margin: 0 0 10px; color: var(--accent); }
     .plan-card .textarea { min-height: 150px; }
@@ -603,7 +667,7 @@
       grid-template-columns: 52px 1fr 52px;
       gap: 8px;
       padding: 10px 12px calc(10px + env(safe-area-inset-bottom));
-      background: rgba(11,11,11,.94);
+      background: rgba(255,250,240,.94);
       backdrop-filter: blur(14px);
       border-top: 1px solid var(--line);
     }
@@ -640,7 +704,7 @@
       word-break: break-all;
       border: 1px solid var(--line);
       border-radius: 14px;
-      background: #0f0f0f;
+      background: var(--field-bg);
       padding: 12px;
       color: var(--accent);
       font-size: 13px;
@@ -703,7 +767,7 @@
       padding: 12px 16px;
       border: none;
       border-bottom: 1px solid var(--line);
-      background: rgba(11,11,11,.96);
+      background: rgba(255,250,240,.96);
       color: var(--text);
       font-weight: 900;
       text-transform: uppercase;
@@ -714,7 +778,7 @@
       position: sticky;
       top: 54px;
       z-index: 230;
-      background: rgba(11,11,11,.96);
+      background: rgba(255,250,240,.96);
       border-bottom: 1px solid var(--line);
       padding: 8px;
       max-height: 65dvh;
@@ -730,13 +794,15 @@
       color: var(--muted);
       font-weight: 800;
       font-size: 13px;
-      background: rgba(255,255,255,.03);
+      background: rgba(255,255,255,.65);
     }
     .client-nav a:hover { color: var(--text); border-color: var(--accent); }
 
     @media (min-width: 700px) {
       .topbar-inner { grid-template-columns: 1fr; padding: 14px 18px; }
       .layout { padding: 22px 18px 98px; }
+      .top-row { flex-wrap: nowrap; }
+      .actions .btn { flex: 0 0 auto; }
       .grid.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .grid.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
       .plan-columns { grid-template-columns: 1fr; }
@@ -793,7 +859,7 @@
 <body>
   <div id="loader-overlay">
     <div class="loader-card">
-      <div class="brand-mark" aria-hidden="true">BA</div>
+      <div class="brand-mark" aria-hidden="true"><svg class="banana-symbol" viewBox="0 0 128 197.2" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path fill="currentColor" d="M111.7,105.9c-1.7-5.3-4-9-8.1-13c-5.4-5.1-11.5-8.1-20.2-9.8c-2-0.4-3.6-0.8-3.5-0.9c0.1-0.1,1.7-1,3.6-2 c6.9-3.5,11.3-8.5,13.8-15.7c1.2-3.3,1.2-3.4,1.2-8.5c0-4.5-0.1-5.5-0.8-7.7c-2.3-7.3-7.3-12.8-14.2-15.7 c-8.7-3.6-24.9-6.4-37.5-6.4c-3.4,0-4.3,0.5-4.3,2.3c0,0.9,0.6,1.7,4.8,5.9c7.1,7.2,10.8,9.8,17.4,12.2c4.1,1.6,4.2,1.7,4.5,6.7 c0.2,5.7-1.2,9.7-5,14.3c-2,2.4-5.8,5.3-6.5,5c-0.6-0.2-2.9-3.2-5-6.5C50.8,64.6,49,61,47.6,58c-1.4-3-2.8-5.7-3.3-6.1 c-1.7-1.5-4.4-0.7-10.4,3c-11,6.8-16.8,13.6-14.2,16.7c0.3,0.4,2.2,1.4,4.3,2.3c10.5,4.6,14,8,15,14.3c0.8,5.5-0.6,11.3-5.9,23.6 c-5,11.5-6.8,20.3-6.4,31.2c0.4,12.8,4.2,22.6,11.9,30.5c1.6,1.6,3.7,3.6,4.8,4.4l0,0c2.1,1.6,3.5,1.8,4.5,0.9 c0.8-0.7,0.8-1.7-0.5-6.6c-3.8-14.6-2-21.8,8.8-36.3c7.5-10.1,9.7-15,10.1-22.5c0.1-2.3,0.3-3.7,0.6-3.7c0.2,0,1.4,0.7,2.6,1.5 c1.3,0.8,5.3,3,9,4.8c3.7,1.8,6.8,3.4,6.8,3.6c0,0.1-2.9,1.7-6.4,3.5c-3.6,1.8-7.4,3.9-8.6,4.6c-3.1,2.1-7,5.9-9.1,9.1 c-2.8,4.2-4.8,10.1-4.1,12.5c0.4,1.7,1.7,1.8,6.8,0.1c2.1-0.7,6.8-1.3,14.3-1.9c2.7-0.2,5.1-0.5,5.4-0.7c0.3-0.1,1.9-0.7,3.7-1.1 c6.3-1.7,13-5.6,17-10C112.2,127.2,114.9,116,111.7,105.9z M94.1,56.7c-0.1,1.2-0.3,2.4-0.5,3.3c-1,4.6-3.2,10-6.9,12.9 c-2.6,2-5.8,3.5-8.6,4.5c-3.7,1.3-11.9,0.7-11.9,0.7s9.2-3,14.9-14.1c2.8-6.5,2.6-14.3,2.6-14.3l5.8,0.9 C92.3,51.1,94.4,53.7,94.1,56.7z M48.7,30.5c0,0,17.4-0.9,34.6,7.2c3.5,1.7,8.2,5,10.4,10c0.2,0.4-0.2,0.8-0.7,0.7 c-1-0.3-5-1.6-7.1-1.8C53.1,43.7,48.7,30.5,48.7,30.5z M70.1,64c3.5-7.8,1.9-16,1.9-16l9.8,1.7c-0.5,6.8-0.9,16-9,22.3 c-5.2,4.1-12.7,2.9-12.7,2.9S67.2,70.3,70.1,64z M25.3,67.8L25.3,67.8c0-1.3,9.1-8.4,11.3-8.8l1.2-0.2l-1,1.5 c-0.6,0.9-1.9,2.2-2.9,3.2C31.5,65.6,25.3,68.7,25.3,67.8z M36.1,158.6c0.2,2.1,0.3,3.8,0.2,3.9c-0.4,0.4-2.4-4.6-3.2-7.7 c-1.4-5.3-1.7-7.6-1.7-14.2c0-10.8,1.1-15.3,7.5-30.7c3.6-8.7,4.7-12.9,4.8-18.3c0-4.5-0.3-6.5-1.8-9.6c-1.6-3.4-4.2-5.9-9.3-8.8 l-2.4-1.4l1.9-1.4c1-0.8,2.4-1.8,3.1-2.3c0.7-0.5,1.5-1,1.8-1c1.4,0,7.1,7.1,9.6,11.9c3.2,6.3,4.6,11.7,4.6,18.5 c0,9.4-2,16.4-8.8,30.9c-1.4,3-3,6.6-3.5,8C36.5,143.1,35.4,151.9,36.1,158.6z M89.6,136.5c-4,3.4-8.6,5.1-17.5,6.6 c-3.2,0.5-6.5,1.1-7.2,1.3l0,0c-2.5,0.6-2.5,0.6-1.8-1.4c1.6-4.1,5-8.3,9.1-11c2.2-1.5,17.1-9.1,17.8-9.1c0.7,0,2.7,2.6,3.1,4 C93.9,129.8,92.3,134.2,89.6,136.5z M105,124.4c-0.1,2.8-0.2,3.1-1.3,4.7c-1.3,1.9-3.6,4.5-4.1,4.5c-0.1,0-0.3-1-0.3-2.1 c-0.2-5.5-3.1-10.6-8.2-13.9c-1.2-0.8-5.7-3.2-10.1-5.3c-4.4-2.2-8.9-4.5-10-5.2c-2.9-1.9-6.4-5.3-8.7-8.2c-2.3-3.1-3.1-3.6-4.4-2.6 c-0.5,0.4-0.9,1-1,1.3c-0.1,0.3,0.5,1.8,1.2,3.3c0.9,1.8,7,11.3-9.6,35.8c-3.5,5.1-6.3,10.1-7.6,15.3l0,0c-0.4,1.6-0.8,4.2-0.9,7.4 l-0.2,4.9l-0.5-3.4c-1.6-9.7-0.1-18.3,5.1-29.6c5.2-11.1,7-16,8.3-22.2c0.7-3.3,0.6-5.7,0.8-9.5c0.1-3.9-1-8.3-1.8-11.4 c-0.6-2.5-1.5-4.6-1.5-5.8l2.2,2l2,1.8c6.3,5.5,12.4,8.8,26.6,14.2c3.8,1.5,8.4,3.4,10.1,4.3C100.7,109.1,105.4,115.8,105,124.4z M107.3,115l-0.1,2l-1.1-2.4c-3.3-7.5-9-11.6-22.8-16.8C70,92.9,59.7,87.1,58,86c-5.5-3.6-8.2-6.6-12.6-12.4 c-1.8-2.3-4.1-5.1-5.1-6.3c-1.8-1.9-1.9-2.1-1.5-2.7c0.2-0.3,1.1-1.5,1.8-2.6c0.9-1.2,1.6-2,2-2c0.4,0,1.1,1,2.5,3.7 c4.2,8.3,10,13.1,13.5,15.6c5.2,3.7,15.1,6.1,18.7,7.1c7.4,2.1,10.2,3.6,14.1,5.4c8.2,3.8,13.8,10.6,15.6,18.8l0,0 C107.2,111.9,107.4,113.9,107.3,115z"/></svg></div>
       <div class="brand-word">Bananas Agency</div>
       <p class="muted">Cargando reporte</p>
     </div>
@@ -801,7 +867,7 @@
 
   <div id="login-overlay">
     <div class="login-card">
-      <div class="brand-mark" aria-hidden="true">BA</div>
+      <div class="brand-mark" aria-hidden="true"><svg class="banana-symbol" viewBox="0 0 128 197.2" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path fill="currentColor" d="M111.7,105.9c-1.7-5.3-4-9-8.1-13c-5.4-5.1-11.5-8.1-20.2-9.8c-2-0.4-3.6-0.8-3.5-0.9c0.1-0.1,1.7-1,3.6-2 c6.9-3.5,11.3-8.5,13.8-15.7c1.2-3.3,1.2-3.4,1.2-8.5c0-4.5-0.1-5.5-0.8-7.7c-2.3-7.3-7.3-12.8-14.2-15.7 c-8.7-3.6-24.9-6.4-37.5-6.4c-3.4,0-4.3,0.5-4.3,2.3c0,0.9,0.6,1.7,4.8,5.9c7.1,7.2,10.8,9.8,17.4,12.2c4.1,1.6,4.2,1.7,4.5,6.7 c0.2,5.7-1.2,9.7-5,14.3c-2,2.4-5.8,5.3-6.5,5c-0.6-0.2-2.9-3.2-5-6.5C50.8,64.6,49,61,47.6,58c-1.4-3-2.8-5.7-3.3-6.1 c-1.7-1.5-4.4-0.7-10.4,3c-11,6.8-16.8,13.6-14.2,16.7c0.3,0.4,2.2,1.4,4.3,2.3c10.5,4.6,14,8,15,14.3c0.8,5.5-0.6,11.3-5.9,23.6 c-5,11.5-6.8,20.3-6.4,31.2c0.4,12.8,4.2,22.6,11.9,30.5c1.6,1.6,3.7,3.6,4.8,4.4l0,0c2.1,1.6,3.5,1.8,4.5,0.9 c0.8-0.7,0.8-1.7-0.5-6.6c-3.8-14.6-2-21.8,8.8-36.3c7.5-10.1,9.7-15,10.1-22.5c0.1-2.3,0.3-3.7,0.6-3.7c0.2,0,1.4,0.7,2.6,1.5 c1.3,0.8,5.3,3,9,4.8c3.7,1.8,6.8,3.4,6.8,3.6c0,0.1-2.9,1.7-6.4,3.5c-3.6,1.8-7.4,3.9-8.6,4.6c-3.1,2.1-7,5.9-9.1,9.1 c-2.8,4.2-4.8,10.1-4.1,12.5c0.4,1.7,1.7,1.8,6.8,0.1c2.1-0.7,6.8-1.3,14.3-1.9c2.7-0.2,5.1-0.5,5.4-0.7c0.3-0.1,1.9-0.7,3.7-1.1 c6.3-1.7,13-5.6,17-10C112.2,127.2,114.9,116,111.7,105.9z M94.1,56.7c-0.1,1.2-0.3,2.4-0.5,3.3c-1,4.6-3.2,10-6.9,12.9 c-2.6,2-5.8,3.5-8.6,4.5c-3.7,1.3-11.9,0.7-11.9,0.7s9.2-3,14.9-14.1c2.8-6.5,2.6-14.3,2.6-14.3l5.8,0.9 C92.3,51.1,94.4,53.7,94.1,56.7z M48.7,30.5c0,0,17.4-0.9,34.6,7.2c3.5,1.7,8.2,5,10.4,10c0.2,0.4-0.2,0.8-0.7,0.7 c-1-0.3-5-1.6-7.1-1.8C53.1,43.7,48.7,30.5,48.7,30.5z M70.1,64c3.5-7.8,1.9-16,1.9-16l9.8,1.7c-0.5,6.8-0.9,16-9,22.3 c-5.2,4.1-12.7,2.9-12.7,2.9S67.2,70.3,70.1,64z M25.3,67.8L25.3,67.8c0-1.3,9.1-8.4,11.3-8.8l1.2-0.2l-1,1.5 c-0.6,0.9-1.9,2.2-2.9,3.2C31.5,65.6,25.3,68.7,25.3,67.8z M36.1,158.6c0.2,2.1,0.3,3.8,0.2,3.9c-0.4,0.4-2.4-4.6-3.2-7.7 c-1.4-5.3-1.7-7.6-1.7-14.2c0-10.8,1.1-15.3,7.5-30.7c3.6-8.7,4.7-12.9,4.8-18.3c0-4.5-0.3-6.5-1.8-9.6c-1.6-3.4-4.2-5.9-9.3-8.8 l-2.4-1.4l1.9-1.4c1-0.8,2.4-1.8,3.1-2.3c0.7-0.5,1.5-1,1.8-1c1.4,0,7.1,7.1,9.6,11.9c3.2,6.3,4.6,11.7,4.6,18.5 c0,9.4-2,16.4-8.8,30.9c-1.4,3-3,6.6-3.5,8C36.5,143.1,35.4,151.9,36.1,158.6z M89.6,136.5c-4,3.4-8.6,5.1-17.5,6.6 c-3.2,0.5-6.5,1.1-7.2,1.3l0,0c-2.5,0.6-2.5,0.6-1.8-1.4c1.6-4.1,5-8.3,9.1-11c2.2-1.5,17.1-9.1,17.8-9.1c0.7,0,2.7,2.6,3.1,4 C93.9,129.8,92.3,134.2,89.6,136.5z M105,124.4c-0.1,2.8-0.2,3.1-1.3,4.7c-1.3,1.9-3.6,4.5-4.1,4.5c-0.1,0-0.3-1-0.3-2.1 c-0.2-5.5-3.1-10.6-8.2-13.9c-1.2-0.8-5.7-3.2-10.1-5.3c-4.4-2.2-8.9-4.5-10-5.2c-2.9-1.9-6.4-5.3-8.7-8.2c-2.3-3.1-3.1-3.6-4.4-2.6 c-0.5,0.4-0.9,1-1,1.3c-0.1,0.3,0.5,1.8,1.2,3.3c0.9,1.8,7,11.3-9.6,35.8c-3.5,5.1-6.3,10.1-7.6,15.3l0,0c-0.4,1.6-0.8,4.2-0.9,7.4 l-0.2,4.9l-0.5-3.4c-1.6-9.7-0.1-18.3,5.1-29.6c5.2-11.1,7-16,8.3-22.2c0.7-3.3,0.6-5.7,0.8-9.5c0.1-3.9-1-8.3-1.8-11.4 c-0.6-2.5-1.5-4.6-1.5-5.8l2.2,2l2,1.8c6.3,5.5,12.4,8.8,26.6,14.2c3.8,1.5,8.4,3.4,10.1,4.3C100.7,109.1,105.4,115.8,105,124.4z M107.3,115l-0.1,2l-1.1-2.4c-3.3-7.5-9-11.6-22.8-16.8C70,92.9,59.7,87.1,58,86c-5.5-3.6-8.2-6.6-12.6-12.4 c-1.8-2.3-4.1-5.1-5.1-6.3c-1.8-1.9-1.9-2.1-1.5-2.7c0.2-0.3,1.1-1.5,1.8-2.6c0.9-1.2,1.6-2,2-2c0.4,0,1.1,1,2.5,3.7 c4.2,8.3,10,13.1,13.5,15.6c5.2,3.7,15.1,6.1,18.7,7.1c7.4,2.1,10.2,3.6,14.1,5.4c8.2,3.8,13.8,10.6,15.6,18.8l0,0 C107.2,111.9,107.4,113.9,107.3,115z"/></svg></div>
       <div class="brand-word">Bananas Agency</div>
       <p class="muted">Ingresá con Google para editar reportes.</p>
       <button class="btn primary" style="width:100%;" id="btn-login" onclick="window.loginWithGoogle()">Ingresar con Google</button>
@@ -813,17 +879,21 @@
       <div class="topbar-inner">
         <div class="top-row">
           <div class="mini-brand">
-            <div class="mini-logo" aria-hidden="true">BA</div>
+            <div class="mini-logo" aria-hidden="true"><svg class="banana-symbol" viewBox="0 0 128 197.2" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path fill="currentColor" d="M111.7,105.9c-1.7-5.3-4-9-8.1-13c-5.4-5.1-11.5-8.1-20.2-9.8c-2-0.4-3.6-0.8-3.5-0.9c0.1-0.1,1.7-1,3.6-2 c6.9-3.5,11.3-8.5,13.8-15.7c1.2-3.3,1.2-3.4,1.2-8.5c0-4.5-0.1-5.5-0.8-7.7c-2.3-7.3-7.3-12.8-14.2-15.7 c-8.7-3.6-24.9-6.4-37.5-6.4c-3.4,0-4.3,0.5-4.3,2.3c0,0.9,0.6,1.7,4.8,5.9c7.1,7.2,10.8,9.8,17.4,12.2c4.1,1.6,4.2,1.7,4.5,6.7 c0.2,5.7-1.2,9.7-5,14.3c-2,2.4-5.8,5.3-6.5,5c-0.6-0.2-2.9-3.2-5-6.5C50.8,64.6,49,61,47.6,58c-1.4-3-2.8-5.7-3.3-6.1 c-1.7-1.5-4.4-0.7-10.4,3c-11,6.8-16.8,13.6-14.2,16.7c0.3,0.4,2.2,1.4,4.3,2.3c10.5,4.6,14,8,15,14.3c0.8,5.5-0.6,11.3-5.9,23.6 c-5,11.5-6.8,20.3-6.4,31.2c0.4,12.8,4.2,22.6,11.9,30.5c1.6,1.6,3.7,3.6,4.8,4.4l0,0c2.1,1.6,3.5,1.8,4.5,0.9 c0.8-0.7,0.8-1.7-0.5-6.6c-3.8-14.6-2-21.8,8.8-36.3c7.5-10.1,9.7-15,10.1-22.5c0.1-2.3,0.3-3.7,0.6-3.7c0.2,0,1.4,0.7,2.6,1.5 c1.3,0.8,5.3,3,9,4.8c3.7,1.8,6.8,3.4,6.8,3.6c0,0.1-2.9,1.7-6.4,3.5c-3.6,1.8-7.4,3.9-8.6,4.6c-3.1,2.1-7,5.9-9.1,9.1 c-2.8,4.2-4.8,10.1-4.1,12.5c0.4,1.7,1.7,1.8,6.8,0.1c2.1-0.7,6.8-1.3,14.3-1.9c2.7-0.2,5.1-0.5,5.4-0.7c0.3-0.1,1.9-0.7,3.7-1.1 c6.3-1.7,13-5.6,17-10C112.2,127.2,114.9,116,111.7,105.9z M94.1,56.7c-0.1,1.2-0.3,2.4-0.5,3.3c-1,4.6-3.2,10-6.9,12.9 c-2.6,2-5.8,3.5-8.6,4.5c-3.7,1.3-11.9,0.7-11.9,0.7s9.2-3,14.9-14.1c2.8-6.5,2.6-14.3,2.6-14.3l5.8,0.9 C92.3,51.1,94.4,53.7,94.1,56.7z M48.7,30.5c0,0,17.4-0.9,34.6,7.2c3.5,1.7,8.2,5,10.4,10c0.2,0.4-0.2,0.8-0.7,0.7 c-1-0.3-5-1.6-7.1-1.8C53.1,43.7,48.7,30.5,48.7,30.5z M70.1,64c3.5-7.8,1.9-16,1.9-16l9.8,1.7c-0.5,6.8-0.9,16-9,22.3 c-5.2,4.1-12.7,2.9-12.7,2.9S67.2,70.3,70.1,64z M25.3,67.8L25.3,67.8c0-1.3,9.1-8.4,11.3-8.8l1.2-0.2l-1,1.5 c-0.6,0.9-1.9,2.2-2.9,3.2C31.5,65.6,25.3,68.7,25.3,67.8z M36.1,158.6c0.2,2.1,0.3,3.8,0.2,3.9c-0.4,0.4-2.4-4.6-3.2-7.7 c-1.4-5.3-1.7-7.6-1.7-14.2c0-10.8,1.1-15.3,7.5-30.7c3.6-8.7,4.7-12.9,4.8-18.3c0-4.5-0.3-6.5-1.8-9.6c-1.6-3.4-4.2-5.9-9.3-8.8 l-2.4-1.4l1.9-1.4c1-0.8,2.4-1.8,3.1-2.3c0.7-0.5,1.5-1,1.8-1c1.4,0,7.1,7.1,9.6,11.9c3.2,6.3,4.6,11.7,4.6,18.5 c0,9.4-2,16.4-8.8,30.9c-1.4,3-3,6.6-3.5,8C36.5,143.1,35.4,151.9,36.1,158.6z M89.6,136.5c-4,3.4-8.6,5.1-17.5,6.6 c-3.2,0.5-6.5,1.1-7.2,1.3l0,0c-2.5,0.6-2.5,0.6-1.8-1.4c1.6-4.1,5-8.3,9.1-11c2.2-1.5,17.1-9.1,17.8-9.1c0.7,0,2.7,2.6,3.1,4 C93.9,129.8,92.3,134.2,89.6,136.5z M105,124.4c-0.1,2.8-0.2,3.1-1.3,4.7c-1.3,1.9-3.6,4.5-4.1,4.5c-0.1,0-0.3-1-0.3-2.1 c-0.2-5.5-3.1-10.6-8.2-13.9c-1.2-0.8-5.7-3.2-10.1-5.3c-4.4-2.2-8.9-4.5-10-5.2c-2.9-1.9-6.4-5.3-8.7-8.2c-2.3-3.1-3.1-3.6-4.4-2.6 c-0.5,0.4-0.9,1-1,1.3c-0.1,0.3,0.5,1.8,1.2,3.3c0.9,1.8,7,11.3-9.6,35.8c-3.5,5.1-6.3,10.1-7.6,15.3l0,0c-0.4,1.6-0.8,4.2-0.9,7.4 l-0.2,4.9l-0.5-3.4c-1.6-9.7-0.1-18.3,5.1-29.6c5.2-11.1,7-16,8.3-22.2c0.7-3.3,0.6-5.7,0.8-9.5c0.1-3.9-1-8.3-1.8-11.4 c-0.6-2.5-1.5-4.6-1.5-5.8l2.2,2l2,1.8c6.3,5.5,12.4,8.8,26.6,14.2c3.8,1.5,8.4,3.4,10.1,4.3C100.7,109.1,105.4,115.8,105,124.4z M107.3,115l-0.1,2l-1.1-2.4c-3.3-7.5-9-11.6-22.8-16.8C70,92.9,59.7,87.1,58,86c-5.5-3.6-8.2-6.6-12.6-12.4 c-1.8-2.3-4.1-5.1-5.1-6.3c-1.8-1.9-1.9-2.1-1.5-2.7c0.2-0.3,1.1-1.5,1.8-2.6c0.9-1.2,1.6-2,2-2c0.4,0,1.1,1,2.5,3.7 c4.2,8.3,10,13.1,13.5,15.6c5.2,3.7,15.1,6.1,18.7,7.1c7.4,2.1,10.2,3.6,14.1,5.4c8.2,3.8,13.8,10.6,15.6,18.8l0,0 C107.2,111.9,107.4,113.9,107.3,115z"/></svg></div>
             <strong>Reporte mensual</strong>
           </div>
+          <label class="month-control">
+            <span>Mes</span>
+            <input type="month" id="report-month-picker" data-key="report_month" aria-label="Mes del reporte">
+          </label>
           <div class="actions">
             <button class="btn primary" id="btn-share-link" onclick="window.generateShareLink()">Crear link cliente</button>
             <button class="btn danger" id="btn-logout" onclick="window.logout()">Salir</button>
           </div>
         </div>
         <div class="global-platform-controls editor-only" aria-label="Redes activas para cliente">
-          <label class="toggle-chip"><input type="checkbox" data-visibility-toggle="platform_ig" checked> Cliente tiene Instagram</label>
-          <label class="toggle-chip"><input type="checkbox" data-visibility-toggle="platform_tt" checked> Cliente tiene TikTok</label>
+          <label class="toggle-chip"><input type="checkbox" data-visibility-toggle="platform_ig" checked> Instagram</label>
+          <label class="toggle-chip"><input type="checkbox" data-visibility-toggle="platform_tt" checked> TikTok</label>
         </div>
         <nav class="tabs" id="tabs" aria-label="Hojas del reporte"></nav>
       </div>
@@ -839,7 +909,7 @@
             <div class="cover-logos">
               <div class="logo-box bananas-logo-box" id="bananas-logo-box">
                 <div class="bananas-logo-lockup">
-                  <div class="brand-mark" aria-hidden="true">BA</div>
+                  <div class="brand-mark" aria-hidden="true"><svg class="banana-symbol" viewBox="0 0 128 197.2" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path fill="currentColor" d="M111.7,105.9c-1.7-5.3-4-9-8.1-13c-5.4-5.1-11.5-8.1-20.2-9.8c-2-0.4-3.6-0.8-3.5-0.9c0.1-0.1,1.7-1,3.6-2 c6.9-3.5,11.3-8.5,13.8-15.7c1.2-3.3,1.2-3.4,1.2-8.5c0-4.5-0.1-5.5-0.8-7.7c-2.3-7.3-7.3-12.8-14.2-15.7 c-8.7-3.6-24.9-6.4-37.5-6.4c-3.4,0-4.3,0.5-4.3,2.3c0,0.9,0.6,1.7,4.8,5.9c7.1,7.2,10.8,9.8,17.4,12.2c4.1,1.6,4.2,1.7,4.5,6.7 c0.2,5.7-1.2,9.7-5,14.3c-2,2.4-5.8,5.3-6.5,5c-0.6-0.2-2.9-3.2-5-6.5C50.8,64.6,49,61,47.6,58c-1.4-3-2.8-5.7-3.3-6.1 c-1.7-1.5-4.4-0.7-10.4,3c-11,6.8-16.8,13.6-14.2,16.7c0.3,0.4,2.2,1.4,4.3,2.3c10.5,4.6,14,8,15,14.3c0.8,5.5-0.6,11.3-5.9,23.6 c-5,11.5-6.8,20.3-6.4,31.2c0.4,12.8,4.2,22.6,11.9,30.5c1.6,1.6,3.7,3.6,4.8,4.4l0,0c2.1,1.6,3.5,1.8,4.5,0.9 c0.8-0.7,0.8-1.7-0.5-6.6c-3.8-14.6-2-21.8,8.8-36.3c7.5-10.1,9.7-15,10.1-22.5c0.1-2.3,0.3-3.7,0.6-3.7c0.2,0,1.4,0.7,2.6,1.5 c1.3,0.8,5.3,3,9,4.8c3.7,1.8,6.8,3.4,6.8,3.6c0,0.1-2.9,1.7-6.4,3.5c-3.6,1.8-7.4,3.9-8.6,4.6c-3.1,2.1-7,5.9-9.1,9.1 c-2.8,4.2-4.8,10.1-4.1,12.5c0.4,1.7,1.7,1.8,6.8,0.1c2.1-0.7,6.8-1.3,14.3-1.9c2.7-0.2,5.1-0.5,5.4-0.7c0.3-0.1,1.9-0.7,3.7-1.1 c6.3-1.7,13-5.6,17-10C112.2,127.2,114.9,116,111.7,105.9z M94.1,56.7c-0.1,1.2-0.3,2.4-0.5,3.3c-1,4.6-3.2,10-6.9,12.9 c-2.6,2-5.8,3.5-8.6,4.5c-3.7,1.3-11.9,0.7-11.9,0.7s9.2-3,14.9-14.1c2.8-6.5,2.6-14.3,2.6-14.3l5.8,0.9 C92.3,51.1,94.4,53.7,94.1,56.7z M48.7,30.5c0,0,17.4-0.9,34.6,7.2c3.5,1.7,8.2,5,10.4,10c0.2,0.4-0.2,0.8-0.7,0.7 c-1-0.3-5-1.6-7.1-1.8C53.1,43.7,48.7,30.5,48.7,30.5z M70.1,64c3.5-7.8,1.9-16,1.9-16l9.8,1.7c-0.5,6.8-0.9,16-9,22.3 c-5.2,4.1-12.7,2.9-12.7,2.9S67.2,70.3,70.1,64z M25.3,67.8L25.3,67.8c0-1.3,9.1-8.4,11.3-8.8l1.2-0.2l-1,1.5 c-0.6,0.9-1.9,2.2-2.9,3.2C31.5,65.6,25.3,68.7,25.3,67.8z M36.1,158.6c0.2,2.1,0.3,3.8,0.2,3.9c-0.4,0.4-2.4-4.6-3.2-7.7 c-1.4-5.3-1.7-7.6-1.7-14.2c0-10.8,1.1-15.3,7.5-30.7c3.6-8.7,4.7-12.9,4.8-18.3c0-4.5-0.3-6.5-1.8-9.6c-1.6-3.4-4.2-5.9-9.3-8.8 l-2.4-1.4l1.9-1.4c1-0.8,2.4-1.8,3.1-2.3c0.7-0.5,1.5-1,1.8-1c1.4,0,7.1,7.1,9.6,11.9c3.2,6.3,4.6,11.7,4.6,18.5 c0,9.4-2,16.4-8.8,30.9c-1.4,3-3,6.6-3.5,8C36.5,143.1,35.4,151.9,36.1,158.6z M89.6,136.5c-4,3.4-8.6,5.1-17.5,6.6 c-3.2,0.5-6.5,1.1-7.2,1.3l0,0c-2.5,0.6-2.5,0.6-1.8-1.4c1.6-4.1,5-8.3,9.1-11c2.2-1.5,17.1-9.1,17.8-9.1c0.7,0,2.7,2.6,3.1,4 C93.9,129.8,92.3,134.2,89.6,136.5z M105,124.4c-0.1,2.8-0.2,3.1-1.3,4.7c-1.3,1.9-3.6,4.5-4.1,4.5c-0.1,0-0.3-1-0.3-2.1 c-0.2-5.5-3.1-10.6-8.2-13.9c-1.2-0.8-5.7-3.2-10.1-5.3c-4.4-2.2-8.9-4.5-10-5.2c-2.9-1.9-6.4-5.3-8.7-8.2c-2.3-3.1-3.1-3.6-4.4-2.6 c-0.5,0.4-0.9,1-1,1.3c-0.1,0.3,0.5,1.8,1.2,3.3c0.9,1.8,7,11.3-9.6,35.8c-3.5,5.1-6.3,10.1-7.6,15.3l0,0c-0.4,1.6-0.8,4.2-0.9,7.4 l-0.2,4.9l-0.5-3.4c-1.6-9.7-0.1-18.3,5.1-29.6c5.2-11.1,7-16,8.3-22.2c0.7-3.3,0.6-5.7,0.8-9.5c0.1-3.9-1-8.3-1.8-11.4 c-0.6-2.5-1.5-4.6-1.5-5.8l2.2,2l2,1.8c6.3,5.5,12.4,8.8,26.6,14.2c3.8,1.5,8.4,3.4,10.1,4.3C100.7,109.1,105.4,115.8,105,124.4z M107.3,115l-0.1,2l-1.1-2.4c-3.3-7.5-9-11.6-22.8-16.8C70,92.9,59.7,87.1,58,86c-5.5-3.6-8.2-6.6-12.6-12.4 c-1.8-2.3-4.1-5.1-5.1-6.3c-1.8-1.9-1.9-2.1-1.5-2.7c0.2-0.3,1.1-1.5,1.8-2.6c0.9-1.2,1.6-2,2-2c0.4,0,1.1,1,2.5,3.7 c4.2,8.3,10,13.1,13.5,15.6c5.2,3.7,15.1,6.1,18.7,7.1c7.4,2.1,10.2,3.6,14.1,5.4c8.2,3.8,13.8,10.6,15.6,18.8l0,0 C107.2,111.9,107.4,113.9,107.3,115z"/></svg></div>
                   <div class="brand-word">Bananas Agency</div>
                 </div>
               </div>
@@ -855,10 +925,17 @@
             <div class="grid two cover-edit-fields editor-only">
               <div class="logo-panel">
                 <div class="field" data-visible-key="reach_total_block"><div class="hidden-note">Oculto para cliente</div><label class="label">Logo cliente</label><input class="input" type="file" accept="image/*" data-image-key="client_logo"></div>
-                <div class="field"><label class="label">Fondo caja logo cliente</label><div class="color-control"><input type="color" data-color-key="client_logo_bg" value="#202020"><input class="input" data-color-hex="client_logo_bg" data-key="client_logo_bg" placeholder="#202020"></div></div>
+                <div class="field"><label class="label">Fondo caja logo cliente</label><div class="color-control"><input type="color" data-color-key="client_logo_bg" value="#f6f1e7"><input class="input" data-color-hex="client_logo_bg" data-key="client_logo_bg" placeholder="#f6f1e7"></div></div>
               </div>
               <div class="logo-panel">
-                <div class="field"><label class="label">Fondo caja Bananas</label><div class="color-control"><input type="color" data-color-key="bananas_logo_bg" value="#202020"><input class="input" data-color-hex="bananas_logo_bg" data-key="bananas_logo_bg" placeholder="#202020"></div></div>
+                <div class="field"><label class="label">Fondo caja Bananas</label><div class="color-control"><input type="color" data-color-key="bananas_logo_bg" value="#f6c945"><input class="input" data-color-hex="bananas_logo_bg" data-key="bananas_logo_bg" placeholder="#f6c945"></div></div>
+                <div class="field">
+                  <label class="label">Mes del reporte</label>
+                  <div class="month-picker-row">
+                    <input class="input" type="month" id="cover-month-picker" aria-label="Mes del reporte">
+                    <button class="btn ghost" type="button" onclick="window.useCurrentReportMonth()">Mes actual</button>
+                  </div>
+                </div>
                 <div class="field"><label class="label">Mes / Año</label><input class="input" data-key="month_year" placeholder="Junio 2026"></div>
               </div>
               <div class="field"><label class="label">Nombre del cliente</label><input class="input" data-key="client_name" placeholder="Nombre del cliente"></div>
@@ -1079,8 +1156,8 @@
               <h3>Conclusión honesta</h3>
               <textarea class="textarea honest-textarea" data-key="honest_conclusion" placeholder="Análisis profundo de lo que está viendo el cliente: puntos positivos, puntos negativos, causas, riesgos y próximos movimientos."></textarea>
             </div>
-            <div class="card" style="text-align:center;margin-top:14px;padding:32px 18px;background:var(--accent);color:#0b0b0b;border-color:var(--accent);">
-              <div class="brand-mark" aria-hidden="true" style="background:#0b0b0b;color:var(--accent);">BA</div>
+            <div class="card" style="text-align:center;margin-top:14px;padding:32px 18px;background:var(--accent);color:#171511;border-color:var(--accent);">
+              <div class="brand-mark" aria-hidden="true" style="background:#171511;color:var(--accent);"><svg class="banana-symbol" viewBox="0 0 128 197.2" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path fill="currentColor" d="M111.7,105.9c-1.7-5.3-4-9-8.1-13c-5.4-5.1-11.5-8.1-20.2-9.8c-2-0.4-3.6-0.8-3.5-0.9c0.1-0.1,1.7-1,3.6-2 c6.9-3.5,11.3-8.5,13.8-15.7c1.2-3.3,1.2-3.4,1.2-8.5c0-4.5-0.1-5.5-0.8-7.7c-2.3-7.3-7.3-12.8-14.2-15.7 c-8.7-3.6-24.9-6.4-37.5-6.4c-3.4,0-4.3,0.5-4.3,2.3c0,0.9,0.6,1.7,4.8,5.9c7.1,7.2,10.8,9.8,17.4,12.2c4.1,1.6,4.2,1.7,4.5,6.7 c0.2,5.7-1.2,9.7-5,14.3c-2,2.4-5.8,5.3-6.5,5c-0.6-0.2-2.9-3.2-5-6.5C50.8,64.6,49,61,47.6,58c-1.4-3-2.8-5.7-3.3-6.1 c-1.7-1.5-4.4-0.7-10.4,3c-11,6.8-16.8,13.6-14.2,16.7c0.3,0.4,2.2,1.4,4.3,2.3c10.5,4.6,14,8,15,14.3c0.8,5.5-0.6,11.3-5.9,23.6 c-5,11.5-6.8,20.3-6.4,31.2c0.4,12.8,4.2,22.6,11.9,30.5c1.6,1.6,3.7,3.6,4.8,4.4l0,0c2.1,1.6,3.5,1.8,4.5,0.9 c0.8-0.7,0.8-1.7-0.5-6.6c-3.8-14.6-2-21.8,8.8-36.3c7.5-10.1,9.7-15,10.1-22.5c0.1-2.3,0.3-3.7,0.6-3.7c0.2,0,1.4,0.7,2.6,1.5 c1.3,0.8,5.3,3,9,4.8c3.7,1.8,6.8,3.4,6.8,3.6c0,0.1-2.9,1.7-6.4,3.5c-3.6,1.8-7.4,3.9-8.6,4.6c-3.1,2.1-7,5.9-9.1,9.1 c-2.8,4.2-4.8,10.1-4.1,12.5c0.4,1.7,1.7,1.8,6.8,0.1c2.1-0.7,6.8-1.3,14.3-1.9c2.7-0.2,5.1-0.5,5.4-0.7c0.3-0.1,1.9-0.7,3.7-1.1 c6.3-1.7,13-5.6,17-10C112.2,127.2,114.9,116,111.7,105.9z M94.1,56.7c-0.1,1.2-0.3,2.4-0.5,3.3c-1,4.6-3.2,10-6.9,12.9 c-2.6,2-5.8,3.5-8.6,4.5c-3.7,1.3-11.9,0.7-11.9,0.7s9.2-3,14.9-14.1c2.8-6.5,2.6-14.3,2.6-14.3l5.8,0.9 C92.3,51.1,94.4,53.7,94.1,56.7z M48.7,30.5c0,0,17.4-0.9,34.6,7.2c3.5,1.7,8.2,5,10.4,10c0.2,0.4-0.2,0.8-0.7,0.7 c-1-0.3-5-1.6-7.1-1.8C53.1,43.7,48.7,30.5,48.7,30.5z M70.1,64c3.5-7.8,1.9-16,1.9-16l9.8,1.7c-0.5,6.8-0.9,16-9,22.3 c-5.2,4.1-12.7,2.9-12.7,2.9S67.2,70.3,70.1,64z M25.3,67.8L25.3,67.8c0-1.3,9.1-8.4,11.3-8.8l1.2-0.2l-1,1.5 c-0.6,0.9-1.9,2.2-2.9,3.2C31.5,65.6,25.3,68.7,25.3,67.8z M36.1,158.6c0.2,2.1,0.3,3.8,0.2,3.9c-0.4,0.4-2.4-4.6-3.2-7.7 c-1.4-5.3-1.7-7.6-1.7-14.2c0-10.8,1.1-15.3,7.5-30.7c3.6-8.7,4.7-12.9,4.8-18.3c0-4.5-0.3-6.5-1.8-9.6c-1.6-3.4-4.2-5.9-9.3-8.8 l-2.4-1.4l1.9-1.4c1-0.8,2.4-1.8,3.1-2.3c0.7-0.5,1.5-1,1.8-1c1.4,0,7.1,7.1,9.6,11.9c3.2,6.3,4.6,11.7,4.6,18.5 c0,9.4-2,16.4-8.8,30.9c-1.4,3-3,6.6-3.5,8C36.5,143.1,35.4,151.9,36.1,158.6z M89.6,136.5c-4,3.4-8.6,5.1-17.5,6.6 c-3.2,0.5-6.5,1.1-7.2,1.3l0,0c-2.5,0.6-2.5,0.6-1.8-1.4c1.6-4.1,5-8.3,9.1-11c2.2-1.5,17.1-9.1,17.8-9.1c0.7,0,2.7,2.6,3.1,4 C93.9,129.8,92.3,134.2,89.6,136.5z M105,124.4c-0.1,2.8-0.2,3.1-1.3,4.7c-1.3,1.9-3.6,4.5-4.1,4.5c-0.1,0-0.3-1-0.3-2.1 c-0.2-5.5-3.1-10.6-8.2-13.9c-1.2-0.8-5.7-3.2-10.1-5.3c-4.4-2.2-8.9-4.5-10-5.2c-2.9-1.9-6.4-5.3-8.7-8.2c-2.3-3.1-3.1-3.6-4.4-2.6 c-0.5,0.4-0.9,1-1,1.3c-0.1,0.3,0.5,1.8,1.2,3.3c0.9,1.8,7,11.3-9.6,35.8c-3.5,5.1-6.3,10.1-7.6,15.3l0,0c-0.4,1.6-0.8,4.2-0.9,7.4 l-0.2,4.9l-0.5-3.4c-1.6-9.7-0.1-18.3,5.1-29.6c5.2-11.1,7-16,8.3-22.2c0.7-3.3,0.6-5.7,0.8-9.5c0.1-3.9-1-8.3-1.8-11.4 c-0.6-2.5-1.5-4.6-1.5-5.8l2.2,2l2,1.8c6.3,5.5,12.4,8.8,26.6,14.2c3.8,1.5,8.4,3.4,10.1,4.3C100.7,109.1,105.4,115.8,105,124.4z M107.3,115l-0.1,2l-1.1-2.4c-3.3-7.5-9-11.6-22.8-16.8C70,92.9,59.7,87.1,58,86c-5.5-3.6-8.2-6.6-12.6-12.4 c-1.8-2.3-4.1-5.1-5.1-6.3c-1.8-1.9-1.9-2.1-1.5-2.7c0.2-0.3,1.1-1.5,1.8-2.6c0.9-1.2,1.6-2,2-2c0.4,0,1.1,1,2.5,3.7 c4.2,8.3,10,13.1,13.5,15.6c5.2,3.7,15.1,6.1,18.7,7.1c7.4,2.1,10.2,3.6,14.1,5.4c8.2,3.8,13.8,10.6,15.6,18.8l0,0 C107.2,111.9,107.4,113.9,107.3,115z"/></svg></div>
               <p style="font-weight:900;font-size:20px;margin:6px 0 12px;">Muchas gracias por confiar en nosotros</p>
               <div style="font-family:var(--title);font-size:38px;line-height:1;text-transform:uppercase;letter-spacing:.04em;">Bananas Agency</div>
             </div>
@@ -1260,8 +1337,8 @@
       applyVisibilityToDom();
     }
 
-    function createVisibilityControl(key, label = 'Mostrar en cliente', small = false) {
-      const wrap = el('label', { class: `visibility-toggle${small ? ' small' : ''} editor-only` });
+    function createVisibilityControl(key, label = 'Cliente', small = false) {
+      const wrap = el('label', { class: `visibility-toggle${small ? ' small' : ''} editor-only`, title: 'Mostrar u ocultar en el link del cliente' });
       const input = el('input', { type: 'checkbox', 'data-visibility-toggle': key });
       input.checked = isVisible(key);
       input.addEventListener('change', () => setVisibility(key, input.checked));
@@ -1275,7 +1352,7 @@
         if (node.querySelector(':scope > .visibility-toggle')) return;
         const key = node.dataset.visibleKey;
         const small = node.classList.contains('summary-item') || node.tagName === 'TR';
-        node.insertBefore(createVisibilityControl(key, 'Mostrar en cliente', small), node.firstChild);
+        node.insertBefore(createVisibilityControl(key, 'Cliente', small), node.firstChild);
       });
       document.querySelectorAll('[data-visibility-toggle]').forEach(toggle => {
         const key = toggle.dataset.visibilityToggle;
@@ -1457,10 +1534,61 @@
       return /^#[0-9A-Fa-f]{6}$/.test(String(value || '').trim());
     }
 
+    function currentMonthValue() {
+      const now = new Date();
+      const year = now.getFullYear();
+      const month = String(now.getMonth() + 1).padStart(2, '0');
+      return `${year}-${month}`;
+    }
+
+    function formatMonthYear(value) {
+      if (!/^\d{4}-\d{2}$/.test(String(value || ''))) return '';
+      const [year, month] = value.split('-').map(Number);
+      const date = new Date(year, month - 1, 1);
+      const text = date.toLocaleDateString('es-AR', { month: 'long', year: 'numeric' });
+      return text.charAt(0).toUpperCase() + text.slice(1);
+    }
+
+    function formatDeliveryDate(value) {
+      if (!/^\d{4}-\d{2}$/.test(String(value || ''))) return '';
+      const [year, month] = value.split('-').map(Number);
+      const date = new Date(year, month - 1, 1);
+      return date.toLocaleDateString('es-AR', { day: 'numeric', month: 'long', year: 'numeric' });
+    }
+
+    function setReportMonth(value, forceText = true) {
+      if (!value) return;
+      const headerPicker = document.getElementById('report-month-picker');
+      const coverPicker = document.getElementById('cover-month-picker');
+      if (headerPicker) headerPicker.value = value;
+      if (coverPicker) coverPicker.value = value;
+
+      const monthField = document.querySelector('[data-key="month_year"]');
+      const dateField = document.querySelector('[data-key="delivery_date"]');
+      if (monthField && (forceText || !monthField.value.trim())) monthField.value = formatMonthYear(value);
+      if (dateField && (forceText || !dateField.value.trim())) dateField.value = formatDeliveryDate(value);
+      updateBindings();
+    }
+
+    function initMonthControls() {
+      const headerPicker = document.getElementById('report-month-picker');
+      const coverPicker = document.getElementById('cover-month-picker');
+      const initial = headerPicker?.value || currentMonthValue();
+      setReportMonth(initial, false);
+      [headerPicker, coverPicker].filter(Boolean).forEach(picker => {
+        picker.addEventListener('input', () => setReportMonth(picker.value, true));
+        picker.addEventListener('change', () => setReportMonth(picker.value, true));
+      });
+    }
+
+    window.useCurrentReportMonth = function() {
+      setReportMonth(currentMonthValue(), true);
+    };
+
     function applyLogoColors() {
       const client = document.querySelector('[data-key="client_logo_bg"]')?.value?.trim();
       const bananas = document.querySelector('[data-key="bananas_logo_bg"]')?.value?.trim();
-      document.documentElement.style.setProperty('--client-logo-bg', validHex(client) ? client : 'rgba(255,255,255,.03)');
+      document.documentElement.style.setProperty('--client-logo-bg', validHex(client) ? client : 'rgba(246,241,231,.65)');
       document.documentElement.style.setProperty('--bananas-logo-bg', validHex(bananas) ? bananas : 'rgba(246,201,69,.10)');
       document.querySelectorAll('[data-color-key]').forEach(color => {
         const text = document.querySelector(`[data-color-hex="${color.dataset.colorKey}"]`);
@@ -1556,6 +1684,7 @@
       imageStore = data._images || {};
       visibility = { platform_ig: true, platform_tt: true, ...(data._visibility || {}) };
       document.querySelectorAll('[data-visibility-toggle]').forEach(toggle => { toggle.checked = isVisible(toggle.dataset.visibilityToggle); });
+      if (data.report_month) setReportMonth(data.report_month, false);
       Object.keys(imageStore).forEach(renderImage);
       applyLogoColors();
       updateVariations();
@@ -1592,6 +1721,7 @@
       initColorControls();
       attachInputListeners();
       initClientMenu();
+      initMonthControls();
       setPage(1);
       updateReachChart();
       updateBindings();
