@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#0b0b0b" />
   <title>Reporte Mensual — Bananas Agency</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128'%3E%3Crect width='128' height='128' rx='28' fill='%23f6c945'/%3E%3Ctext x='64' y='77' text-anchor='middle' font-family='Arial,sans-serif' font-weight='900' font-size='40' fill='%230b0b0b'%3EBA%3C/text%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
@@ -76,7 +77,6 @@
       color: #0b0b0b;
       margin-bottom: 14px;
     }
-    .brand-mark .banana-svg { width: 26px; height: 34px; display: block; }
     .brand-word {
       font-family: var(--title);
       font-size: 26px;
@@ -115,7 +115,6 @@
       gap: 8px;
       min-width: 0;
     }
-    .mini-logo .banana-svg { width: 17px; height: 24px; display: block; }
     .mini-brand strong {
       font-family: var(--title);
       font-size: 18px;
@@ -141,6 +140,61 @@
       flex-wrap: wrap;
       justify-content: flex-end;
     }
+    .global-platform-controls {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+    .toggle-chip,
+    .visibility-toggle {
+      min-height: 42px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: rgba(255,255,255,.035);
+      color: var(--muted);
+      padding: 9px 10px;
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: .03em;
+      text-transform: uppercase;
+      user-select: none;
+    }
+    .toggle-chip input,
+    .visibility-toggle input { accent-color: var(--accent); }
+    .visibility-toggle {
+      justify-content: flex-start;
+      width: 100%;
+      margin: 0 0 12px;
+      background: rgba(246,201,69,.07);
+      color: var(--text);
+    }
+    .visibility-toggle.small {
+      min-height: 34px;
+      margin: 0 0 8px;
+      padding: 7px 9px;
+      font-size: 11px;
+    }
+    .hidden-in-report {
+      opacity: .45;
+      outline: 1px dashed rgba(248,113,113,.55);
+      outline-offset: 3px;
+    }
+    .hidden-note {
+      display: none;
+      color: var(--danger);
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .hidden-in-report > .hidden-note,
+    .hidden-in-report .hidden-note:first-child { display: block; }
+
     .btn {
       min-height: 42px;
       border: 1px solid var(--line);
@@ -256,9 +310,11 @@
     .platform-title {
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      justify-content: flex-start;
       gap: 10px;
-      margin-bottom: 12px;
+      margin-bottom: 16px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--line);
     }
     .badge {
       display: inline-flex;
@@ -296,13 +352,33 @@
       outline: none;
       min-height: 44px;
     }
-    .textarea { resize: vertical; min-height: 92px; }
+    .textarea { resize: vertical; min-height: 104px; overflow: hidden; field-sizing: content; }
     .input:focus,
     .textarea:focus {
       border-color: var(--accent);
       box-shadow: 0 0 0 3px rgba(246,201,69,.15);
     }
     .number { font-family: var(--num); font-weight: 700; }
+
+    .color-control {
+      display: grid;
+      grid-template-columns: 56px 1fr;
+      gap: 8px;
+      align-items: center;
+    }
+    .color-control input[type="color"] {
+      width: 56px;
+      height: 44px;
+      padding: 2px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: var(--surface-2);
+    }
+    .logo-panel {
+      display: grid;
+      gap: 12px;
+      align-content: start;
+    }
 
     .summary-list { display: grid; gap: 10px; }
     .summary-item {
@@ -374,10 +450,53 @@
     .bar-track { height: 16px; border-radius: 999px; background: #0f0f0f; overflow: hidden; border: 1px solid var(--line); }
     .bar-fill { height: 100%; width: 0%; border-radius: inherit; background: var(--accent); transition: width .25s ease; }
 
-    .content-card {
+    .reach-visual {
       display: grid;
       gap: 12px;
+    }
+    .reach-total-card {
+      border-radius: 18px;
+      border: 1px solid rgba(246,201,69,.35);
+      background: rgba(246,201,69,.09);
+      padding: 18px;
+    }
+    .reach-total-value {
+      font-family: var(--num);
+      font-size: clamp(34px, 12vw, 68px);
+      font-weight: 900;
+      line-height: .95;
+    }
+    .reach-mini-grid {
+      display: grid;
+      gap: 10px;
+    }
+    .reach-mini-card {
+      display: grid;
+      gap: 4px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: rgba(255,255,255,.035);
       padding: 14px;
+    }
+    .reach-mini-card strong {
+      font-family: var(--num);
+      font-size: 24px;
+      line-height: 1;
+    }
+    .reach-note {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    .content-list {
+      display: grid;
+      gap: 20px;
+    }
+    .content-card {
+      display: grid;
+      gap: 14px;
+      padding: 18px;
       border: 1px solid var(--line);
       border-radius: var(--radius);
       background: rgba(255,255,255,.035);
@@ -408,37 +527,42 @@
       gap: 28px;
     }
     .cover-logos {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-      align-items: center;
-      justify-content: space-between;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+      align-items: stretch;
+    }
+    .logo-box {
+      min-height: 126px;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      display: grid;
+      place-items: center;
+      padding: 18px;
+      background: rgba(255,255,255,.03);
+      color: var(--muted);
+      text-align: center;
+      overflow: hidden;
+    }
+    .bananas-logo-box {
+      background: var(--bananas-logo-bg, rgba(246,201,69,.10));
+    }
+    .client-logo-box {
+      background: var(--client-logo-bg, rgba(255,255,255,.03));
+      border-style: dashed;
     }
     .bananas-logo-lockup {
       display: flex;
       align-items: center;
       gap: 12px;
     }
-    .bananas-logo-lockup .brand-word { font-size: clamp(28px, 10vw, 56px); }
-    .client-logo-box {
-      width: min(100%, 260px);
-      min-height: 94px;
-      border: 1px dashed var(--line);
-      border-radius: 18px;
-      display: grid;
-      place-items: center;
-      padding: 14px;
-      background: rgba(255,255,255,.03);
-      color: var(--muted);
-      text-align: center;
-      overflow: hidden;
-    }
-    .client-logo-box img { max-width: 100%; max-height: 140px; object-fit: contain; display: block; }
+    .bananas-logo-lockup .brand-word { font-size: clamp(24px, 8vw, 46px); }
+    .client-logo-box img { max-width: 100%; max-height: 150px; object-fit: contain; display: block; }
     .cover-report-title {
       font-family: var(--title);
       font-weight: 400;
-      line-height: .92;
-      font-size: clamp(48px, 18vw, 112px);
+      line-height: .94;
+      font-size: clamp(34px, 11vw, 72px);
       text-transform: uppercase;
       letter-spacing: .02em;
       margin: 0;
@@ -458,8 +582,16 @@
     }
     .cover-edit-fields { margin-top: 4px; }
 
-    .plan-columns { display: grid; gap: 14px; }
+    .plan-columns { display: grid; gap: 16px; }
+    .plan-card {
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 14px;
+      background: rgba(255,255,255,.035);
+    }
     .plan-card h4 { margin: 0 0 10px; color: var(--accent); }
+    .plan-card .textarea { min-height: 150px; }
+    .honest-textarea { min-height: 260px; font-size: 17px; line-height: 1.55; }
 
     .bottom-nav {
       position: fixed;
@@ -516,7 +648,8 @@
 
     body.view-mode .editor-only,
     body.view-mode .tabs,
-    body.view-mode .bottom-nav { display: none !important; }
+    body.view-mode .bottom-nav,
+    body.view-mode .hide-from-client { display: none !important; }
     body.view-mode .topbar { display: none; }
     body.view-mode #app { display: block; }
     body.view-mode .layout { padding: 0; max-width: none; }
@@ -546,7 +679,9 @@
     body.view-mode .textarea { overflow: hidden; }
     body.view-mode .field { margin-bottom: 0; }
     body.view-mode .field:has(.input:placeholder-shown),
-    body.view-mode .field:has(.textarea:placeholder-shown) { display: none; }
+    body.view-mode .field:has(.textarea:placeholder-shown),
+    body.view-mode .summary-item:has(.input:placeholder-shown),
+    body.view-mode .content-card:has(.input:placeholder-shown):has(.textarea:placeholder-shown) { display: none; }
     body.view-mode .label { display: none; }
     body.view-mode table { min-width: 0; }
     body.view-mode th:nth-child(2), body.view-mode td:nth-child(2),
@@ -604,9 +739,14 @@
       .layout { padding: 22px 18px 98px; }
       .grid.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .grid.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-      .plan-columns { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .plan-columns { grid-template-columns: 1fr; }
       .bottom-nav { left: 50%; transform: translateX(-50%); max-width: 720px; border: 1px solid var(--line); border-bottom: none; border-radius: 22px 22px 0 0; }
       .client-logo-box { min-height: 130px; }
+    }
+
+    @media (min-width: 700px) {
+      .cover-logos { grid-template-columns: minmax(0,1fr) minmax(0,1fr); }
+      .reach-mini-grid { grid-template-columns: repeat(3, minmax(0,1fr)); }
     }
 
     @media (min-width: 1000px) {
@@ -614,12 +754,15 @@
       .layout { padding-top: 28px; }
       .tabs { flex-wrap: wrap; overflow: visible; }
       .tab-btn { flex: 0 0 auto; }
-      body.view-mode .client-menu-btn { display: none !important; }
-      body.view-mode .layout {
-        display: grid;
-        grid-template-columns: 252px minmax(0, 1fr);
+      .global-platform-controls { grid-template-columns: repeat(2, max-content); justify-content: start; }
+      body.view-mode #app {
+        display: grid !important;
+        grid-template-columns: 280px minmax(0, 1fr);
+        min-height: 100dvh;
       }
+      body.view-mode .client-menu-btn { display: none !important; }
       body.view-mode .client-nav {
+        grid-column: 1;
         display: grid !important;
         gap: 6px;
         position: sticky;
@@ -627,9 +770,19 @@
         align-self: start;
         height: 100dvh;
         max-height: none;
+        overflow-y: auto;
         border-right: 1px solid var(--line);
         border-bottom: none;
         padding: 18px 12px;
+        width: 280px;
+      }
+      body.view-mode .layout {
+        grid-column: 2;
+        display: block;
+        max-width: none;
+        width: 100%;
+        min-width: 0;
+        padding: 0;
       }
       body.view-mode .pages { min-width: 0; }
       body.view-mode .page { scroll-margin-top: 0; }
@@ -640,7 +793,7 @@
 <body>
   <div id="loader-overlay">
     <div class="loader-card">
-      <div class="brand-mark" aria-hidden="true"><svg class="banana-svg" viewBox="0 0 128 197.2" xmlns="http://www.w3.org/2000/svg" ><path fill="currentColor" d="M111.7,105.9c-1.7-5.3-4-9-8.1-13c-5.4-5.1-11.5-8.1-20.2-9.8c-2-0.4-3.6-0.8-3.5-0.9c0.1-0.1,1.7-1,3.6-2 c6.9-3.5,11.3-8.5,13.8-15.7c1.2-3.3,1.2-3.4,1.2-8.5c0-4.5-0.1-5.5-0.8-7.7c-2.3-7.3-7.3-12.8-14.2-15.7 c-8.7-3.6-24.9-6.4-37.5-6.4c-3.4,0-4.3,0.5-4.3,2.3c0,0.9,0.6,1.7,4.8,5.9c7.1,7.2,10.8,9.8,17.4,12.2c4.1,1.6,4.2,1.7,4.5,6.7 c0.2,5.7-1.2,9.7-5,14.3c-2,2.4-5.8,5.3-6.5,5c-0.6-0.2-2.9-3.2-5-6.5C50.8,64.6,49,61,47.6,58c-1.4-3-2.8-5.7-3.3-6.1 c-1.7-1.5-4.4-0.7-10.4,3c-11,6.8-16.8,13.6-14.2,16.7c0.3,0.4,2.2,1.4,4.3,2.3c10.5,4.6,14,8,15,14.3c0.8,5.5-0.6,11.3-5.9,23.6 c-5,11.5-6.8,20.3-6.4,31.2c0.4,12.8,4.2,22.6,11.9,30.5c1.6,1.6,3.7,3.6,4.8,4.4l0,0c2.1,1.6,3.5,1.8,4.5,0.9 c0.8-0.7,0.8-1.7-0.5-6.6c-3.8-14.6-2-21.8,8.8-36.3c7.5-10.1,9.7-15,10.1-22.5c0.1-2.3,0.3-3.7,0.6-3.7c0.2,0,1.4,0.7,2.6,1.5 c1.3,0.8,5.3,3,9,4.8c3.7,1.8,6.8,3.4,6.8,3.6c0,0.1-2.9,1.7-6.4,3.5c-3.6,1.8-7.4,3.9-8.6,4.6c-3.1,2.1-7,5.9-9.1,9.1 c-2.8,4.2-4.8,10.1-4.1,12.5c0.4,1.7,1.7,1.8,6.8,0.1c2.1-0.7,6.8-1.3,14.3-1.9c2.7-0.2,5.1-0.5,5.4-0.7c0.3-0.1,1.9-0.7,3.7-1.1 c6.3-1.7,13-5.6,17-10C112.2,127.2,114.9,116,111.7,105.9z M94.1,56.7c-0.1,1.2-0.3,2.4-0.5,3.3c-1,4.6-3.2,10-6.9,12.9 c-2.6,2-5.8,3.5-8.6,4.5c-3.7,1.3-11.9,0.7-11.9,0.7s9.2-3,14.9-14.1c2.8-6.5,2.6-14.3,2.6-14.3l5.8,0.9 C92.3,51.1,94.4,53.7,94.1,56.7z M48.7,30.5c0,0,17.4-0.9,34.6,7.2c3.5,1.7,8.2,5,10.4,10c0.2,0.4-0.2,0.8-0.7,0.7 c-1-0.3-5-1.6-7.1-1.8C53.1,43.7,48.7,30.5,48.7,30.5z M70.1,64c3.5-7.8,1.9-16,1.9-16l9.8,1.7c-0.5,6.8-0.9,16-9,22.3 c-5.2,4.1-12.7,2.9-12.7,2.9S67.2,70.3,70.1,64z M25.3,67.8L25.3,67.8c0-1.3,9.1-8.4,11.3-8.8l1.2-0.2l-1,1.5 c-0.6,0.9-1.9,2.2-2.9,3.2C31.5,65.6,25.3,68.7,25.3,67.8z M36.1,158.6c0.2,2.1,0.3,3.8,0.2,3.9c-0.4,0.4-2.4-4.6-3.2-7.7 c-1.4-5.3-1.7-7.6-1.7-14.2c0-10.8,1.1-15.3,7.5-30.7c3.6-8.7,4.7-12.9,4.8-18.3c0-4.5-0.3-6.5-1.8-9.6c-1.6-3.4-4.2-5.9-9.3-8.8 l-2.4-1.4l1.9-1.4c1-0.8,2.4-1.8,3.1-2.3c0.7-0.5,1.5-1,1.8-1c1.4,0,7.1,7.1,9.6,11.9c3.2,6.3,4.6,11.7,4.6,18.5 c0,9.4-2,16.4-8.8,30.9c-1.4,3-3,6.6-3.5,8C36.5,143.1,35.4,151.9,36.1,158.6z M89.6,136.5c-4,3.4-8.6,5.1-17.5,6.6 c-3.2,0.5-6.5,1.1-7.2,1.3l0,0c-2.5,0.6-2.5,0.6-1.8-1.4c1.6-4.1,5-8.3,9.1-11c2.2-1.5,17.1-9.1,17.8-9.1c0.7,0,2.7,2.6,3.1,4 C93.9,129.8,92.3,134.2,89.6,136.5z M105,124.4c-0.1,2.8-0.2,3.1-1.3,4.7c-1.3,1.9-3.6,4.5-4.1,4.5c-0.1,0-0.3-1-0.3-2.1 c-0.2-5.5-3.1-10.6-8.2-13.9c-1.2-0.8-5.7-3.2-10.1-5.3c-4.4-2.2-8.9-4.5-10-5.2c-2.9-1.9-6.4-5.3-8.7-8.2c-2.3-3.1-3.1-3.6-4.4-2.6 c-0.5,0.4-0.9,1-1,1.3c-0.1,0.3,0.5,1.8,1.2,3.3c0.9,1.8,7,11.3-9.6,35.8c-3.5,5.1-6.3,10.1-7.6,15.3l0,0c-0.4,1.6-0.8,4.2-0.9,7.4 l-0.2,4.9l-0.5-3.4c-1.6-9.7-0.1-18.3,5.1-29.6c5.2-11.1,7-16,8.3-22.2c0.7-3.3,0.6-5.7,0.8-9.5c0.1-3.9-1-8.3-1.8-11.4 c-0.6-2.5-1.5-4.6-1.5-5.8l2.2,2l2,1.8c6.3,5.5,12.4,8.8,26.6,14.2c3.8,1.5,8.4,3.4,10.1,4.3C100.7,109.1,105.4,115.8,105,124.4z M107.3,115l-0.1,2l-1.1-2.4c-3.3-7.5-9-11.6-22.8-16.8C70,92.9,59.7,87.1,58,86c-5.5-3.6-8.2-6.6-12.6-12.4 c-1.8-2.3-4.1-5.1-5.1-6.3c-1.8-1.9-1.9-2.1-1.5-2.7c0.2-0.3,1.1-1.5,1.8-2.6c0.9-1.2,1.6-2,2-2c0.4,0,1.1,1,2.5,3.7 c4.2,8.3,10,13.1,13.5,15.6c5.2,3.7,15.1,6.1,18.7,7.1c7.4,2.1,10.2,3.6,14.1,5.4c8.2,3.8,13.8,10.6,15.6,18.8l0,0 C107.2,111.9,107.4,113.9,107.3,115z"/></svg></div>
+      <div class="brand-mark" aria-hidden="true">BA</div>
       <div class="brand-word">Bananas Agency</div>
       <p class="muted">Cargando reporte</p>
     </div>
@@ -648,7 +801,7 @@
 
   <div id="login-overlay">
     <div class="login-card">
-      <div class="brand-mark" aria-hidden="true"><svg class="banana-svg" viewBox="0 0 128 197.2" xmlns="http://www.w3.org/2000/svg" ><path fill="currentColor" d="M111.7,105.9c-1.7-5.3-4-9-8.1-13c-5.4-5.1-11.5-8.1-20.2-9.8c-2-0.4-3.6-0.8-3.5-0.9c0.1-0.1,1.7-1,3.6-2 c6.9-3.5,11.3-8.5,13.8-15.7c1.2-3.3,1.2-3.4,1.2-8.5c0-4.5-0.1-5.5-0.8-7.7c-2.3-7.3-7.3-12.8-14.2-15.7 c-8.7-3.6-24.9-6.4-37.5-6.4c-3.4,0-4.3,0.5-4.3,2.3c0,0.9,0.6,1.7,4.8,5.9c7.1,7.2,10.8,9.8,17.4,12.2c4.1,1.6,4.2,1.7,4.5,6.7 c0.2,5.7-1.2,9.7-5,14.3c-2,2.4-5.8,5.3-6.5,5c-0.6-0.2-2.9-3.2-5-6.5C50.8,64.6,49,61,47.6,58c-1.4-3-2.8-5.7-3.3-6.1 c-1.7-1.5-4.4-0.7-10.4,3c-11,6.8-16.8,13.6-14.2,16.7c0.3,0.4,2.2,1.4,4.3,2.3c10.5,4.6,14,8,15,14.3c0.8,5.5-0.6,11.3-5.9,23.6 c-5,11.5-6.8,20.3-6.4,31.2c0.4,12.8,4.2,22.6,11.9,30.5c1.6,1.6,3.7,3.6,4.8,4.4l0,0c2.1,1.6,3.5,1.8,4.5,0.9 c0.8-0.7,0.8-1.7-0.5-6.6c-3.8-14.6-2-21.8,8.8-36.3c7.5-10.1,9.7-15,10.1-22.5c0.1-2.3,0.3-3.7,0.6-3.7c0.2,0,1.4,0.7,2.6,1.5 c1.3,0.8,5.3,3,9,4.8c3.7,1.8,6.8,3.4,6.8,3.6c0,0.1-2.9,1.7-6.4,3.5c-3.6,1.8-7.4,3.9-8.6,4.6c-3.1,2.1-7,5.9-9.1,9.1 c-2.8,4.2-4.8,10.1-4.1,12.5c0.4,1.7,1.7,1.8,6.8,0.1c2.1-0.7,6.8-1.3,14.3-1.9c2.7-0.2,5.1-0.5,5.4-0.7c0.3-0.1,1.9-0.7,3.7-1.1 c6.3-1.7,13-5.6,17-10C112.2,127.2,114.9,116,111.7,105.9z M94.1,56.7c-0.1,1.2-0.3,2.4-0.5,3.3c-1,4.6-3.2,10-6.9,12.9 c-2.6,2-5.8,3.5-8.6,4.5c-3.7,1.3-11.9,0.7-11.9,0.7s9.2-3,14.9-14.1c2.8-6.5,2.6-14.3,2.6-14.3l5.8,0.9 C92.3,51.1,94.4,53.7,94.1,56.7z M48.7,30.5c0,0,17.4-0.9,34.6,7.2c3.5,1.7,8.2,5,10.4,10c0.2,0.4-0.2,0.8-0.7,0.7 c-1-0.3-5-1.6-7.1-1.8C53.1,43.7,48.7,30.5,48.7,30.5z M70.1,64c3.5-7.8,1.9-16,1.9-16l9.8,1.7c-0.5,6.8-0.9,16-9,22.3 c-5.2,4.1-12.7,2.9-12.7,2.9S67.2,70.3,70.1,64z M25.3,67.8L25.3,67.8c0-1.3,9.1-8.4,11.3-8.8l1.2-0.2l-1,1.5 c-0.6,0.9-1.9,2.2-2.9,3.2C31.5,65.6,25.3,68.7,25.3,67.8z M36.1,158.6c0.2,2.1,0.3,3.8,0.2,3.9c-0.4,0.4-2.4-4.6-3.2-7.7 c-1.4-5.3-1.7-7.6-1.7-14.2c0-10.8,1.1-15.3,7.5-30.7c3.6-8.7,4.7-12.9,4.8-18.3c0-4.5-0.3-6.5-1.8-9.6c-1.6-3.4-4.2-5.9-9.3-8.8 l-2.4-1.4l1.9-1.4c1-0.8,2.4-1.8,3.1-2.3c0.7-0.5,1.5-1,1.8-1c1.4,0,7.1,7.1,9.6,11.9c3.2,6.3,4.6,11.7,4.6,18.5 c0,9.4-2,16.4-8.8,30.9c-1.4,3-3,6.6-3.5,8C36.5,143.1,35.4,151.9,36.1,158.6z M89.6,136.5c-4,3.4-8.6,5.1-17.5,6.6 c-3.2,0.5-6.5,1.1-7.2,1.3l0,0c-2.5,0.6-2.5,0.6-1.8-1.4c1.6-4.1,5-8.3,9.1-11c2.2-1.5,17.1-9.1,17.8-9.1c0.7,0,2.7,2.6,3.1,4 C93.9,129.8,92.3,134.2,89.6,136.5z M105,124.4c-0.1,2.8-0.2,3.1-1.3,4.7c-1.3,1.9-3.6,4.5-4.1,4.5c-0.1,0-0.3-1-0.3-2.1 c-0.2-5.5-3.1-10.6-8.2-13.9c-1.2-0.8-5.7-3.2-10.1-5.3c-4.4-2.2-8.9-4.5-10-5.2c-2.9-1.9-6.4-5.3-8.7-8.2c-2.3-3.1-3.1-3.6-4.4-2.6 c-0.5,0.4-0.9,1-1,1.3c-0.1,0.3,0.5,1.8,1.2,3.3c0.9,1.8,7,11.3-9.6,35.8c-3.5,5.1-6.3,10.1-7.6,15.3l0,0c-0.4,1.6-0.8,4.2-0.9,7.4 l-0.2,4.9l-0.5-3.4c-1.6-9.7-0.1-18.3,5.1-29.6c5.2-11.1,7-16,8.3-22.2c0.7-3.3,0.6-5.7,0.8-9.5c0.1-3.9-1-8.3-1.8-11.4 c-0.6-2.5-1.5-4.6-1.5-5.8l2.2,2l2,1.8c6.3,5.5,12.4,8.8,26.6,14.2c3.8,1.5,8.4,3.4,10.1,4.3C100.7,109.1,105.4,115.8,105,124.4z M107.3,115l-0.1,2l-1.1-2.4c-3.3-7.5-9-11.6-22.8-16.8C70,92.9,59.7,87.1,58,86c-5.5-3.6-8.2-6.6-12.6-12.4 c-1.8-2.3-4.1-5.1-5.1-6.3c-1.8-1.9-1.9-2.1-1.5-2.7c0.2-0.3,1.1-1.5,1.8-2.6c0.9-1.2,1.6-2,2-2c0.4,0,1.1,1,2.5,3.7 c4.2,8.3,10,13.1,13.5,15.6c5.2,3.7,15.1,6.1,18.7,7.1c7.4,2.1,10.2,3.6,14.1,5.4c8.2,3.8,13.8,10.6,15.6,18.8l0,0 C107.2,111.9,107.4,113.9,107.3,115z"/></svg></div>
+      <div class="brand-mark" aria-hidden="true">BA</div>
       <div class="brand-word">Bananas Agency</div>
       <p class="muted">Ingresá con Google para editar reportes.</p>
       <button class="btn primary" style="width:100%;" id="btn-login" onclick="window.loginWithGoogle()">Ingresar con Google</button>
@@ -660,13 +813,17 @@
       <div class="topbar-inner">
         <div class="top-row">
           <div class="mini-brand">
-            <div class="mini-logo" aria-hidden="true"><svg class="banana-svg" viewBox="0 0 128 197.2" xmlns="http://www.w3.org/2000/svg" ><path fill="currentColor" d="M111.7,105.9c-1.7-5.3-4-9-8.1-13c-5.4-5.1-11.5-8.1-20.2-9.8c-2-0.4-3.6-0.8-3.5-0.9c0.1-0.1,1.7-1,3.6-2 c6.9-3.5,11.3-8.5,13.8-15.7c1.2-3.3,1.2-3.4,1.2-8.5c0-4.5-0.1-5.5-0.8-7.7c-2.3-7.3-7.3-12.8-14.2-15.7 c-8.7-3.6-24.9-6.4-37.5-6.4c-3.4,0-4.3,0.5-4.3,2.3c0,0.9,0.6,1.7,4.8,5.9c7.1,7.2,10.8,9.8,17.4,12.2c4.1,1.6,4.2,1.7,4.5,6.7 c0.2,5.7-1.2,9.7-5,14.3c-2,2.4-5.8,5.3-6.5,5c-0.6-0.2-2.9-3.2-5-6.5C50.8,64.6,49,61,47.6,58c-1.4-3-2.8-5.7-3.3-6.1 c-1.7-1.5-4.4-0.7-10.4,3c-11,6.8-16.8,13.6-14.2,16.7c0.3,0.4,2.2,1.4,4.3,2.3c10.5,4.6,14,8,15,14.3c0.8,5.5-0.6,11.3-5.9,23.6 c-5,11.5-6.8,20.3-6.4,31.2c0.4,12.8,4.2,22.6,11.9,30.5c1.6,1.6,3.7,3.6,4.8,4.4l0,0c2.1,1.6,3.5,1.8,4.5,0.9 c0.8-0.7,0.8-1.7-0.5-6.6c-3.8-14.6-2-21.8,8.8-36.3c7.5-10.1,9.7-15,10.1-22.5c0.1-2.3,0.3-3.7,0.6-3.7c0.2,0,1.4,0.7,2.6,1.5 c1.3,0.8,5.3,3,9,4.8c3.7,1.8,6.8,3.4,6.8,3.6c0,0.1-2.9,1.7-6.4,3.5c-3.6,1.8-7.4,3.9-8.6,4.6c-3.1,2.1-7,5.9-9.1,9.1 c-2.8,4.2-4.8,10.1-4.1,12.5c0.4,1.7,1.7,1.8,6.8,0.1c2.1-0.7,6.8-1.3,14.3-1.9c2.7-0.2,5.1-0.5,5.4-0.7c0.3-0.1,1.9-0.7,3.7-1.1 c6.3-1.7,13-5.6,17-10C112.2,127.2,114.9,116,111.7,105.9z M94.1,56.7c-0.1,1.2-0.3,2.4-0.5,3.3c-1,4.6-3.2,10-6.9,12.9 c-2.6,2-5.8,3.5-8.6,4.5c-3.7,1.3-11.9,0.7-11.9,0.7s9.2-3,14.9-14.1c2.8-6.5,2.6-14.3,2.6-14.3l5.8,0.9 C92.3,51.1,94.4,53.7,94.1,56.7z M48.7,30.5c0,0,17.4-0.9,34.6,7.2c3.5,1.7,8.2,5,10.4,10c0.2,0.4-0.2,0.8-0.7,0.7 c-1-0.3-5-1.6-7.1-1.8C53.1,43.7,48.7,30.5,48.7,30.5z M70.1,64c3.5-7.8,1.9-16,1.9-16l9.8,1.7c-0.5,6.8-0.9,16-9,22.3 c-5.2,4.1-12.7,2.9-12.7,2.9S67.2,70.3,70.1,64z M25.3,67.8L25.3,67.8c0-1.3,9.1-8.4,11.3-8.8l1.2-0.2l-1,1.5 c-0.6,0.9-1.9,2.2-2.9,3.2C31.5,65.6,25.3,68.7,25.3,67.8z M36.1,158.6c0.2,2.1,0.3,3.8,0.2,3.9c-0.4,0.4-2.4-4.6-3.2-7.7 c-1.4-5.3-1.7-7.6-1.7-14.2c0-10.8,1.1-15.3,7.5-30.7c3.6-8.7,4.7-12.9,4.8-18.3c0-4.5-0.3-6.5-1.8-9.6c-1.6-3.4-4.2-5.9-9.3-8.8 l-2.4-1.4l1.9-1.4c1-0.8,2.4-1.8,3.1-2.3c0.7-0.5,1.5-1,1.8-1c1.4,0,7.1,7.1,9.6,11.9c3.2,6.3,4.6,11.7,4.6,18.5 c0,9.4-2,16.4-8.8,30.9c-1.4,3-3,6.6-3.5,8C36.5,143.1,35.4,151.9,36.1,158.6z M89.6,136.5c-4,3.4-8.6,5.1-17.5,6.6 c-3.2,0.5-6.5,1.1-7.2,1.3l0,0c-2.5,0.6-2.5,0.6-1.8-1.4c1.6-4.1,5-8.3,9.1-11c2.2-1.5,17.1-9.1,17.8-9.1c0.7,0,2.7,2.6,3.1,4 C93.9,129.8,92.3,134.2,89.6,136.5z M105,124.4c-0.1,2.8-0.2,3.1-1.3,4.7c-1.3,1.9-3.6,4.5-4.1,4.5c-0.1,0-0.3-1-0.3-2.1 c-0.2-5.5-3.1-10.6-8.2-13.9c-1.2-0.8-5.7-3.2-10.1-5.3c-4.4-2.2-8.9-4.5-10-5.2c-2.9-1.9-6.4-5.3-8.7-8.2c-2.3-3.1-3.1-3.6-4.4-2.6 c-0.5,0.4-0.9,1-1,1.3c-0.1,0.3,0.5,1.8,1.2,3.3c0.9,1.8,7,11.3-9.6,35.8c-3.5,5.1-6.3,10.1-7.6,15.3l0,0c-0.4,1.6-0.8,4.2-0.9,7.4 l-0.2,4.9l-0.5-3.4c-1.6-9.7-0.1-18.3,5.1-29.6c5.2-11.1,7-16,8.3-22.2c0.7-3.3,0.6-5.7,0.8-9.5c0.1-3.9-1-8.3-1.8-11.4 c-0.6-2.5-1.5-4.6-1.5-5.8l2.2,2l2,1.8c6.3,5.5,12.4,8.8,26.6,14.2c3.8,1.5,8.4,3.4,10.1,4.3C100.7,109.1,105.4,115.8,105,124.4z M107.3,115l-0.1,2l-1.1-2.4c-3.3-7.5-9-11.6-22.8-16.8C70,92.9,59.7,87.1,58,86c-5.5-3.6-8.2-6.6-12.6-12.4 c-1.8-2.3-4.1-5.1-5.1-6.3c-1.8-1.9-1.9-2.1-1.5-2.7c0.2-0.3,1.1-1.5,1.8-2.6c0.9-1.2,1.6-2,2-2c0.4,0,1.1,1,2.5,3.7 c4.2,8.3,10,13.1,13.5,15.6c5.2,3.7,15.1,6.1,18.7,7.1c7.4,2.1,10.2,3.6,14.1,5.4c8.2,3.8,13.8,10.6,15.6,18.8l0,0 C107.2,111.9,107.4,113.9,107.3,115z"/></svg></div>
+            <div class="mini-logo" aria-hidden="true">BA</div>
             <strong>Reporte mensual</strong>
           </div>
           <div class="actions">
             <button class="btn primary" id="btn-share-link" onclick="window.generateShareLink()">Crear link cliente</button>
             <button class="btn danger" id="btn-logout" onclick="window.logout()">Salir</button>
           </div>
+        </div>
+        <div class="global-platform-controls editor-only" aria-label="Redes activas para cliente">
+          <label class="toggle-chip"><input type="checkbox" data-visibility-toggle="platform_ig" checked> Cliente tiene Instagram</label>
+          <label class="toggle-chip"><input type="checkbox" data-visibility-toggle="platform_tt" checked> Cliente tiene TikTok</label>
         </div>
         <nav class="tabs" id="tabs" aria-label="Hojas del reporte"></nav>
       </div>
@@ -680,11 +837,13 @@
         <section class="page active" id="page-1" data-page="1">
           <div class="sheet cover-sheet">
             <div class="cover-logos">
-              <div class="bananas-logo-lockup">
-                <div class="brand-mark" aria-hidden="true"><svg class="banana-svg" viewBox="0 0 128 197.2" xmlns="http://www.w3.org/2000/svg" ><path fill="currentColor" d="M111.7,105.9c-1.7-5.3-4-9-8.1-13c-5.4-5.1-11.5-8.1-20.2-9.8c-2-0.4-3.6-0.8-3.5-0.9c0.1-0.1,1.7-1,3.6-2 c6.9-3.5,11.3-8.5,13.8-15.7c1.2-3.3,1.2-3.4,1.2-8.5c0-4.5-0.1-5.5-0.8-7.7c-2.3-7.3-7.3-12.8-14.2-15.7 c-8.7-3.6-24.9-6.4-37.5-6.4c-3.4,0-4.3,0.5-4.3,2.3c0,0.9,0.6,1.7,4.8,5.9c7.1,7.2,10.8,9.8,17.4,12.2c4.1,1.6,4.2,1.7,4.5,6.7 c0.2,5.7-1.2,9.7-5,14.3c-2,2.4-5.8,5.3-6.5,5c-0.6-0.2-2.9-3.2-5-6.5C50.8,64.6,49,61,47.6,58c-1.4-3-2.8-5.7-3.3-6.1 c-1.7-1.5-4.4-0.7-10.4,3c-11,6.8-16.8,13.6-14.2,16.7c0.3,0.4,2.2,1.4,4.3,2.3c10.5,4.6,14,8,15,14.3c0.8,5.5-0.6,11.3-5.9,23.6 c-5,11.5-6.8,20.3-6.4,31.2c0.4,12.8,4.2,22.6,11.9,30.5c1.6,1.6,3.7,3.6,4.8,4.4l0,0c2.1,1.6,3.5,1.8,4.5,0.9 c0.8-0.7,0.8-1.7-0.5-6.6c-3.8-14.6-2-21.8,8.8-36.3c7.5-10.1,9.7-15,10.1-22.5c0.1-2.3,0.3-3.7,0.6-3.7c0.2,0,1.4,0.7,2.6,1.5 c1.3,0.8,5.3,3,9,4.8c3.7,1.8,6.8,3.4,6.8,3.6c0,0.1-2.9,1.7-6.4,3.5c-3.6,1.8-7.4,3.9-8.6,4.6c-3.1,2.1-7,5.9-9.1,9.1 c-2.8,4.2-4.8,10.1-4.1,12.5c0.4,1.7,1.7,1.8,6.8,0.1c2.1-0.7,6.8-1.3,14.3-1.9c2.7-0.2,5.1-0.5,5.4-0.7c0.3-0.1,1.9-0.7,3.7-1.1 c6.3-1.7,13-5.6,17-10C112.2,127.2,114.9,116,111.7,105.9z M94.1,56.7c-0.1,1.2-0.3,2.4-0.5,3.3c-1,4.6-3.2,10-6.9,12.9 c-2.6,2-5.8,3.5-8.6,4.5c-3.7,1.3-11.9,0.7-11.9,0.7s9.2-3,14.9-14.1c2.8-6.5,2.6-14.3,2.6-14.3l5.8,0.9 C92.3,51.1,94.4,53.7,94.1,56.7z M48.7,30.5c0,0,17.4-0.9,34.6,7.2c3.5,1.7,8.2,5,10.4,10c0.2,0.4-0.2,0.8-0.7,0.7 c-1-0.3-5-1.6-7.1-1.8C53.1,43.7,48.7,30.5,48.7,30.5z M70.1,64c3.5-7.8,1.9-16,1.9-16l9.8,1.7c-0.5,6.8-0.9,16-9,22.3 c-5.2,4.1-12.7,2.9-12.7,2.9S67.2,70.3,70.1,64z M25.3,67.8L25.3,67.8c0-1.3,9.1-8.4,11.3-8.8l1.2-0.2l-1,1.5 c-0.6,0.9-1.9,2.2-2.9,3.2C31.5,65.6,25.3,68.7,25.3,67.8z M36.1,158.6c0.2,2.1,0.3,3.8,0.2,3.9c-0.4,0.4-2.4-4.6-3.2-7.7 c-1.4-5.3-1.7-7.6-1.7-14.2c0-10.8,1.1-15.3,7.5-30.7c3.6-8.7,4.7-12.9,4.8-18.3c0-4.5-0.3-6.5-1.8-9.6c-1.6-3.4-4.2-5.9-9.3-8.8 l-2.4-1.4l1.9-1.4c1-0.8,2.4-1.8,3.1-2.3c0.7-0.5,1.5-1,1.8-1c1.4,0,7.1,7.1,9.6,11.9c3.2,6.3,4.6,11.7,4.6,18.5 c0,9.4-2,16.4-8.8,30.9c-1.4,3-3,6.6-3.5,8C36.5,143.1,35.4,151.9,36.1,158.6z M89.6,136.5c-4,3.4-8.6,5.1-17.5,6.6 c-3.2,0.5-6.5,1.1-7.2,1.3l0,0c-2.5,0.6-2.5,0.6-1.8-1.4c1.6-4.1,5-8.3,9.1-11c2.2-1.5,17.1-9.1,17.8-9.1c0.7,0,2.7,2.6,3.1,4 C93.9,129.8,92.3,134.2,89.6,136.5z M105,124.4c-0.1,2.8-0.2,3.1-1.3,4.7c-1.3,1.9-3.6,4.5-4.1,4.5c-0.1,0-0.3-1-0.3-2.1 c-0.2-5.5-3.1-10.6-8.2-13.9c-1.2-0.8-5.7-3.2-10.1-5.3c-4.4-2.2-8.9-4.5-10-5.2c-2.9-1.9-6.4-5.3-8.7-8.2c-2.3-3.1-3.1-3.6-4.4-2.6 c-0.5,0.4-0.9,1-1,1.3c-0.1,0.3,0.5,1.8,1.2,3.3c0.9,1.8,7,11.3-9.6,35.8c-3.5,5.1-6.3,10.1-7.6,15.3l0,0c-0.4,1.6-0.8,4.2-0.9,7.4 l-0.2,4.9l-0.5-3.4c-1.6-9.7-0.1-18.3,5.1-29.6c5.2-11.1,7-16,8.3-22.2c0.7-3.3,0.6-5.7,0.8-9.5c0.1-3.9-1-8.3-1.8-11.4 c-0.6-2.5-1.5-4.6-1.5-5.8l2.2,2l2,1.8c6.3,5.5,12.4,8.8,26.6,14.2c3.8,1.5,8.4,3.4,10.1,4.3C100.7,109.1,105.4,115.8,105,124.4z M107.3,115l-0.1,2l-1.1-2.4c-3.3-7.5-9-11.6-22.8-16.8C70,92.9,59.7,87.1,58,86c-5.5-3.6-8.2-6.6-12.6-12.4 c-1.8-2.3-4.1-5.1-5.1-6.3c-1.8-1.9-1.9-2.1-1.5-2.7c0.2-0.3,1.1-1.5,1.8-2.6c0.9-1.2,1.6-2,2-2c0.4,0,1.1,1,2.5,3.7 c4.2,8.3,10,13.1,13.5,15.6c5.2,3.7,15.1,6.1,18.7,7.1c7.4,2.1,10.2,3.6,14.1,5.4c8.2,3.8,13.8,10.6,15.6,18.8l0,0 C107.2,111.9,107.4,113.9,107.3,115z"/></svg></div>
-                <div class="brand-word">Bananas Agency</div>
+              <div class="logo-box bananas-logo-box" id="bananas-logo-box">
+                <div class="bananas-logo-lockup">
+                  <div class="brand-mark" aria-hidden="true">BA</div>
+                  <div class="brand-word">Bananas Agency</div>
+                </div>
               </div>
-              <div class="client-logo-box" id="client-logo-preview" data-image-preview="client_logo">Logo cliente</div>
+              <div class="logo-box client-logo-box" id="client-logo-preview" data-image-preview="client_logo">Logo cliente</div>
             </div>
 
             <div>
@@ -694,8 +853,14 @@
             </div>
 
             <div class="grid two cover-edit-fields editor-only">
-              <div class="field"><label class="label">Logo cliente</label><input class="input" type="file" accept="image/*" data-image-key="client_logo"></div>
-              <div class="field"><label class="label">Mes / Año</label><input class="input" data-key="month_year" placeholder="Junio 2026"></div>
+              <div class="logo-panel">
+                <div class="field" data-visible-key="reach_total_block"><div class="hidden-note">Oculto para cliente</div><label class="label">Logo cliente</label><input class="input" type="file" accept="image/*" data-image-key="client_logo"></div>
+                <div class="field"><label class="label">Fondo caja logo cliente</label><div class="color-control"><input type="color" data-color-key="client_logo_bg" value="#202020"><input class="input" data-color-hex="client_logo_bg" data-key="client_logo_bg" placeholder="#202020"></div></div>
+              </div>
+              <div class="logo-panel">
+                <div class="field"><label class="label">Fondo caja Bananas</label><div class="color-control"><input type="color" data-color-key="bananas_logo_bg" value="#202020"><input class="input" data-color-hex="bananas_logo_bg" data-key="bananas_logo_bg" placeholder="#202020"></div></div>
+                <div class="field"><label class="label">Mes / Año</label><input class="input" data-key="month_year" placeholder="Junio 2026"></div>
+              </div>
               <div class="field"><label class="label">Nombre del cliente</label><input class="input" data-key="client_name" placeholder="Nombre del cliente"></div>
               <div class="field"><label class="label">Fecha de entrega</label><input class="input" data-key="delivery_date" placeholder="1 de junio de 2026"></div>
             </div>
@@ -714,22 +879,24 @@
               <textarea class="textarea" data-key="executive_overview" placeholder="Resumen directo del mes: qué pasó, qué mejoró, qué bajó y cuál es la lectura general."></textarea>
             </div>
             <div class="grid two">
-              <div class="card ig">
-                <div class="platform-title"><h3>Instagram</h3><span class="badge ig">Instagram</span></div>
+              <div class="card ig" data-platform="ig" data-visible-key="summary_ig">
+                <div class="hidden-note">Oculto para cliente</div>
+                <div class="platform-title"><h3>Instagram</h3></div>
                 <div class="summary-list">
-                  <div class="summary-item"><div class="summary-label">Alcance vs mes anterior</div><input class="input" data-key="ig_exec_reach" placeholder="+18% alcance vs mes anterior"></div>
-                  <div class="summary-item"><div class="summary-label">Seguidores nuevos</div><input class="input" data-key="ig_exec_followers" placeholder="+6% seguidores nuevos"></div>
-                  <div class="summary-item"><div class="summary-label">Formato más fuerte</div><input class="input" data-key="ig_exec_best_format" placeholder="Reels de producto fueron el formato más fuerte"></div>
-                  <div class="summary-item"><div class="summary-label">Engagement</div><input class="input" data-key="ig_exec_engagement" placeholder="Engagement estable"></div>
+                  <div class="summary-item" data-platform="ig" data-visible-key="ig_exec_reach_item"><div class="hidden-note">Oculto para cliente</div><div class="summary-label">Alcance vs mes anterior</div><input class="input" data-key="ig_exec_reach" placeholder="+18% alcance vs mes anterior"></div>
+                  <div class="summary-item" data-platform="ig" data-visible-key="ig_exec_followers_item"><div class="hidden-note">Oculto para cliente</div><div class="summary-label">Seguidores nuevos</div><input class="input" data-key="ig_exec_followers" placeholder="+6% seguidores nuevos"></div>
+                  <div class="summary-item" data-platform="ig" data-visible-key="ig_exec_best_format_item"><div class="hidden-note">Oculto para cliente</div><div class="summary-label">Formato más fuerte</div><input class="input" data-key="ig_exec_best_format" placeholder="Reels de producto fueron el formato más fuerte"></div>
+                  <div class="summary-item" data-platform="ig" data-visible-key="ig_exec_engagement_item"><div class="hidden-note">Oculto para cliente</div><div class="summary-label">Engagement</div><input class="input" data-key="ig_exec_engagement" placeholder="Engagement estable"></div>
                 </div>
               </div>
-              <div class="card tt">
-                <div class="platform-title"><h3>TikTok</h3><span class="badge tt">TikTok</span></div>
+              <div class="card tt" data-platform="tt" data-visible-key="summary_tt">
+                <div class="hidden-note">Oculto para cliente</div>
+                <div class="platform-title"><h3>TikTok</h3></div>
                 <div class="summary-list">
-                  <div class="summary-item"><div class="summary-label">Alcance vs mes anterior</div><input class="input" data-key="tt_exec_reach" placeholder="+32% alcance vs mes anterior"></div>
-                  <div class="summary-item"><div class="summary-label">Seguidores nuevos</div><input class="input" data-key="tt_exec_followers" placeholder="+6% seguidores nuevos"></div>
-                  <div class="summary-item"><div class="summary-label">Formato más fuerte</div><input class="input" data-key="tt_exec_best_format" placeholder="TikToks de producto fueron más fuertes"></div>
-                  <div class="summary-item"><div class="summary-label">Comentarios y visualizaciones</div><input class="input" data-key="tt_exec_comments_views" placeholder="Muchos comentarios y visualizaciones"></div>
+                  <div class="summary-item" data-platform="tt" data-visible-key="tt_exec_reach_item"><div class="hidden-note">Oculto para cliente</div><div class="summary-label">Alcance vs mes anterior</div><input class="input" data-key="tt_exec_reach" placeholder="+32% alcance vs mes anterior"></div>
+                  <div class="summary-item" data-platform="tt" data-visible-key="tt_exec_followers_item"><div class="hidden-note">Oculto para cliente</div><div class="summary-label">Seguidores nuevos</div><input class="input" data-key="tt_exec_followers" placeholder="+6% seguidores nuevos"></div>
+                  <div class="summary-item" data-platform="tt" data-visible-key="tt_exec_best_format_item"><div class="hidden-note">Oculto para cliente</div><div class="summary-label">Formato más fuerte</div><input class="input" data-key="tt_exec_best_format" placeholder="TikToks de producto fueron más fuertes"></div>
+                  <div class="summary-item" data-platform="tt" data-visible-key="tt_exec_comments_views_item"><div class="hidden-note">Oculto para cliente</div><div class="summary-label">Comentarios y visualizaciones</div><input class="input" data-key="tt_exec_comments_views" placeholder="Muchos comentarios y visualizaciones"></div>
                 </div>
               </div>
             </div>
@@ -747,11 +914,21 @@
               <h2 class="sheet-title">Métricas generales</h2>
               <p class="sheet-subtitle">Comparativa entre mes actual, mes anterior y variación porcentual.</p>
             </div>
-            <div class="metric-table-wrap">
-              <table id="metrics-table">
-                <thead><tr><th>Métrica</th><th>Mes actual</th><th>Mes anterior</th><th>Variación</th></tr></thead>
-                <tbody id="metrics-body"></tbody>
-              </table>
+            <div class="grid two">
+              <div class="card ig" data-platform="ig" data-visible-key="metrics_ig">
+                <div class="hidden-note">Oculto para cliente</div>
+                <div class="platform-title"><h3>Instagram</h3></div>
+                <div class="metric-table-wrap">
+                  <table><thead><tr><th>Métrica</th><th>Mes actual</th><th>Mes anterior</th><th>Variación</th></tr></thead><tbody id="metrics-ig-body"></tbody></table>
+                </div>
+              </div>
+              <div class="card tt" data-platform="tt" data-visible-key="metrics_tt">
+                <div class="hidden-note">Oculto para cliente</div>
+                <div class="platform-title"><h3>TikTok</h3></div>
+                <div class="metric-table-wrap">
+                  <table><thead><tr><th>Métrica</th><th>Mes actual</th><th>Mes anterior</th><th>Variación</th></tr></thead><tbody id="metrics-tt-body"></tbody></table>
+                </div>
+              </div>
             </div>
           </div>
         </section>
@@ -765,14 +942,14 @@
             </div>
             <div class="grid two">
               <div class="card">
-                <div class="field"><label class="label">Alcance total</label><input class="input number" type="number" data-key="reach_total" data-chart="reach" placeholder="0"></div>
-                <div class="field"><label class="label">Alcance promedio por post</label><input class="input number" type="number" data-key="reach_avg_post" data-chart="reach" placeholder="0"></div>
-                <div class="field"><label class="label">Alcance promedio por reel</label><input class="input number" type="number" data-key="reach_avg_reel" data-chart="reach" placeholder="0"></div>
-                <div class="field"><label class="label">Alcance stories</label><input class="input number" type="number" data-key="reach_stories" data-chart="reach" placeholder="0"></div>
+                <div class="field" data-visible-key="reach_total_block"><div class="hidden-note">Oculto para cliente</div><label class="label">Alcance total</label><input class="input number" type="number" data-key="reach_total" data-chart="reach" placeholder="0"></div>
+                <div class="field" data-visible-key="reach_avg_post_block"><div class="hidden-note">Oculto para cliente</div><label class="label">Alcance promedio por post</label><input class="input number" type="number" data-key="reach_avg_post" data-chart="reach" placeholder="0"></div>
+                <div class="field" data-visible-key="reach_avg_reel_block"><div class="hidden-note">Oculto para cliente</div><label class="label">Alcance promedio por reel</label><input class="input number" type="number" data-key="reach_avg_reel" data-chart="reach" placeholder="0"></div>
+                <div class="field" data-visible-key="reach_stories_block"><div class="hidden-note">Oculto para cliente</div><label class="label">Alcance stories</label><input class="input number" type="number" data-key="reach_stories" data-chart="reach" placeholder="0"></div>
               </div>
               <div class="card">
-                <h3>Gráfico simple</h3>
-                <div class="bar-chart" id="reach-chart"></div>
+                <h3>Lectura visual</h3>
+                <div class="reach-visual" id="reach-chart"></div>
               </div>
             </div>
             <div class="card yellow" style="margin-top:14px;">
@@ -782,8 +959,9 @@
           </div>
         </section>
 
-        <section class="page" id="page-5" data-page="5">
+        <section class="page" id="page-5" data-page="5" data-platform="ig" data-visible-key="platform_ig">
           <div class="sheet">
+            <div class="hidden-note">Instagram oculto para cliente</div>
             <div class="sheet-head">
               <div class="sheet-kicker">Hoja 5</div>
               <h2 class="sheet-title">Instagram en detalle</h2>
@@ -801,8 +979,9 @@
           </div>
         </section>
 
-        <section class="page" id="page-6" data-page="6">
+        <section class="page" id="page-6" data-page="6" data-platform="tt" data-visible-key="platform_tt">
           <div class="sheet">
+            <div class="hidden-note">TikTok oculto para cliente</div>
             <div class="sheet-head">
               <div class="sheet-kicker">Hoja 6</div>
               <h2 class="sheet-title">TikTok en detalle</h2>
@@ -830,8 +1009,8 @@
               <p class="sheet-subtitle">Top 3 de Instagram, Top 3 de TikTok y explicación de por qué funcionaron.</p>
             </div>
             <div class="grid two">
-              <div class="card ig"><h3>Instagram</h3><div id="ig-top-list"></div></div>
-              <div class="card tt"><h3>TikTok</h3><div id="tt-top-list"></div></div>
+              <div class="card ig" data-platform="ig" data-visible-key="top_ig"><div class="hidden-note">Oculto para cliente</div><h3>Instagram</h3><div class="content-list" id="ig-top-list"></div></div>
+              <div class="card tt" data-platform="tt" data-visible-key="top_tt"><div class="hidden-note">Oculto para cliente</div><h3>TikTok</h3><div class="content-list" id="tt-top-list"></div></div>
             </div>
           </div>
         </section>
@@ -843,13 +1022,15 @@
               <h2 class="sheet-title">Contenido que menos funcionó</h2>
             </div>
             <div class="grid two">
-              <div class="card ig">
+              <div class="card ig" data-platform="ig" data-visible-key="low_ig">
+                <div class="hidden-note">Oculto para cliente</div>
                 <h3>Instagram</h3>
                 <div class="image-preview" data-image-preview="ig_low_image"></div>
                 <div class="field editor-only"><label class="label">Mostrar el post</label><input class="input" type="file" accept="image/*" data-image-key="ig_low_image"></div>
                 <div class="field"><label class="label">Análisis</label><textarea class="textarea" data-key="ig_low_analysis" placeholder="Bajo engagement en carruseles estáticos."></textarea></div>
               </div>
-              <div class="card tt">
+              <div class="card tt" data-platform="tt" data-visible-key="low_tt">
+                <div class="hidden-note">Oculto para cliente</div>
                 <h3>TikTok</h3>
                 <div class="image-preview" data-image-preview="tt_low_image"></div>
                 <div class="field editor-only"><label class="label">Mostrar captura del video</label><input class="input" type="file" accept="image/*" data-image-key="tt_low_image"></div>
@@ -866,7 +1047,8 @@
               <h2 class="sheet-title">Conclusiones y plan del próximo mes</h2>
             </div>
             <div class="grid two">
-              <div class="card ig">
+              <div class="card ig" data-platform="ig" data-visible-key="low_ig">
+                <div class="hidden-note">Oculto para cliente</div>
                 <h3>Instagram</h3>
                 <div class="plan-columns">
                   <div class="plan-card"><h4>Lo que vamos a mantener</h4><textarea class="textarea" data-key="ig_plan_keep" placeholder="Más reels de producto&#10;Más carruseles dinámicos&#10;CTA claros"></textarea></div>
@@ -874,7 +1056,8 @@
                   <div class="plan-card"><h4>Lo que vamos a testear</h4><textarea class="textarea" data-key="ig_plan_test" placeholder="Nuevo formato comparativo&#10;Reel testimonial"></textarea></div>
                 </div>
               </div>
-              <div class="card tt">
+              <div class="card tt" data-platform="tt" data-visible-key="low_tt">
+                <div class="hidden-note">Oculto para cliente</div>
                 <h3>TikTok</h3>
                 <div class="plan-columns">
                   <div class="plan-card"><h4>Lo que vamos a mantener</h4><textarea class="textarea" data-key="tt_plan_keep" placeholder="Más TikToks de producto&#10;Hooks fuertes"></textarea></div>
@@ -894,7 +1077,7 @@
             </div>
             <div class="card yellow">
               <h3>Conclusión honesta</h3>
-              <textarea class="textarea" data-key="honest_conclusion" placeholder="Análisis profundo de lo que está viendo el cliente: puntos positivos, puntos negativos, causas, riesgos y próximos movimientos."></textarea>
+              <textarea class="textarea honest-textarea" data-key="honest_conclusion" placeholder="Análisis profundo de lo que está viendo el cliente: puntos positivos, puntos negativos, causas, riesgos y próximos movimientos."></textarea>
             </div>
             <div class="card" style="text-align:center;margin-top:14px;padding:32px 18px;background:var(--accent);color:#0b0b0b;border-color:var(--accent);">
               <div class="brand-mark" aria-hidden="true" style="background:#0b0b0b;color:var(--accent);">BA</div>
@@ -1026,23 +1209,25 @@
       'Portada', 'Resumen ejecutivo', 'Métricas generales', 'Alcance y exposición', 'Instagram en detalle',
       'TikTok en detalle', 'Top contenidos', 'Contenido que menos funcionó', 'Plan próximo mes', 'Conclusión honesta y cierre'
     ];
-    const METRICS = [
-      { section: 'Instagram' },
-      { key: 'ig_reach_total', label: 'Alcance total' },
-      { key: 'ig_reels_views', label: 'Visualizaciones de reels' },
-      { key: 'ig_total_interactions', label: 'Interacciones totales' },
-      { key: 'ig_saves', label: 'Guardados' },
-      { key: 'ig_shares', label: 'Compartidos' },
-      { key: 'ig_new_followers', label: 'Seguidores nuevos' },
-      { key: 'ig_growth_percent', label: '% crecimiento' },
-      { section: 'TikTok' },
-      { key: 'tt_total_views', label: 'Visualizaciones totales' },
-      { key: 'tt_avg_video_views', label: 'Visualizaciones promedio por video' },
-      { key: 'tt_likes', label: 'Likes' },
-      { key: 'tt_comments', label: 'Comentarios' },
-      { key: 'tt_shares', label: 'Compartidos' },
-      { key: 'tt_new_followers', label: 'Seguidores nuevos' }
-    ];
+    const METRICS = {
+      ig: [
+        { key: 'ig_reach_total', label: 'Alcance total' },
+        { key: 'ig_reels_views', label: 'Visualizaciones de reels' },
+        { key: 'ig_total_interactions', label: 'Interacciones totales' },
+        { key: 'ig_saves', label: 'Guardados' },
+        { key: 'ig_shares', label: 'Compartidos' },
+        { key: 'ig_new_followers', label: 'Seguidores nuevos' },
+        { key: 'ig_growth_percent', label: '% crecimiento' }
+      ],
+      tt: [
+        { key: 'tt_total_views', label: 'Visualizaciones totales' },
+        { key: 'tt_avg_video_views', label: 'Visualizaciones promedio por video' },
+        { key: 'tt_likes', label: 'Likes' },
+        { key: 'tt_comments', label: 'Comentarios' },
+        { key: 'tt_shares', label: 'Compartidos' },
+        { key: 'tt_new_followers', label: 'Seguidores nuevos' }
+      ]
+    };
     const chartLabels = [
       ['reach_total', 'Alcance total'],
       ['reach_avg_post', 'Promedio por post'],
@@ -1051,6 +1236,7 @@
     ];
     let currentPage = 1;
     let imageStore = {};
+    let visibility = { platform_ig: true, platform_tt: true };
 
     function el(tag, attrs = {}, children = []) {
       const node = document.createElement(tag);
@@ -1061,6 +1247,84 @@
       });
       children.forEach(child => node.appendChild(typeof child === 'string' ? document.createTextNode(child) : child));
       return node;
+    }
+
+    function isVisible(key) {
+      return visibility[key] !== false;
+    }
+
+    function setVisibility(key, value) {
+      visibility[key] = Boolean(value);
+      const toggle = document.querySelector(`[data-visibility-toggle="${key}"]`);
+      if (toggle) toggle.checked = visibility[key];
+      applyVisibilityToDom();
+    }
+
+    function createVisibilityControl(key, label = 'Mostrar en cliente', small = false) {
+      const wrap = el('label', { class: `visibility-toggle${small ? ' small' : ''} editor-only` });
+      const input = el('input', { type: 'checkbox', 'data-visibility-toggle': key });
+      input.checked = isVisible(key);
+      input.addEventListener('change', () => setVisibility(key, input.checked));
+      wrap.appendChild(input);
+      wrap.appendChild(document.createTextNode(label));
+      return wrap;
+    }
+
+    function initVisibilityControls() {
+      document.querySelectorAll('[data-visible-key]').forEach(node => {
+        if (node.querySelector(':scope > .visibility-toggle')) return;
+        const key = node.dataset.visibleKey;
+        const small = node.classList.contains('summary-item') || node.tagName === 'TR';
+        node.insertBefore(createVisibilityControl(key, 'Mostrar en cliente', small), node.firstChild);
+      });
+      document.querySelectorAll('[data-visibility-toggle]').forEach(toggle => {
+        const key = toggle.dataset.visibilityToggle;
+        toggle.checked = isVisible(key);
+        toggle.addEventListener('change', () => setVisibility(key, toggle.checked));
+      });
+    }
+
+    function hasFilledValue(container) {
+      const fields = [...container.querySelectorAll('input[data-key], textarea[data-key]')].filter(input => input.type !== 'file');
+      const hasText = fields.some(input => String(input.value || '').trim() !== '');
+      const hasImg = [...container.querySelectorAll('[data-image-preview]')].some(prev => prev.classList.contains('has-image'));
+      return hasText || hasImg;
+    }
+
+    function applyVisibilityToDom() {
+      const view = document.body.classList.contains('view-mode');
+      document.querySelectorAll('[data-visible-key]').forEach(node => {
+        const key = node.dataset.visibleKey;
+        const platform = node.dataset.platform;
+        const hiddenByKey = !isVisible(key);
+        const hiddenByPlatform = platform && !isVisible(`platform_${platform}`);
+        const hidden = hiddenByKey || hiddenByPlatform;
+        node.classList.toggle('hidden-in-report', hidden && !view);
+        node.classList.toggle('hide-from-client', hidden && view);
+      });
+
+      if (view) {
+        document.querySelectorAll('[data-metric-row]').forEach(row => {
+          const key = row.dataset.metricRow;
+          const current = document.querySelector(`[data-metric-current="${key}"]`)?.value?.trim();
+          const previous = document.querySelector(`[data-metric-previous="${key}"]`)?.value?.trim();
+          const noData = !current && !previous;
+          row.classList.toggle('hide-from-client', noData || row.classList.contains('hide-from-client'));
+        });
+        document.querySelectorAll('.card, .summary-item, .content-card').forEach(container => {
+          if (container.classList.contains('hide-from-client')) return;
+          const hasEditableContent = container.querySelector('input[data-key], textarea[data-key], [data-image-preview]');
+          if (hasEditableContent && !hasFilledValue(container)) container.classList.add('hide-from-client');
+        });
+      }
+
+      document.querySelectorAll('#client-nav a').forEach(link => {
+        const page = document.querySelector(link.getAttribute('href'));
+        if (!page) return;
+        const platform = page.dataset.platform;
+        const hidden = platform && !isVisible(`platform_${platform}`);
+        link.classList.toggle('hide-from-client', hidden);
+      });
     }
 
     function initTabs() {
@@ -1081,21 +1345,16 @@
     }
 
     function initMetricsTable() {
-      const body = document.getElementById('metrics-body');
-      METRICS.forEach(item => {
-        if (item.section) {
-          const tr = el('tr');
-          const td = el('td', { class: 'platform-row', colspan: '4', text: item.section });
-          tr.appendChild(td);
+      Object.entries(METRICS).forEach(([platform, items]) => {
+        const body = document.getElementById(`metrics-${platform}-body`);
+        items.forEach(item => {
+          const tr = el('tr', { 'data-platform': platform, 'data-visible-key': `${item.key}_metric`, 'data-metric-row': item.key });
+          tr.appendChild(el('td', {}, [el('span', { text: item.label })]));
+          tr.appendChild(el('td', {}, [el('input', { class: 'table-input', type: 'number', step: '0.01', 'data-key': `${item.key}_current`, 'data-metric-current': item.key, placeholder: '0' })]));
+          tr.appendChild(el('td', {}, [el('input', { class: 'table-input', type: 'number', step: '0.01', 'data-key': `${item.key}_previous`, 'data-metric-previous': item.key, placeholder: '0' })]));
+          tr.appendChild(el('td', {}, [el('span', { class: 'variation neutral', 'data-variation': item.key, text: '—' })]));
           body.appendChild(tr);
-          return;
-        }
-        const tr = el('tr');
-        tr.appendChild(el('td', { text: item.label }));
-        tr.appendChild(el('td', {}, [el('input', { class: 'table-input', type: 'text', inputmode: 'decimal', 'data-key': `${item.key}_current`, 'data-metric-current': item.key, placeholder: '0' })]));
-        tr.appendChild(el('td', {}, [el('input', { class: 'table-input', type: 'text', inputmode: 'decimal', 'data-key': `${item.key}_previous`, 'data-metric-previous': item.key, placeholder: '0' })]));
-        tr.appendChild(el('td', {}, [el('span', { class: 'variation neutral', 'data-variation': item.key, text: '—' })]));
-        body.appendChild(tr);
+        });
       });
     }
 
@@ -1108,7 +1367,8 @@
         const wrap = document.getElementById(target);
         for (let i = 1; i <= 3; i++) {
           const key = `${prefix}_top_${i}`;
-          const card = el('div', { class: 'content-card' });
+          const card = el('div', { class: 'content-card', 'data-platform': prefix, 'data-visible-key': `${key}_block` });
+          card.appendChild(el('div', { class: 'hidden-note', text: 'Oculto para cliente' }));
           card.appendChild(el('div', { class: 'rank', text: `Top ${i}` }));
           card.appendChild(el('div', { class: 'image-preview', 'data-image-preview': `${key}_image` }));
           const fileField = el('div', { class: 'field editor-only' }, [
@@ -1193,6 +1453,38 @@
       });
     }
 
+    function validHex(value) {
+      return /^#[0-9A-Fa-f]{6}$/.test(String(value || '').trim());
+    }
+
+    function applyLogoColors() {
+      const client = document.querySelector('[data-key="client_logo_bg"]')?.value?.trim();
+      const bananas = document.querySelector('[data-key="bananas_logo_bg"]')?.value?.trim();
+      document.documentElement.style.setProperty('--client-logo-bg', validHex(client) ? client : 'rgba(255,255,255,.03)');
+      document.documentElement.style.setProperty('--bananas-logo-bg', validHex(bananas) ? bananas : 'rgba(246,201,69,.10)');
+      document.querySelectorAll('[data-color-key]').forEach(color => {
+        const text = document.querySelector(`[data-color-hex="${color.dataset.colorKey}"]`);
+        if (text && validHex(text.value)) color.value = text.value;
+      });
+    }
+
+    function initColorControls() {
+      document.querySelectorAll('[data-color-key]').forEach(color => {
+        const key = color.dataset.colorKey;
+        const text = document.querySelector(`[data-color-hex="${key}"]`);
+        color.addEventListener('input', () => {
+          if (text) text.value = color.value;
+          applyLogoColors();
+        });
+        if (text) {
+          text.addEventListener('input', () => {
+            if (validHex(text.value)) color.value = text.value;
+            applyLogoColors();
+          });
+        }
+      });
+    }
+
     function updateBindings() {
       document.querySelectorAll('[data-bind-text]').forEach(node => {
         const source = document.querySelector(`[data-key="${node.dataset.bindText}"]`);
@@ -1204,19 +1496,31 @@
 
     function updateReachChart() {
       const chart = document.getElementById('reach-chart');
-      const values = chartLabels.map(([key, label]) => ({ key, label, value: Number(document.querySelector(`[data-key="${key}"]`)?.value || 0) }));
-      const max = Math.max(...values.map(v => v.value), 1);
+      const getVal = key => Number(document.querySelector(`[data-key="${key}"]`)?.value || 0);
+      const total = getVal('reach_total');
+      const items = [
+        ['reach_avg_post', 'Promedio por post'],
+        ['reach_avg_reel', 'Promedio por reel'],
+        ['reach_stories', 'Promedio stories']
+      ].filter(([key]) => isVisible(`${key}_block`) || !document.body.classList.contains('view-mode'));
       chart.innerHTML = '';
-      values.forEach(item => {
-        const row = el('div', { class: 'bar-row' });
-        row.appendChild(el('div', { class: 'bar-top' }, [el('span', { text: item.label }), el('span', { text: formatNumber(item.value) })]));
-        const track = el('div', { class: 'bar-track' });
-        const fill = el('div', { class: 'bar-fill' });
-        fill.style.width = `${Math.max(0, (item.value / max) * 100)}%`;
-        track.appendChild(fill);
-        row.appendChild(track);
-        chart.appendChild(row);
+      if (isVisible('reach_total_block') || !document.body.classList.contains('view-mode')) {
+        const totalCard = el('div', { class: 'reach-total-card', 'data-visible-key': 'reach_total_block' }, [
+          el('div', { class: 'summary-label', text: 'Alcance total del mes' }),
+          el('div', { class: 'reach-total-value', text: formatNumber(total) })
+        ]);
+        chart.appendChild(totalCard);
+      }
+      const miniGrid = el('div', { class: 'reach-mini-grid' });
+      items.forEach(([key, label]) => {
+        miniGrid.appendChild(el('div', { class: 'reach-mini-card', 'data-visible-key': `${key}_block` }, [
+          el('span', { class: 'summary-label', text: label }),
+          el('strong', { text: formatNumber(getVal(key)) })
+        ]));
       });
+      chart.appendChild(miniGrid);
+      chart.appendChild(el('p', { class: 'reach-note', text: 'El total se muestra separado de los promedios para no comparar magnitudes distintas. La lectura útil es qué formato empuja exposición y dónde conviene ajustar producción.' }));
+      applyVisibilityToDom();
     }
 
     function autoResizeTextareas() {
@@ -1232,13 +1536,15 @@
           updateVariations();
           updateBindings();
           updateReachChart();
+          applyLogoColors();
+          applyVisibilityToDom();
           autoResizeTextareas();
         });
       });
     }
 
     window.getReportDataJSON = function() {
-      const data = { _version: 'bananas-definitivo-10-hojas', _created_at: new Date().toISOString(), _images: imageStore };
+      const data = { _version: 'bananas-definitivo-10-hojas-v2', _created_at: new Date().toISOString(), _images: imageStore, _visibility: visibility };
       document.querySelectorAll('[data-key]').forEach(input => { data[input.dataset.key] = input.value; });
       return data;
     };
@@ -1248,7 +1554,10 @@
         if (Object.prototype.hasOwnProperty.call(data, input.dataset.key)) input.value = data[input.dataset.key] ?? '';
       });
       imageStore = data._images || {};
+      visibility = { platform_ig: true, platform_tt: true, ...(data._visibility || {}) };
+      document.querySelectorAll('[data-visibility-toggle]').forEach(toggle => { toggle.checked = isVisible(toggle.dataset.visibilityToggle); });
       Object.keys(imageStore).forEach(renderImage);
+      applyLogoColors();
       updateVariations();
       updateBindings();
       updateReachChart();
@@ -1259,7 +1568,8 @@
       document.querySelectorAll('input, textarea').forEach(input => {
         if (input.type !== 'file') input.setAttribute('readonly', 'readonly');
       });
-      document.querySelectorAll('.table-input').forEach(input => { if (!input.value) input.value = '—'; });
+      applyLogoColors();
+      applyVisibilityToDom();
       autoResizeTextareas();
     };
 
@@ -1278,11 +1588,15 @@
       initMetricsTable();
       initTopContent();
       initImages();
+      initVisibilityControls();
+      initColorControls();
       attachInputListeners();
       initClientMenu();
       setPage(1);
       updateReachChart();
       updateBindings();
+      applyLogoColors();
+      applyVisibilityToDom();
     });
   </script>
 </body>
